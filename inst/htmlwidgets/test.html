@@ -1,0 +1,30 @@
+<html>
+<head>
+
+<script src='lib/d3-3.5.16/d3.min.js'></script>
+<script src='lib/c3-0.4.11/c3.min.js'></script>
+<link href='lib/c3-0.4.11/c3.min.css'></link>
+</head>
+<body>
+
+<div id='chart'></div>
+
+<script>
+
+          var chart = c3.generate({
+              bindto: '#' + 'chart',
+              data: {
+                json: [{"a":1,"b":2},{"a":2,"b":3},{"a":3,"b":1},{"a":2,"b":4},{"a":3,"b":3},{"a":4,"b":5},{"a":3,"b":2},{"a":6,"b":3}] ,
+                keys: {
+                  value: ['a','b']
+                },
+                groups: [
+                  [null]
+                ]
+              }
+          });
+
+</script>
+
+</body>
+</html>
