@@ -12,20 +12,32 @@
 #'   c3() %>%
 #'   c3_bar()
 #'   }
-c3_bar <- function(c3, stacked=FALSE, rotated=NULL, bar_width = NULL) {
+c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6) {
 
-  c3$x$plot_type <- 'bar'
+  c3$x$data$type <- 'bar'
 
-  c3$x$rotated <- rotated
-  c3$x$bar_width <- bar_width
+  c3$x$axis = list(
+    x = list(
+      type = 'category' #// this needed to load string x value
+    ),
+    rotated = rotated
+  )
 
+  c3$x$bar = list(
+    width = list(
+      ratio = bar_width #// this makes bar width 50% of length between ticks
+    )
+    #// or
+    #//width: 100 // this makes bar width 100px
+  )
   if (stacked) {
-    group <- c3$x$keys
+    group <- c3$x$data$keys
     if (!is.null(c3$x$x)) {
       group <- group[-grep(c3$x$x, group)]
     }
-    c3$x$groups <- group
+    c3$x$data$groups <- toJSON(group)
   }
+
 
   return(c3)
 

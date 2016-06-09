@@ -4,7 +4,7 @@
 \alias{c3_bar}
 \title{Barplot for C3}
 \usage{
-c3_bar(c3, stacked = FALSE)
+c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6)
 }
 \arguments{
 \item{c3}{}

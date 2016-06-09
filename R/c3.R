@@ -12,10 +12,11 @@ c3 <- function(data, x = NULL, message = NULL, width = NULL, height = NULL) {
 
   # forward options using x
   x = list(
-    data = jsonlite::toJSON(data, dataframe = 'rows'),
-    keys = colnames(data),
-    x = x,
-    message = message
+    data = list(
+      json = jsonlite::toJSON(data, dataframe = 'rows'),
+      keys = list(value = colnames(data))
+    ),
+    x = x
   )
 
   # create widget
