@@ -3,7 +3,7 @@
 #' <Add Description>
 #'
 #' @import htmlwidgets
-#'
+#' @family c3
 #' @export
 c3 <- function(data, x = NULL, message = NULL, width = NULL, height = NULL) {
 

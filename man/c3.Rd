@@ -9,4 +9,7 @@ c3(data, x = NULL, message = NULL, width = NULL, height = NULL)
 \description{
 <Add Description>
 }
+\seealso{
+Other c3: \code{\link{xAxis.c3}}
+}
 
