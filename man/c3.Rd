@@ -4,12 +4,22 @@
 \alias{c3}
 \title{<Add Title>}
 \usage{
-c3(data, x = NULL, message = NULL, width = NULL, height = NULL)
+c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
+  width = NULL, height = NULL)
+}
+\arguments{
+\item{labels}{character or list with otpions:
+ \itemize{
+ \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
+}}
+
+\item{hide}{booleen or character vector of parameters to hide}
 }
 \description{
 <Add Description>
 }
 \seealso{
-Other c3: \code{\link{xAxis.c3}}
+Other c3: \code{\link{grid.c3}}, \code{\link{legend.c3}},
+  \code{\link{tooltip.c3}}, \code{\link{xAxis.c3}}
 }
 

@@ -2,18 +2,21 @@
 % Please edit documentation in R/options.R
 \name{xAxis.c3}
 \alias{xAxis.c3}
+\alias{y2Axis.c3}
 \alias{yAxis.c3}
 \title{Title}
 \usage{
 \method{xAxis}{c3}(c3, ...)
 
 \method{yAxis}{c3}(c3, ...)
+
+\method{y2Axis}{c3}(c3, ...)
 }
 \arguments{
 \item{...}{}
 
 \item{label}{can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
-##' \itemize{
+\itemize{
  \item{text}{: character}
  \item{position}{: boolean default NULL}
 }}
@@ -25,8 +28,9 @@ c3
 Title
 }
 \seealso{
-Other axis: \code{\link{yAxis}}
+Other axis: \code{\link{y2Axis}}, \code{\link{yAxis}}
 
-Other c3: \code{\link{c3}}
+Other c3: \code{\link{c3}}, \code{\link{grid.c3}},
+  \code{\link{legend.c3}}, \code{\link{tooltip.c3}}
 }
 

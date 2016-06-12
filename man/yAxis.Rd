@@ -10,6 +10,6 @@ yAxis(x, ...)
 This is an S3 method.
 }
 \seealso{
-Other axis: \code{\link{xAxis.c3}}
+Other axis: \code{\link{xAxis.c3}}, \code{\link{y2Axis}}
 }
 

@@ -4,10 +4,8 @@
 \alias{c3_bar}
 \title{Barplot for C3}
 \usage{
-c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6)
-}
-\arguments{
-\item{c3}{}
+c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
+  zerobased = TRUE)
 }
 \value{
 c3
@@ -21,5 +19,6 @@ data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
   c3() \%>\%
   c3_bar()
   }
+
 }
 

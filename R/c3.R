@@ -2,20 +2,83 @@
 #'
 #' <Add Description>
 #'
+#' @param labels character or list with otpions:
+#'  \itemize{
+#'  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
+#' }
+#' @param hide booleen or character vector of parameters to hide
 #' @import htmlwidgets
 #' @family c3
 #' @export
-c3 <- function(data, x = NULL, message = NULL, width = NULL, height = NULL) {
+c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL) {
 
-  # if x not defined drop non-numeric columns
-  if (is.null(x)) {data <- data[, grep('numeric', sapply(data, class))]}
+  # check for and replace '.' in column names
+  names(data) <- gsub('\\.', '_', names(data))
 
-  # forward options using x
+  # if x and y not defined drop non-numeric columns
+  if (is.null(x) & is.null(y)) {
+    data <- data[, grep('numeric', sapply(data, class))]
+  } else if (!is.null(group)) {
+    #this option currently assumes groups have the same number of rows
+
+    # remove columns not in x,y,group
+    data <- data[, c(x,y,group)]
+
+    # split by group
+    df = data.frame() # need to define length...
+    xs = list()
+
+    for (g in as.character(unique(data[,group]))) {
+      # y.values
+      df[, g] <- data[data[,group]==g, y]
+
+      # x.values
+      df[, paste(g, '_x', sep = '')] <- data[data[,group]==g, x]
+
+      # xs
+      xs[[g]] = paste(g, '_x', sep = '')
+    }
+
+  } else {
+    # preference is to have x and y defined
+    # remove columns not in xy
+    data <- data[, c(x,y)]
+    xs = list()
+    xs[[y]] = x
+  }
+
+  # create data object
+  data = list(
+    json = jsonlite::toJSON(data, dataframe = 'rows'),
+    keys = list(value = colnames(data)),
+    xFormat = NULL,
+    xLocaltime = NULL,
+    xSort = NULL,
+    names = NULL,
+    classes = NULL,
+    axes = NULL,
+    type = NULL,
+    types = NULL,
+    labels = NULL,
+    order = NULL,
+    regions = NULL, # may need to pull this out into separate function
+    colors = NULL, # pullcolor and colors into separate function
+    color = NULL,
+    hide = NULL,
+    empty = NULL,
+    onclick = NULL,
+    onmouseover = NULL,
+    onmouseout = NULL
+  )
+
+  #data <- modifyList(data, list(...))
+
+  data <- Filter(Negate(function(x) is.null(unlist(x))), data)
+
+  if ('xs' %in% ls()) {data$xs <- xs}
+
   x = list(
-    data = list(
-      json = jsonlite::toJSON(data, dataframe = 'rows'),
-      keys = list(value = colnames(data))
-    ),
+    data = data,
     x = x
   )
 
