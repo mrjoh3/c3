@@ -12,6 +12,12 @@
 #' @export
 c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL) {
 
+  require(dplyr)
+  require(data.table)
+
+  # if group defined must have x and y
+  #stopifnot()
+
   # check for and replace '.' in column names
   names(data) <- gsub('\\.', '_', names(data))
 
@@ -19,25 +25,32 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   if (is.null(x) & is.null(y)) {
     data <- data[, grep('numeric', sapply(data, class))]
   } else if (!is.null(group)) {
-    #this option currently assumes groups have the same number of rows
+    #this option is currently only for grouped scatter plots
 
     # remove columns not in x,y,group
-    data <- data[, c(x,y,group)]
+    data <- data[, c(x, y, group)]
 
-    # split by group
-    df = data.frame() # need to define length...
+    groups <- as.character(unique(data[,group]))
+
+    tmp.df <- group_by(data, Species) %>%
+      mutate(id = 1:n())
+
+    # need to change columns to group, group_x in xs and in data dataframe
+    data <- dcast(setDT(tmp.df), id ~ Species, value.var = c(y,x)) %>%
+      as.data.frame() %>%
+      select(-id)
+
     xs = list()
 
-    for (g in as.character(unique(data[,group]))) {
-      # y.values
-      df[, g] <- data[data[,group]==g, y]
+    # need to change columns to group, group_x in xs and in data dataframe
+    for (g in groups) {
+      xs[[g]] = paste(g, 'x', sep = '_')
 
-      # x.values
-      df[, paste(g, '_x', sep = '')] <- data[data[,group]==g, x]
+      colnames(data) <- sub(paste(y, g, sep = '_'), g, colnames(data))
+      colnames(data) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data))
 
-      # xs
-      xs[[g]] = paste(g, '_x', sep = '')
     }
+
 
   } else {
     # preference is to have x and y defined
@@ -71,15 +84,17 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
     onmouseout = NULL
   )
 
-  #data <- modifyList(data, list(...))
-
   data <- Filter(Negate(function(x) is.null(unlist(x))), data)
 
   if ('xs' %in% ls()) {data$xs <- xs}
 
+  axis = list(x = list(label = x),
+              y = list(label = y))
+
   x = list(
     data = data,
-    x = x
+    x = x,
+    axis = axis
   )
 
   # create widget

@@ -128,8 +128,9 @@ c3_scatter <- function(c3, ...) {
 
   c3$x$data$type <- 'scatter'
 
-  c3$x$axis$x$label <- c3$x$data$xs[[1]]
-  c3$x$axis$y$label <- names(c3$x$data$xs)
+  # currently we are losing proper axis labels
+  # c3$x$axis$x$label <- c3$x$data$xs[[1]]
+  # c3$x$axis$y$label <- names(c3$x$data$xs)
 
   return(c3)
 
