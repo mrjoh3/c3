@@ -1,5 +1,5 @@
 ---
-title: "pier"
+title: "c3"
 #author: "mj"
 #date: "10 May 2016"
 output: 

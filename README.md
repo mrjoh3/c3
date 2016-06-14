@@ -1,4 +1,4 @@
-# pier
+# c3
 
 
 
@@ -41,7 +41,7 @@ data = data.frame(a=abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/filed1cd92533c.png)
+![widget](img/filef0f4266176b.png)
 
 
 ### Piping
@@ -55,7 +55,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/filed1c110e8d99.png)
+![widget](img/filef0f6ca58733.png)
 
 
 ### Bar Plots
@@ -68,7 +68,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/filed1c3b0af777.png)
+![widget](img/filef0f18b73154.png)
 
 
 ## Scatter Plot
@@ -81,7 +81,7 @@ scatter.plot <- data %>%
 ```
 
 
-![widget](img/filed1c795815fd.png)
+![widget](img/filef0f35b41add.png)
 
 
 
@@ -92,4 +92,4 @@ scatter.plot2 <- iris %>%
 ```
 
 
-![widget](img/filed1c764f8012.png)
+![widget](img/filef0f301a674c.png)
