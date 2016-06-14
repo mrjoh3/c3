@@ -17,6 +17,8 @@
 #'
 c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6, zerobased = TRUE) {
 
+  require(jsonlite)
+
   c3$x$data$type <- 'bar'
 
   c3$x$axis = list(

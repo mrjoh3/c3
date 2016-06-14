@@ -1,11 +1,20 @@
 Package: c3
-Title: What the Package Does (one line, title case)
+Type: Package
+Title: C3 Charts via R
+Description: The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812).
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+    person("Matt", "Johnson", email = "mrjoh3@gmail.com",
+    role = c("aut", "cre"))
+    )
 Depends:
-    R (>= 3.2.2)
-License: What license is it under?
+    R (>= 3.2.2),
+    jsonlite,
+    data.table,
+    dplyr
+URL: https://github.com/mrjoh3/c3
+BugReports: https://github.com/mrjoh3/c3/issues
+License: GPL (>= 3)
+LazyData: TRUE
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 5.0.1

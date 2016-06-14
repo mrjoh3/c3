@@ -1,0 +1,177 @@
+---
+title: "pier"
+#author: "mj"
+#date: "10 May 2016"
+output: 
+    html_document:
+        keep_md: true
+        self_contained: yes
+---
+
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(webshot)
+
+# thanks to https://rud.is/b/2016/03/04/capturing-wild-widgets-with-webshot/
+capture_widget <- function(wdgt,
+                           output=c("path", "markdown", "html", "inline"),
+                           height, width,
+                           png_render_path=tempfile(tmpdir = 'img', fileext=".png")) {
+ 
+  wdgt_html_tf <- tempfile(fileext=".html")
+ 
+  htmlwidgets::saveWidget(wdgt, wdgt_html_tf)
+ 
+  webshot::webshot(url=sprintf("file://%s", wdgt_html_tf),
+                   selector="#htmlwidget_container",
+                   file=png_render_path,
+                   vwidth=width, vheight=height,
+                   delay = 2, expand = c(0,0,40,80))
+ 
+  # done with HTML
+  unlink(wdgt_html_tf)
+ 
+  switch(match.arg(output, c("path", "markdown", "html", "inline")),
+             `path`=png_render_path,
+         `markdown`=sprintf("![widget](%s)", png_render_path),
+             `html`=sprintf("<img src='%s'/>", png_render_path),
+           `inline`=base64::img(png_render_path))
+ 
+}
+```
+
+The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.  
+
+The `c3` library is very versatile and includes a lot of options. Currently this package wraps most of the [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
+
+
+## Installation
+
+You probably already guesssed this bit.
+
+```{r install, eval=FALSE}
+
+devtools::install_github("mrjoh3/c3")
+
+```
+
+
+## Usage
+
+Please note that this pakage is under active development and may change atany time. The plots that currently work are line (and varieties), bar and scatter plots. Where possible the package tries to emulate the [Grammer of Graphics](https://books.google.com.au/books?id=ZiwLCAAAQBAJ&lpg=PR3&dq=inauthor%3A%22Leland%20Wilkinson%22&pg=PR3#v=onepage&q&f=false) used in Hadley Wickham's [ggplot2](http://ggplot2.org/).
+
+The `c3` package is intended to be as simple and lightweight as possible. As a starting point the data input must be a `data.frame` with several options. 
+
+  * If a `data.frame` without any options is passed all of the numeric columns will be plotted. This can be used in line and bar plots. Each column is a line or bar.
+  * For more complex plots only 3 columns are used, those defined as `x`, `y` and `group`. This requires a `data.frame` with a vertical structure.
+
+### The Basics
+
+Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. 
+
+```{r data, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+library(c3)
+
+data = data.frame(a=abs(rnorm(20) * 10),
+                  b=abs(rnorm(20) * 10))
+
+simple.plot <- c3(data)
+
+```
+
+```{r data.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(simple.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+### Piping
+
+The package also imports the [migrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) piping function (`%>%`) to simplify syntax.
+
+```{r pipe, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+piped.plot <- data %>%
+                c3() 
+
+```
+
+
+```{r pipe.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(piped.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+### Bar Plots
+
+```{r bar, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+bar.plot <- data[1:10, ] %>%
+  c3() %>%
+  c3_bar(stacked = TRUE, rotate = TRUE)
+                
+
+```
+
+
+```{r bar.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(bar.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+## Scatter Plot
+
+```{r scatter, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+scatter.plot <- data %>%
+  c3(x = 'a', y = 'b') %>%
+  c3_scatter()
+                
+
+```
+
+
+```{r bar2.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(scatter.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+```{r scatter2, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+scatter.plot2 <- iris %>%
+  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>% 
+  c3_scatter()
+                
+
+```
+
+
+```{r scatter2.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(scatter.plot2,
+                   'markdown', height=400, width=1100)
+)
+
+```

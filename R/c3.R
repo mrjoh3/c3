@@ -18,6 +18,10 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   # if group defined must have x and y
   #stopifnot()
 
+  #options carried through
+  opts = list(x = x,
+              y = y)
+
   # check for and replace '.' in column names
   names(data) <- gsub('\\.', '_', names(data))
 
@@ -94,7 +98,8 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   x = list(
     data = data,
     x = x,
-    axis = axis
+    axis = axis,
+    opts = opts
   )
 
   # create widget
