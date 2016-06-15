@@ -68,14 +68,15 @@ The `c3` package is intended to be as simple and lightweight as possible. As a s
 
 ### The Basics
 
-Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. 
+Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. `Date` x-axis can be paresed with not additional setting if in the format `%Y-%m-%d` (ie '2014-01-01') 
 
 ```{r data, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
 library(c3)
 
-data = data.frame(a=abs(rnorm(20) * 10),
-                  b=abs(rnorm(20) * 10))
+data = data.frame(a = abs(rnorm(20) * 10),
+                  b = abs(rnorm(20) * 10),
+                  date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
 simple.plot <- c3(data)
 
@@ -89,6 +90,23 @@ cat(
 )
 
 ```
+
+
+```{r date, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+simple.plot.date <- c3(data, x = 'date')
+
+```
+
+```{r date.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(simple.plot.date,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
 
 
 ### Piping
@@ -107,6 +125,61 @@ piped.plot <- data %>%
 
 cat(
     capture_widget(piped.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+### Other Line Plots
+
+There are 5 different line plots available:
+
+* line
+* spline
+* step
+* area
+* area-step
+
+
+#### Spline
+
+```{r spline, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+spline.plot <- data %>%
+  c3() %>%
+  c3_line('spline')
+                
+
+```
+
+
+```{r spline.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(spline.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+#### Step
+
+```{r step, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+step.plot <- data %>%
+  c3(x = 'date') %>%
+  c3_line('area-step')
+                
+
+```
+
+
+```{r step.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(step.plot,
                    'markdown', height=400, width=1100)
 )
 
@@ -137,29 +210,10 @@ cat(
 
 ## Scatter Plot
 
+
 ```{r scatter, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
-scatter.plot <- data %>%
-  c3(x = 'a', y = 'b') %>%
-  c3_scatter()
-                
-
-```
-
-
-```{r bar2.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-cat(
-    capture_widget(scatter.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
-
-```{r scatter2, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
-
-scatter.plot2 <- iris %>%
+scatter.plot <- iris %>%
   c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>% 
   c3_scatter()
                 
@@ -167,10 +221,10 @@ scatter.plot2 <- iris %>%
 ```
 
 
-```{r scatter2.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+```{r scatter.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
 
 cat(
-    capture_widget(scatter.plot2,
+    capture_widget(scatter.plot,
                    'markdown', height=400, width=1100)
 )
 

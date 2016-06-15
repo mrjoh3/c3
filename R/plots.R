@@ -63,7 +63,7 @@ c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6, zerobased 
 #' @export
 #'
 #' @examples
-c3_line <- function(c3, type, stacked, ...) {
+c3_line <- function(c3, type, stacked = FALSE, ...) {
 
   stopifnot(type %in% c('line', 'spline', 'step', 'area', 'area-step'))
   c3$x$data$type <- type

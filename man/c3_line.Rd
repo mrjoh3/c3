@@ -4,7 +4,7 @@
 \alias{c3_line}
 \title{Title}
 \usage{
-c3_line(c3, type, stacked, ...)
+c3_line(c3, type, stacked = FALSE, ...)
 }
 \arguments{
 \item{...}{}

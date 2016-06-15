@@ -29,19 +29,29 @@ The `c3` package is intended to be as simple and lightweight as possible. As a s
 
 ### The Basics
 
-Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. 
+Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. `Date` x-axis can be paresed with not additional setting if in the format `%Y-%m-%d` (ie '2014-01-01') 
 
 
 ```r
 library(c3)
 
-data = data.frame(a=abs(rnorm(20) * 10),
-                  b=abs(rnorm(20) * 10))
+data = data.frame(a = abs(rnorm(20) * 10),
+                  b = abs(rnorm(20) * 10),
+                  date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
 simple.plot <- c3(data)
 ```
 
-![widget](img/filef0f4266176b.png)
+![widget](img/filef4f3b977b24.png)
+
+
+
+```r
+simple.plot.date <- c3(data, x = 'date')
+```
+
+![widget](img/filef4f4d72a26c.png)
+
 
 
 ### Piping
@@ -55,7 +65,44 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/filef0f6ca58733.png)
+![widget](img/filef4f5f22cbe7.png)
+
+
+### Other Line Plots
+
+There are 5 different line plots available:
+
+* line
+* spline
+* step
+* area
+* area-step
+
+
+#### Spline
+
+
+```r
+spline.plot <- data %>%
+  c3() %>%
+  c3_line('spline')
+```
+
+
+![widget](img/filef4f30234ee1.png)
+
+
+#### Step
+
+
+```r
+step.plot <- data %>%
+  c3(x = 'date') %>%
+  c3_line('area-step')
+```
+
+
+![widget](img/filef4f2b744817.png)
 
 
 ### Bar Plots
@@ -68,28 +115,18 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/filef0f18b73154.png)
+![widget](img/filef4f1f69aec.png)
 
 
 ## Scatter Plot
 
 
-```r
-scatter.plot <- data %>%
-  c3(x = 'a', y = 'b') %>%
-  c3_scatter()
-```
-
-
-![widget](img/filef0f35b41add.png)
-
-
 
 ```r
-scatter.plot2 <- iris %>%
+scatter.plot <- iris %>%
   c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>% 
   c3_scatter()
 ```
 
 
-![widget](img/filef0f301a674c.png)
+![widget](img/filef4f966bdc5.png)

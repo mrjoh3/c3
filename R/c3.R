@@ -10,25 +10,97 @@
 #' @import htmlwidgets
 #' @family c3
 #' @export
-c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL) {
+c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = 800, height = 300, ...) {
 
   require(dplyr)
   require(data.table)
 
-  # if group defined must have x and y
-  #stopifnot()
+  # create data object
+  data.object = list(
+    #x = x,
+    xFormat = NULL,
+    xLocaltime = NULL,
+    xSort = NULL,
+    names = NULL,
+    classes = NULL,
+    axes = NULL,
+    type = NULL,
+    types = NULL,
+    labels = NULL,
+    order = NULL,
+    regions = NULL, # may need to pull this out into separate function
+    colors = NULL, # pullcolor and colors into separate function
+    color = NULL,
+    hide = NULL,
+    empty = NULL,
+    onclick = NULL,
+    onmouseover = NULL,
+    onmouseout = NULL
+  )
+
+  data.object <- modifyList(data.object, list(...))
 
   #options carried through
-  opts = list(x = x,
-              y = y)
+  # opts = list(x = x,
+  #             y = y,
+  #             xType = NULL)
 
   # check for and replace '.' in column names
   names(data) <- gsub('\\.', '_', names(data))
 
   # if x and y not defined drop non-numeric columns
   if (is.null(x) & is.null(y)) {
+
     data <- data[, grep('numeric', sapply(data, class))]
+
+  # if there is an x value but no y a data type needs to be defined
+  } else if (!is.null(x) & is.null(y)) {
+
+    data <- data[, c(grep(x, colnames(data)),
+                     grep('numeric', sapply(data, class)))]
+
+    # define x axis type
+    dtype = switch(class(data[,x]),
+                   'Date' = 'timeseries',
+                   'character' = 'category',
+                   'numeric' = 'indexed')
+
+    #opts$xType = dtype
+
+    # create axis
+    axis = list(x = list(label = x,
+                         type = dtype))
+    data.object$x <- x
+
+  } else if (!is.null(x) & !is.null(y) & is.null(group)) {
+
+    # preference is to have x and y defined
+    # remove columns not in xy
+    data <- data[, c(x,y)]
+
+    # define x axis type
+    dtype = switch(class(data[,x]),
+                   'Date' = 'timeseries',
+                   'character' = 'category',
+                   'numeric' = 'indexed')
+
+    #opts$xType = dtype
+
+    # create axis
+    axis = list(x = list(label = x,
+                         type = dtype),
+                y = list(label = y))
+
+    data.object$x <- x
+
+    xs = list()
+    xs[[y]] = x
+
   } else if (!is.null(group)) {
+
+    # if group defined must have x and y
+    stopifnot(!is.null(x) & !is.null(y))
+
     #this option is currently only for grouped scatter plots
 
     # remove columns not in x,y,group
@@ -55,52 +127,33 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
     }
 
+    axis = list(x = list(label = x),
+                y = list(label = y))
+
 
   } else {
-    # preference is to have x and y defined
-    # remove columns not in xy
-    data <- data[, c(x,y)]
-    xs = list()
-    xs[[y]] = x
+
+    print('error')
+    break
+
   }
 
-  # create data object
-  data = list(
-    json = jsonlite::toJSON(data, dataframe = 'rows'),
-    keys = list(value = colnames(data)),
-    xFormat = NULL,
-    xLocaltime = NULL,
-    xSort = NULL,
-    names = NULL,
-    classes = NULL,
-    axes = NULL,
-    type = NULL,
-    types = NULL,
-    labels = NULL,
-    order = NULL,
-    regions = NULL, # may need to pull this out into separate function
-    colors = NULL, # pullcolor and colors into separate function
-    color = NULL,
-    hide = NULL,
-    empty = NULL,
-    onclick = NULL,
-    onmouseover = NULL,
-    onmouseout = NULL
-  )
+  # append data to data.object
+  data.object$json <- jsonlite::toJSON(data, dataframe = 'rows')
+  data.object$keys <- list(value = colnames(data))
 
-  data <- Filter(Negate(function(x) is.null(unlist(x))), data)
+  data.object <- Filter(Negate(function(x) is.null(unlist(x))), data.object)
 
-  if ('xs' %in% ls()) {data$xs <- xs}
 
-  axis = list(x = list(label = x),
-              y = list(label = y))
+
+  if ('xs' %in% ls()) {data.object$xs <- xs}
 
   x = list(
-    data = data,
-    x = x,
-    axis = axis,
-    opts = opts
+    data = data.object#,
+    #opts = opts
   )
+
+  if ('axis' %in% ls()) {x$axis <- axis}
 
   # create widget
   htmlwidgets::createWidget(

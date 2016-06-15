@@ -13,15 +13,34 @@
 
           var chart = c3.generate({
               bindto: '#' + 'chart',
-              data: {
-                json: [{"a":1,"b":2},{"a":2,"b":3},{"a":3,"b":1},{"a":2,"b":4},{"a":3,"b":3},{"a":4,"b":5},{"a":3,"b":2},{"a":6,"b":3}] ,
-                keys: {
-                  value: ['a','b']
-                },
-                groups: [
-                  [null]
-                ]
-              }
+              //x: 'x'
+             data:{
+               json:[
+                 {setosa:3.5,versicolor:3.2,virginica:3.3,setosa_x:5.1,versicolor_x:7,virginica_x:6.3},
+                {setosa:3,versicolor:3.2,virginica:2.7,setosa_x:4.9,versicolor_x:6.4,virginica_x:5.8},
+                {setosa:3.2,versicolor:3.1,virginica:3,setosa_x:4.7,versicolor_x:6.9,virginica_x:7.1},
+                {setosa:3.1,versicolor:2.3,virginica:2.9,setosa_x:4.6,versicolor_x:5.5,virginica_x:6.3},
+                {setosa:3.6,versicolor:2.8,virginica:3,setosa_x:5,versicolor_x:6.5,virginica_x:6.5},
+                {setosa:3.9,versicolor:2.8,virginica:3,setosa_x:5.4,versicolor_x:5.7,virginica_x:7.6},
+                {setosa:3.4,versicolor:3.3,virginica:2.5,setosa_x:4.6,versicolor_x:6.3,virginica_x:4.9},
+                {setosa:3.4,versicolor:2.4,virginica:2.9,setosa_x:5,versicolor_x:4.9,virginica_x:7.3}
+                ],
+        keys:{
+          value:["setosa","versicolor","virginica","setosa_x","versicolor_x","virginica_x"]
+        },
+        xs:{
+          setosa:"setosa_x",
+          versicolor:"versicolor_x",
+          virginica:"virginica_x"
+        },
+        x:"Sepal_Length",
+        type:"scatter"
+},
+        axis:{x:{label:"Sepal_Length"},y:{label:"Sepal_Width"}}
+
+
+
+
           });
 
 </script>
