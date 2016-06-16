@@ -137,3 +137,57 @@ c3_scatter <- function(c3, ...) {
   return(c3)
 
 }
+
+
+
+#' Title
+#'
+#' @param c3
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#' data.frame(red=20,green=45,blue=10) %>%
+#'   c3() %>%
+#'   c3_pie()
+#'   }
+#'
+c3_pie <- function(c3, ...) {
+
+  c3$x$data$type <- 'pie'
+
+  return(c3)
+
+}
+
+
+#' Title
+#'
+#' @param c3
+#' @param title chasracter
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#' data.frame(red=20,green=45,blue=10) %>%
+#'   c3() %>%
+#'   c3_donut(title = 'Colors')
+#'   }
+#'
+c3_donut <- function(c3, title = NULL, ...) {
+
+  c3$x$data$type <- 'donut'
+
+  if (!is.null(title)) {
+    c3$x$donut$title <- title
+  }
+
+  return(c3)
+
+}

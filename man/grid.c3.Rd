@@ -11,7 +11,7 @@
 
 \item{show}{boolean}
 
-\item{lines}{vector of lists each with options:
+\item{lines}{dataframe with options:
 \itemize{
  \item{value}{: numeric, character or date depending on axis}
  \item{text}{: character (optional)}
@@ -24,6 +24,17 @@ c3
 }
 \description{
 Title
+}
+\examples{
+\dontrun{
+iris \%>\%
+ c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') \%>\%
+ c3_scatter() \%>\%
+ grid('y') \%>\%
+ grid('x', show=F, lines = data.frame(value=c(5,6),
+                                      text= c('Line 1','Line 2')))
+}
+
 }
 \seealso{
 Other c3: \code{\link{c3}}, \code{\link{legend.c3}},

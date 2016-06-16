@@ -2,7 +2,7 @@
 % Please edit documentation in R/grid.R
 \name{grid}
 \alias{grid}
-\title{Modify plot elements that relate to the second y-axis.}
+\title{Modify grid and line elements on both x and y axis}
 \usage{
 grid(x, ...)
 }

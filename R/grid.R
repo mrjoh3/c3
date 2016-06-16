@@ -1,7 +1,7 @@
 
 
 
-#' Modify plot elements that relate to the second y-axis.
+#' Modify grid and line elements on both x and y axis
 #'
 #' This is an S3 method.
 #' @family grid
@@ -15,7 +15,7 @@ grid <- function(x, ...){
 #' @param c3
 #' @param axis character 'x' or 'y'
 #' @param show boolean
-#' @param lines vector of lists each with options:
+#' @param lines dataframe with options:
 #' \itemize{
 #'  \item{value}{: numeric, character or date depending on axis}
 #'  \item{text}{: character (optional)}
@@ -29,7 +29,18 @@ grid <- function(x, ...){
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' iris %>%
+#'  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>%
+#'  c3_scatter() %>%
+#'  grid('y') %>%
+#'  grid('x', show=F, lines = data.frame(value=c(5,6),
+#'                                       text= c('Line 1','Line 2')))
+#' }
+#'
 grid.c3 <- function(c3, axis, ...){
+
+  stopifnot(!missing(axis))
 
   grid <- list(show = TRUE,
                lines = NULL, # show inside axis

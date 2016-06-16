@@ -131,7 +131,7 @@ cat(
 ```
 
 
-### Other Line Plots
+## Other Line Plots
 
 There are 5 different line plots available:
 
@@ -186,7 +186,7 @@ cat(
 ```
 
 
-### Bar Plots
+## Bar Plots
 
 ```{r bar, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
@@ -229,3 +229,80 @@ cat(
 )
 
 ```
+
+
+
+## Pie Charts
+
+```{r pie, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>% 
+  c3() %>% 
+  c3_pie()
+                
+
+```
+
+
+```{r pie.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(pie.chart,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+## Donut Charts
+
+```{r donut, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+donut.chart <- data.frame(red=82,green=33,blue=93) %>% 
+  c3(colors=list(red='red',green='green',blue='blue')) %>% 
+  c3_donut(title = '#d053ee')
+                
+
+```
+
+
+```{r donut.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(donut.chart,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+## Grid Lines
+
+
+
+```{r grid, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+grid.plot <- data %>%
+  c3() %>%
+  grid('y') %>%
+  grid('x', show=F, lines = data.frame(value=c(3,10), 
+                                       text= c('Line 1','Line 2')))
+                
+
+```
+
+
+```{r grid.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(grid.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+## Color Palette
+
+Color palettes can be changed to either `RColorBrewer` or `viridis`
+

@@ -174,17 +174,58 @@ tickAxis <- function(c3, axis,  ...) {
 #' @export
 #'
 #' @examples
-c3_color <- function(c3, ...) {
+c3_RcolorBrewer <- function(c3, pal='Spectral', ...) {
 
-  colors <- list() # list of colours per parameter
-  color <- '' #js function
+  require(RColorBrewer)
 
-  c3$x$data$colors <- colors
-  c3$x$data$color <- color
+  n <- length(c3$x$data$keys$value)
+
+  if (!is.null(c3$x$data$type)) {
+    if (c3$x$data$type == 'scatter') {
+      n <- n / 2
+    }
+  }
+
+  #colors <- list() # list of colours per parameter
+  #color <- '' #js function
+
+  #c3$x$data$colors <- colors
+  c3$x$color$pattern <- brewer.pal(n, pal)
 
   return(c3)
   }
 
+
+#' Title
+#'
+#' @param c3
+#' @param pal character palette options
+#' @param ...
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
+c3_viridis <- function(c3, pal='D', ...) {
+
+  require(viridis)
+
+  n <- length(c3$x$data$keys$value)
+
+  if (!is.null(c3$x$data$type)) {
+    if (c3$x$data$type == 'scatter') {
+      n <- n / 2
+    }
+  }
+
+  #colors <- list() # list of colours per parameter
+  #color <- '' #js function
+
+  #c3$x$data$colors <- colors
+  c3$x$color$pattern <- strtrim(viridis(n, option = pal), 7)
+
+  return(c3)
+}
 
 c3_selection <- function(c3, ...) {
 

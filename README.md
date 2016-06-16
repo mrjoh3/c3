@@ -42,7 +42,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/filef4f3b977b24.png)
+![widget](img/file81d3e2b9802.png)
 
 
 
@@ -50,7 +50,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/filef4f4d72a26c.png)
+![widget](img/file81d4e659555.png)
 
 
 
@@ -65,10 +65,10 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/filef4f5f22cbe7.png)
+![widget](img/file81d49651406.png)
 
 
-### Other Line Plots
+## Other Line Plots
 
 There are 5 different line plots available:
 
@@ -89,7 +89,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/filef4f30234ee1.png)
+![widget](img/file81d6d018c62.png)
 
 
 #### Step
@@ -102,10 +102,10 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/filef4f2b744817.png)
+![widget](img/file81d1649fb1e.png)
 
 
-### Bar Plots
+## Bar Plots
 
 
 ```r
@@ -115,7 +115,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/filef4f1f69aec.png)
+![widget](img/file81d4f2617e1.png)
 
 
 ## Scatter Plot
@@ -129,4 +129,48 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/filef4f966bdc5.png)
+![widget](img/file81d5f365b60.png)
+
+
+
+## Pie Charts
+
+
+```r
+pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>% 
+  c3() %>% 
+  c3_pie()
+```
+
+
+![widget](img/file81d59bb2bf3.png)
+
+
+## Donut Charts
+
+
+```r
+donut.chart <- data.frame(red=82,green=33,blue=93) %>% 
+  c3(colors=list(red='red',green='green',blue='blue')) %>% 
+  c3_donut(title = '#d053ee')
+```
+
+
+![widget](img/file81d5ec8a2ee.png)
+
+
+## Grid Lines
+
+
+
+
+```r
+grid.plot <- data %>%
+  c3() %>%
+  grid('y') %>%
+  grid('x', show=F, lines = data.frame(value=c(3,10), 
+                                       text= c('Line 1','Line 2')))
+```
+
+
+![widget](img/file81d240e357.png)

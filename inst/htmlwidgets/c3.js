@@ -13,17 +13,31 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         // TODO: code to render the widget, e.g.
-          console.log(x.data.groups);
+          //console.log(x.grid);
 
           el.innerText = x.message;
 
           x.bindto = '#' + el.id;
 
+          // this works because x.data always exists
           if (x.data.groups) {
             x.data.groups = [x.data.groups.value]
           }
 
-          console.log(x.data.groups);
+
+          // Grid Lines
+          var gridLinesX = (((x || {}).grid || {}).x || {}).lines,
+              gridLinesY = (((x || {}).grid || {}).y || {}).lines;
+          if (gridLinesX) {
+            //x.grid.x.lines = [x.grid.x.lines]
+            x.grid.x.lines = HTMLWidgets.dataframeToD3(x.grid.x.lines)
+          }
+          if (gridLinesY) {
+            x.grid.y.lines = HTMLWidgets.dataframeToD3(x.grid.y.lines)
+          }
+
+
+          //console.log(x.data.groups);
           var chart = c3.generate(
               x
           );
