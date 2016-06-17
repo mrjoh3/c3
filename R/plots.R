@@ -191,3 +191,73 @@ c3_donut <- function(c3, title = NULL, ...) {
   return(c3)
 
 }
+
+
+#' Title
+#'
+#' @param c3
+#' @param label list with options:
+#' \itemize{
+#'  \item{show}{: boolean}
+#'  \item{format}{: function}
+#' }
+#' @param min numeric
+#' @param max numeric
+#' @param units character appended to numeric value
+#' @param width integer pixel width of the arc
+#' @param pattern character vector or pallete of colors
+#' @param threshold list with options:
+#' \itemize{
+#'  \item{unit}{: character one of 'percent', 'value'}
+#'  \item{max}{: numeric}
+#'  \item{values}{: numeric vector of threhold values for color change}
+#' }
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#' data.frame(red=20,green=45,blue=10) %>%
+#'   c3() %>%
+#'   c3_donut(title = 'Colors')
+#'   }
+#'
+c3_gauge <- function(c3, ...) {
+
+  c3$x$data$type <- 'gauge'
+
+  gauge <- modifyList(
+    list(label = NULL,
+         min = 0,
+         max = 100,
+         units = NULL,
+         width = NULL
+         ), list(...))
+
+  # color and size might move to separate functions
+  color <- modifyList(
+    list(
+      pattern = c('#FF0000', '#F97600', '#F6C600', '#60B044'),
+      threshold = list(
+        unit = 'value',
+        max = 100,
+        values = c(30, 60, 90, 100)
+      )
+    ), list(...))
+
+  size = modifyList(
+    list(
+      height = NULL
+    ), list(...))
+
+  c3$x$gauge <- gauge
+  c3$x$color <- color
+  c3$x$size <- size
+
+  return(c3)
+
+}
+
+

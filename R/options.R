@@ -164,6 +164,14 @@ tickAxis <- function(c3, axis,  ...) {
   return(c3)
 }
 
+#' Modify grid and line elements on both x and y axis
+#'
+#' This is an S3 method.
+#' @family RColorBrewer
+#' @export
+RColorBrewer <- function(x, ...){
+  UseMethod('RColorBrewer')
+}
 
 #' Title
 #'
@@ -171,10 +179,12 @@ tickAxis <- function(c3, axis,  ...) {
 #' @param ...
 #'
 #' @return c3
+#' @family c3
+#' @family RColorBrewer
 #' @export
 #'
 #' @examples
-c3_RcolorBrewer <- function(c3, pal='Spectral', ...) {
+RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 
   require(RColorBrewer)
 
@@ -194,6 +204,8 @@ c3_RcolorBrewer <- function(c3, pal='Spectral', ...) {
 
   return(c3)
   }
+
+
 
 
 #' Title
@@ -226,6 +238,8 @@ c3_viridis <- function(c3, pal='D', ...) {
 
   return(c3)
 }
+
+
 
 c3_selection <- function(c3, ...) {
 

@@ -35,8 +35,9 @@ c3
 Title
 }
 \seealso{
-Other c3: \code{\link{c3}}, \code{\link{grid.c3}},
-  \code{\link{tooltip.c3}}, \code{\link{xAxis.c3}}
+Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
+  \code{\link{grid.c3}}, \code{\link{tooltip.c3}},
+  \code{\link{xAxis.c3}}
 
 Other legend: \code{\link{legend}}
 }

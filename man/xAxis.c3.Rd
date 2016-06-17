@@ -30,7 +30,8 @@ Title
 \seealso{
 Other axis: \code{\link{y2Axis}}, \code{\link{yAxis}}
 
-Other c3: \code{\link{c3}}, \code{\link{grid.c3}},
-  \code{\link{legend.c3}}, \code{\link{tooltip.c3}}
+Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
+  \code{\link{grid.c3}}, \code{\link{legend.c3}},
+  \code{\link{tooltip.c3}}
 }
 

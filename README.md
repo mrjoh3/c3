@@ -7,6 +7,12 @@ The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for
 
 The `c3` library is very versatile and includes a lot of options. Currently this package wraps most of the [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
 
+## Warning
+
+This package is under active development and will definately change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
+
+Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
+
 
 ## Installation
 
@@ -42,7 +48,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/file81d3e2b9802.png)
+![widget](img/filea5e35656f36.png)
 
 
 
@@ -50,7 +56,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/file81d4e659555.png)
+![widget](img/filea5e3caff766.png)
 
 
 
@@ -65,7 +71,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/file81d49651406.png)
+![widget](img/filea5e26732b66.png)
 
 
 ## Other Line Plots
@@ -89,7 +95,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/file81d6d018c62.png)
+![widget](img/filea5e69caa818.png)
 
 
 #### Step
@@ -102,7 +108,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/file81d1649fb1e.png)
+![widget](img/filea5e6fe1f9a8.png)
 
 
 ## Bar Plots
@@ -115,7 +121,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/file81d4f2617e1.png)
+![widget](img/filea5e698c8d3.png)
 
 
 ## Scatter Plot
@@ -129,7 +135,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/file81d5f365b60.png)
+![widget](img/filea5e5c04cef5.png)
 
 
 
@@ -143,7 +149,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/file81d59bb2bf3.png)
+![widget](img/filea5e7c981c24.png)
 
 
 ## Donut Charts
@@ -156,7 +162,21 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/file81d5ec8a2ee.png)
+![widget](img/filea5e129798dd.png)
+
+
+## Gauge Charts
+
+
+```r
+gauge.chart <- data.frame(data = 80) %>% 
+  c3() %>% 
+  c3_gauge()
+```
+
+
+![widget](img/filea5e3bb6fa8e.png)
+
 
 
 ## Grid Lines
@@ -173,4 +193,33 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/file81d240e357.png)
+![widget](img/filea5e422f776d.png)
+
+
+## Color Palette
+
+Plot color palettes can be changed to either `RColorBrewer` or `viridis` palettes using either `RColorBrewer` (S3 method) or `c3_viridus`.
+
+
+
+```r
+pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
+  c3() %>% 
+  c3_pie() %>%
+  RColorBrewer()
+```
+
+
+![widget](img/filea5e46a27948.png)
+
+
+
+```r
+pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
+  c3() %>% 
+  c3_pie() %>%
+  c3_viridis()
+```
+
+
+![widget](img/filea5e59be79b9.png)

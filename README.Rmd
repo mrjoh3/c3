@@ -45,6 +45,12 @@ The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for
 
 The `c3` library is very versatile and includes a lot of options. Currently this package wraps most of the [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
 
+## Warning
+
+This package is under active development and will definately change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
+
+Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
+
 
 ## Installation
 
@@ -276,6 +282,29 @@ cat(
 ```
 
 
+## Gauge Charts
+
+```{r gauge, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+gauge.chart <- data.frame(data = 80) %>% 
+  c3() %>% 
+  c3_gauge()
+                
+
+```
+
+
+```{r gauge.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(gauge.chart,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+
 ## Grid Lines
 
 
@@ -304,5 +333,46 @@ cat(
 
 ## Color Palette
 
-Color palettes can be changed to either `RColorBrewer` or `viridis`
+Plot color palettes can be changed to either `RColorBrewer` or `viridis` palettes using either `RColorBrewer` (S3 method) or `c3_viridus`.
 
+
+```{r brewer, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
+  c3() %>% 
+  c3_pie() %>%
+  RColorBrewer()
+                
+
+```
+
+
+```{r brewer.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(pie.RColorBrewer,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+```{r viridis, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
+  c3() %>% 
+  c3_pie() %>%
+  c3_viridis()
+                
+
+```
+
+
+```{r viridis.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(pie.viridis,
+                   'markdown', height=400, width=1100)
+)
+
+```
