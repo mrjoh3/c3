@@ -10,6 +10,8 @@ tickAxis(c3, axis, ...)
 \item{axis}{character 'x' or 'y' axis}
 
 \item{...}{}
+
+\item{format}{character js function, wrap character or character vector in JS()}
 }
 \value{
 c3

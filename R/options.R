@@ -124,7 +124,7 @@ y2Axis.c3 <- function(c3, ...){
 #' @param c3
 #' @param axis character 'x' or 'y' axis
 #' @param centered
-#' @param format
+#' @param format character js function, wrap character or character vector in JS()
 #' @param culling
 #' @param count
 #' @param fit

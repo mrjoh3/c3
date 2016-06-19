@@ -9,14 +9,14 @@ The `c3` library is very versatile and includes a lot of options. Currently this
 
 ## Warning
 
-This package is under active development and will definately change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
+This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
 
 Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
 
 
 ## Installation
 
-You probably already guesssed this bit.
+You probably already guessed this bit.
 
 
 ```r
@@ -26,7 +26,7 @@ devtools::install_github("mrjoh3/c3")
 
 ## Usage
 
-Please note that this pakage is under active development and may change atany time. The plots that currently work are line (and varieties), bar and scatter plots. Where possible the package tries to emulate the [Grammer of Graphics](https://books.google.com.au/books?id=ZiwLCAAAQBAJ&lpg=PR3&dq=inauthor%3A%22Leland%20Wilkinson%22&pg=PR3#v=onepage&q&f=false) used in Hadley Wickham's [ggplot2](http://ggplot2.org/).
+Please note that this package is under active development and may change at any time. The plots that currently work are line (and varieties), bar and scatter plots. Where possible the package tries to emulate the [Grammer of Graphics](https://books.google.com.au/books?id=ZiwLCAAAQBAJ&lpg=PR3&dq=inauthor%3A%22Leland%20Wilkinson%22&pg=PR3#v=onepage&q&f=false) used in Hadley Wickham's [ggplot2](http://ggplot2.org/).
 
 The `c3` package is intended to be as simple and lightweight as possible. As a starting point the data input must be a `data.frame` with several options. 
 
@@ -35,7 +35,7 @@ The `c3` package is intended to be as simple and lightweight as possible. As a s
 
 ### The Basics
 
-Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. `Date` x-axis can be paresed with not additional setting if in the format `%Y-%m-%d` (ie '2014-01-01') 
+Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. `Date` x-axis can be parsed with not additional setting if in the format `%Y-%m-%d` (ie '2014-01-01') 
 
 
 ```r
@@ -48,7 +48,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/filea5e35656f36.png)
+![widget](img/file88775518f4c.png)
 
 
 
@@ -56,7 +56,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/filea5e3caff766.png)
+![widget](img/file8876d7c0206.png)
 
 
 
@@ -71,7 +71,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/filea5e26732b66.png)
+![widget](img/file8873d2ea29a.png)
 
 
 ## Other Line Plots
@@ -95,7 +95,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/filea5e69caa818.png)
+![widget](img/file88720ce7c43.png)
 
 
 #### Step
@@ -108,7 +108,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/filea5e6fe1f9a8.png)
+![widget](img/file88726de5ab2.png)
 
 
 ## Bar Plots
@@ -121,7 +121,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/filea5e698c8d3.png)
+![widget](img/file8874bbde4bc.png)
 
 
 ## Scatter Plot
@@ -135,7 +135,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/filea5e5c04cef5.png)
+![widget](img/file887184bdecf.png)
 
 
 
@@ -149,7 +149,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/filea5e7c981c24.png)
+![widget](img/file88755935fac.png)
 
 
 ## Donut Charts
@@ -162,7 +162,7 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/filea5e129798dd.png)
+![widget](img/file88766d72cc2.png)
 
 
 ## Gauge Charts
@@ -175,7 +175,7 @@ gauge.chart <- data.frame(data = 80) %>%
 ```
 
 
-![widget](img/filea5e3bb6fa8e.png)
+![widget](img/file8871050e893.png)
 
 
 
@@ -193,7 +193,24 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/filea5e422f776d.png)
+![widget](img/file8876cb41833.png)
+
+
+## Region Highlighting
+
+To highlight regions pass a single `data.frame` with columns `axis`, `start`, `end` and `class`. Multiple regions can be defined within the one `data.frame` for any axis (`x`, `y`, `y2`). Each row in the `data.frame` defines a separate region to be highlighted  
+
+
+```r
+region.plot <- data %>%
+  c3() %>%
+  region(data.frame(axis = 'x',
+                    start = 5,
+                    end = 6))
+```
+
+
+![widget](img/file88747a0e0b3.png)
 
 
 ## Color Palette
@@ -210,7 +227,7 @@ pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60)
 ```
 
 
-![widget](img/filea5e46a27948.png)
+![widget](img/file8877e92812d.png)
 
 
 
@@ -222,4 +239,4 @@ pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>%
 ```
 
 
-![widget](img/filea5e59be79b9.png)
+![widget](img/file8871fafbc80.png)

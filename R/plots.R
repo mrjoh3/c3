@@ -199,7 +199,7 @@ c3_donut <- function(c3, title = NULL, ...) {
 #' @param label list with options:
 #' \itemize{
 #'  \item{show}{: boolean}
-#'  \item{format}{: function}
+#'  \item{format}{: function, wrap in JS() }
 #' }
 #' @param min numeric
 #' @param max numeric

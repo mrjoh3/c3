@@ -36,6 +36,11 @@ HTMLWidgets.widget({
             x.grid.y.lines = HTMLWidgets.dataframeToD3(x.grid.y.lines)
           }
 
+          // Regions
+          if (x.regions) {
+            x.regions = HTMLWidgets.dataframeToD3(x.regions)
+          }
+
 
           //console.log(x.data.groups);
           var chart = c3.generate(

@@ -23,9 +23,9 @@ legend <- function(x, ...){
 #' }
 #' @param item list with options:
 #' \itemize{
-#'  \item{onclick}{: character js function}
-#'  \item{onmouseover}{: character js function}
-#'  \item{onmouseout}{: character js function}
+#'  \item{onclick}{: character js function, wrap character or character vector in JS()}
+#'  \item{onmouseover}{: character js function, wrap character or character vector in JS()}
+#'  \item{onmouseout}{: character js function, wrap character or character vector in JS()}
 #' }
 #' @param ...
 #'

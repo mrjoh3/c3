@@ -13,14 +13,14 @@
 
 \item{format}{list with options:
 \itemize{
- \item{title}{: character js function}
- \item{name}{: character js function}
- \item{value}{: character js function}
+ \item{title}{: character js function, wrap character or character vector in JS()}
+ \item{name}{: character js function, wrap character or character vector in JS()}
+ \item{value}{: character js function, wrap character or character vector in JS()}
 }}
 
-\item{position}{character js function}
+\item{position}{character js function, wrap character or character vector in JS()}
 
-\item{contents}{character js function}
+\item{contents}{character js function, wrap character or character vector in JS()}
 }
 \value{
 c3
@@ -31,7 +31,7 @@ Title
 \seealso{
 Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
   \code{\link{grid.c3}}, \code{\link{legend.c3}},
-  \code{\link{xAxis.c3}}
+  \code{\link{region.c3}}, \code{\link{xAxis.c3}}
 
 Other tooltip: \code{\link{tooltip}}
 }

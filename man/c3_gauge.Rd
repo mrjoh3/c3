@@ -12,7 +12,7 @@ c3_gauge(c3, ...)
 \item{label}{list with options:
 \itemize{
  \item{show}{: boolean}
- \item{format}{: function}
+ \item{format}{: function, wrap in JS() }
 }}
 
 \item{min}{numeric}
