@@ -48,7 +48,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/file88775518f4c.png)
+![widget](img/fileafd41dcb297.png)
 
 
 
@@ -56,7 +56,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/file8876d7c0206.png)
+![widget](img/fileafd2c58a811.png)
 
 
 
@@ -71,7 +71,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/file8873d2ea29a.png)
+![widget](img/fileafd2c7f8f04.png)
 
 
 ## Other Line Plots
@@ -95,7 +95,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/file88720ce7c43.png)
+![widget](img/fileafd588e42c.png)
 
 
 #### Step
@@ -108,7 +108,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/file88726de5ab2.png)
+![widget](img/fileafd2a720922.png)
 
 
 ## Bar Plots
@@ -121,7 +121,31 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/file8874bbde4bc.png)
+![widget](img/fileafd6223d0b9.png)
+
+
+## Mixed Geometry Plots
+
+Mixed geometry currently only works with a horixontal `data.frame` where each numeric column is plotted.
+
+
+```r
+data$c = abs(rnorm(20) *10)
+data$d = abs(rnorm(20) *10)
+
+mixed.plot <- data %>%
+  c3() %>%
+  c3_mixedGeom(type = 'bar',
+               stacked = c('b','d'),
+               types = list(a='area',
+                            c='spline'))
+```
+
+
+![widget](img/fileafd77a8aa40.png)
+
+
+
 
 
 ## Scatter Plot
@@ -135,7 +159,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/file887184bdecf.png)
+![widget](img/fileafd5017f6bd.png)
 
 
 
@@ -149,7 +173,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/file88755935fac.png)
+![widget](img/fileafd75eeb410.png)
 
 
 ## Donut Charts
@@ -162,7 +186,7 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/file88766d72cc2.png)
+![widget](img/fileafd134ff1d5.png)
 
 
 ## Gauge Charts
@@ -175,7 +199,7 @@ gauge.chart <- data.frame(data = 80) %>%
 ```
 
 
-![widget](img/file8871050e893.png)
+![widget](img/fileafd7c28dd04.png)
 
 
 
@@ -193,7 +217,7 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/file8876cb41833.png)
+![widget](img/fileafd4c935498.png)
 
 
 ## Region Highlighting
@@ -210,7 +234,7 @@ region.plot <- data %>%
 ```
 
 
-![widget](img/file88747a0e0b3.png)
+![widget](img/fileafd6c2094ec.png)
 
 
 ## Color Palette
@@ -227,7 +251,7 @@ pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60)
 ```
 
 
-![widget](img/file8877e92812d.png)
+![widget](img/fileafd6ed38d24.png)
 
 
 
@@ -239,4 +263,4 @@ pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>%
 ```
 
 
-![widget](img/file8871fafbc80.png)
+![widget](img/fileafd41376330.png)

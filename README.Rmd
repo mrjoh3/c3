@@ -214,6 +214,39 @@ cat(
 ```
 
 
+## Mixed Geometry Plots
+
+Mixed geometry currently only works with a horizontal `data.frame` where each numeric column is plotted.
+
+```{r mixed, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+data$c = abs(rnorm(20) *10)
+data$d = abs(rnorm(20) *10)
+
+mixed.plot <- data %>%
+  c3() %>%
+  c3_mixedGeom(type = 'bar',
+               stacked = c('b','d'),
+               types = list(a='area',
+                            c='spline'))
+                
+
+```
+
+
+```{r mixed.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(mixed.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
+
+
+
 ## Scatter Plot
 
 

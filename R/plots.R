@@ -86,20 +86,23 @@ c3_line <- function(c3, type, stacked = FALSE, ...) {
 #'
 #' @param c3
 #' @param type
-#' @param stacked
+#' @param types list containing key value pairs of column header and plot type
+#' @param stacked character vector of column headers to stack
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-c3_mixedGeom <- function(c3, type, stacked, ...) {
+c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL, ...) {
 
-  stopifnot(type %in% c('line', 'spline', 'step', 'area', 'area-step'))
+  stopifnot(type %in% c('bar', 'line', 'spline', 'step', 'area', 'area-step'))
+
   c3$x$data$type <- type
+  c3$x$data$types <- types
 
-  if (stacked) {
-    group <- c3$x$data$keys
+  if (!is.null(stacked)) {
+    group <- stacked
     if (!is.null(c3$x$x)) {
       group <- group[-grep(c3$x$x, group)]
     }

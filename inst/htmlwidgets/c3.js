@@ -21,7 +21,12 @@ HTMLWidgets.widget({
 
           // this works because x.data always exists
           if (x.data.groups) {
+            if (x.data.types) {
+              x.data.groups = [x.data.groups]
+            } else {
             x.data.groups = [x.data.groups.value]
+            //console.log(x.data.groups);
+            }
           }
 
 
