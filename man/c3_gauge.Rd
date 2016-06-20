@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{c3_gauge}
 \alias{c3_gauge}
-\title{Title}
+\title{Gauge Charts}
 \usage{
 c3_gauge(c3, ...)
 }
@@ -33,7 +33,7 @@ c3_gauge(c3, ...)
 }}
 }
 \description{
-Title
+Gauge Charts
 }
 \examples{
 \dontrun{

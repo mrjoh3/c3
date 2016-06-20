@@ -2,7 +2,7 @@
 % Please edit documentation in R/options.R
 \name{RColorBrewer}
 \alias{RColorBrewer}
-\title{Modify grid and line elements on both x and y axis}
+\title{RColorBrewer Palette S3 Method}
 \usage{
 RColorBrewer(x, ...)
 }

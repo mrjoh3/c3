@@ -2,18 +2,20 @@
 % Please edit documentation in R/options.R
 \name{RColorBrewer.c3}
 \alias{RColorBrewer.c3}
-\title{Title}
+\title{RColorBrewer Palette}
 \usage{
 \method{RColorBrewer}{c3}(c3, pal = "Spectral", ...)
 }
 \arguments{
+\item{pal}{character palette must match `RColorBrewer::brewer.pal.info`}
+
 \item{...}{}
 }
 \value{
 c3
 }
 \description{
-Title
+RColorBrewer Palette
 }
 \seealso{
 Other RColorBrewer: \code{\link{RColorBrewer}}

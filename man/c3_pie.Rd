@@ -2,15 +2,17 @@
 % Please edit documentation in R/plots.R
 \name{c3_pie}
 \alias{c3_pie}
-\title{Title}
+\title{Pie Charts}
 \usage{
-c3_pie(c3, ...)
+c3_pie(c3, expand = TRUE, ...)
 }
 \arguments{
-\item{...}{}
+\item{expand}{boolean}
+
+\item{threshold}{numeric}
 }
 \description{
-Title
+Pie Charts
 }
 \examples{
 \dontrun{

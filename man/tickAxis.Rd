@@ -2,21 +2,36 @@
 % Please edit documentation in R/options.R
 \name{tickAxis}
 \alias{tickAxis}
-\title{Title}
+\title{Axis Tick Options}
 \usage{
 tickAxis(c3, axis, ...)
 }
 \arguments{
-\item{axis}{character 'x' or 'y' axis}
+\item{axis}{character 'x', 'y' or 'y2' axis}
 
 \item{...}{}
 
+\item{centered}{boolean (x-axis only)}
+
 \item{format}{character js function, wrap character or character vector in JS()}
+
+\item{culling}{boolean or list defining number of ticks `list(max = 5)` this
+option effects tick labels  (x-axis only)}
+
+\item{count}{integer number of ticks to display. This effects tick lines and labels}
+
+\item{fit}{boolean position ticks evenly or set to values  (x-axis only)}
+
+\item{values}{vector. Must match axis format type}
+
+\item{rotate}{integer degrees to rotate labels  (x-axis only)}
+
+\item{outer}{boolean show axis outer tick}
 }
 \value{
 c3
 }
 \description{
-Title
+Axis Tick Options
 }
 

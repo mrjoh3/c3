@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{c3_donut}
 \alias{c3_donut}
-\title{Title}
+\title{Donut Charts}
 \usage{
 c3_donut(c3, title = NULL, ...)
 }
@@ -12,7 +12,7 @@ c3_donut(c3, title = NULL, ...)
 \item{...}{}
 }
 \description{
-Title
+Donut Charts
 }
 \examples{
 \dontrun{

@@ -1,5 +1,5 @@
 
-#' Barplot for C3
+#' Bar Plot
 #'
 #' @param c3
 #' @param statcked
@@ -52,18 +52,37 @@ c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6, zerobased 
 
 
 
-#' Title
+#' Line Plot
 #'
 #' @param c3
-#' @param type
-#' @param stacked
-#' @param ...
+#' @param type character type of line plot. Must be one of:
+#' \itemize{
+#'  \item{line}
+#'  \item{spline}
+#'  \item{step}
+#'  \item{area}
+#'  \item{area-step}
+#' }
+#' @param stacked boolean
+#' @param connectNull boolean connect null (missing) data points
+#' @param step_type character, one of:
+#' \itemize{
+#'  \item{step}
+#'  \item{step-after}
+#'  \item{step-before}
+#' }
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
-c3_line <- function(c3, type, stacked = FALSE, ...) {
+#' \dontrun{
+#' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
+#'   c3() %>%
+#'   c3_line('spline')
+#'   }
+#'
+c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL, ...) {
 
   stopifnot(type %in% c('line', 'spline', 'step', 'area', 'area-step'))
   c3$x$data$type <- type
@@ -76,13 +95,21 @@ c3_line <- function(c3, type, stacked = FALSE, ...) {
     c3$x$data$groups <- toJSON(group)
   }
 
+  line = list()
+  if (connectNull) {line$connectNull = TRUE}
+  if (!is.null(step_type)) {line$step$type = step_type}
+
+  if (length(line) > 0) {
+    c3$x$line <- line
+  }
+
   return(c3)
 
 }
 
 
 
-#' Title
+#' Mixed Geometry Plots
 #'
 #' @param c3
 #' @param type
@@ -90,10 +117,23 @@ c3_line <- function(c3, type, stacked = FALSE, ...) {
 #' @param stacked character vector of column headers to stack
 #' @param ...
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data <- data.frame(a = abs(rnorm(20) *10),
+#'                    b = abs(rnorm(20) *10)
+#'                    c = abs(rnorm(20) *10),
+#'                    d = abs(rnorm(20) *10))
+#' data %>%
+#'   c3() %>%
+#'   c3_mixedGeom(type = 'bar',
+#'                stacked = c('b','d'),
+#'                types = list(a='area',
+#'                             c='spline'))
+#' }
+#'
 c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL, ...) {
 
   stopifnot(type %in% c('bar', 'line', 'spline', 'step', 'area', 'area-step'))
@@ -115,7 +155,7 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL, ...) {
 
 
 
-#' Title
+#' Scatter Plots
 #'
 #' @param c3
 #' @param ...
@@ -143,10 +183,11 @@ c3_scatter <- function(c3, ...) {
 
 
 
-#' Title
+#' Pie Charts
 #'
 #' @param c3
-#' @param ...
+#' @param expand boolean
+#' @param threshold numeric
 #'
 #' @return
 #' @export
@@ -158,16 +199,38 @@ c3_scatter <- function(c3, ...) {
 #'   c3_pie()
 #'   }
 #'
-c3_pie <- function(c3, ...) {
+c3_pie <- function(c3, expand = TRUE, ...) {
 
   c3$x$data$type <- 'pie'
+
+  label = modifyList(
+    list(
+      show = TRUE,
+      threshold = NULL,
+      format = NULL
+    ),
+    list(...), keep.null = FALSE
+  )
+
+  pie = modifyList(
+    list(
+      expand = expand
+    ),
+    list(...), keep.null = FALSE
+  )
+
+  if (length(label) > 0) {
+    pie$label <- label
+  }
+
+  c3$x$pie <- pie
 
   return(c3)
 
 }
 
 
-#' Title
+#' Donut Charts
 #'
 #' @param c3
 #' @param title chasracter
@@ -196,7 +259,7 @@ c3_donut <- function(c3, title = NULL, ...) {
 }
 
 
-#' Title
+#' Gauge Charts
 #'
 #' @param c3
 #' @param label list with options:

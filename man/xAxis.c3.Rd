@@ -4,7 +4,7 @@
 \alias{xAxis.c3}
 \alias{y2Axis.c3}
 \alias{yAxis.c3}
-\title{Title}
+\title{Modify plot elements that relate to the axis.}
 \usage{
 \method{xAxis}{c3}(c3, ...)
 
@@ -13,19 +13,58 @@
 \method{y2Axis}{c3}(c3, ...)
 }
 \arguments{
-\item{...}{}
+\item{show}{boolean}
+
+\item{type}{character on of 'indexed', timeseries' or 'category'}
+
+\item{localtime}{boolean}
+
+\item{categories}{character vector. Can be used to modify axis labels. Not needed if
+already defined in data}
+
+\item{max}{numeric set value of axis range}
+
+\item{min}{numeric set value of axis range}
+
+\item{padding}{list with options:
+\itemize{
+ \item{left}{: numeric pixels}
+ \item{right}{: numeric pixels}
+}}
+
+\item{height}{integer pixels to set height of axis}
+
+\item{extent}{vector or character function (wrapped in JS()) that returns a vector of values}
 
 \item{label}{can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
 \itemize{
  \item{text}{: character}
- \item{position}{: boolean default NULL}
+ \item{position}{: character}
+}
+label position options for horixontal axis are:
+\itemize{
+ \item{inner-right}
+ \item{inner-center}
+ \item{inner-left}
+ \item{outer-right}
+ \item{outer-center}
+ \item{outer-left}
+}
+label position options for vertical axis are:
+\itemize{
+ \item{inner-top}
+ \item{inner-middle}
+ \item{inner-bottom}
+ \item{outer-top}
+ \item{outer-middle}
+ \item{outer-bottom}
 }}
 }
 \value{
 c3
 }
 \description{
-Title
+Modify plot elements that relate to the axis.
 }
 \seealso{
 Other axis: \code{\link{y2Axis}}, \code{\link{yAxis}}

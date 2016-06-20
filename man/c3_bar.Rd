@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{c3_bar}
 \alias{c3_bar}
-\title{Barplot for C3}
+\title{Bar Plot}
 \usage{
 c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
   zerobased = TRUE)
@@ -11,7 +11,7 @@ c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
 c3
 }
 \description{
-Barplot for C3
+Bar Plot
 }
 \examples{
 \dontrun{

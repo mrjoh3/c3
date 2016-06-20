@@ -13,15 +13,46 @@ xAxis <- function(x, ...){
 }
 
 
-#' Title
+#' Modify plot elements that relate to the axis.
 #'
 #' @param c3
 #' @param ...
-#'
+#' @param show boolean
+#' @param type character on of 'indexed', timeseries' or 'category'
+#' @param localtime boolean
+#' @param categories character vector. Can be used to modify axis labels. Not needed if
+#' already defined in data
+#' @param max numeric set value of axis range
+#' @param min numeric set value of axis range
+#' @param padding list with options:
+#' \itemize{
+#'  \item{left}{: numeric pixels}
+#'  \item{right}{: numeric pixels}
+#' }
+#' @param height integer pixels to set height of axis
+#' @param extent vector or character function (wrapped in JS()) that returns a vector of values
 #' @param label can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
 #' \itemize{
 #'  \item{text}{: character}
-#'  \item{position}{: boolean default NULL}
+#'  \item{position}{: character}
+#' }
+#' label position options for horixontal axis are:
+#' \itemize{
+#'  \item{inner-right}
+#'  \item{inner-center}
+#'  \item{inner-left}
+#'  \item{outer-right}
+#'  \item{outer-center}
+#'  \item{outer-left}
+#' }
+#' label position options for vertical axis are:
+#' \itemize{
+#'  \item{inner-top}
+#'  \item{inner-middle}
+#'  \item{inner-bottom}
+#'  \item{outer-top}
+#'  \item{outer-middle}
+#'  \item{outer-bottom}
 #' }
 #' @family c3
 #' @family axis
@@ -53,7 +84,7 @@ xAxis.c3 <- function(c3, ...){
 }
 
 
-#' Modify plot elements that relate to the y-axis.
+#' Modify plot elements that relate to the y-axis. S3 Method
 #'
 #' This is an S3 method.
 #' @family axis
@@ -86,7 +117,7 @@ yAxis.c3 <- function(c3, ...){
   return(c3)
 }
 
-#' Modify plot elements that relate to the second y-axis.
+#' Modify plot elements that relate to the second y-axis. S3 Method
 #'
 #' This is an S3 method.
 #' @family axis
@@ -119,19 +150,19 @@ y2Axis.c3 <- function(c3, ...){
   return(c3)
 }
 
-#' Title
+#' Axis Tick Options
 #'
 #' @param c3
-#' @param axis character 'x' or 'y' axis
-#' @param centered
+#' @param axis character 'x', 'y' or 'y2' axis
+#' @param centered boolean (x-axis only)
 #' @param format character js function, wrap character or character vector in JS()
-#' @param culling
-#' @param count
-#' @param fit
-#' @param values
-#' @param rotate
-#' @param outer
-#' @param multiline
+#' @param culling boolean or list defining number of ticks `list(max = 5)` this
+#' option effects tick labels  (x-axis only)
+#' @param count integer number of ticks to display. This effects tick lines and labels
+#' @param fit boolean position ticks evenly or set to values  (x-axis only)
+#' @param values vector. Must match axis format type
+#' @param rotate integer degrees to rotate labels  (x-axis only)
+#' @param outer boolean show axis outer tick
 #' @param ...
 #'
 #' @return c3
@@ -141,30 +172,34 @@ y2Axis.c3 <- function(c3, ...){
 tickAxis <- function(c3, axis,  ...) {
 
   stopifnot(!missing(axis),
-            axis %in% c('x', 'y'))
+            axis %in% c('x', 'y', 'y2'))
 
   tick = list(
     centered = TRUE,
-    format = NULL,
+    format = NULL, # y2 y
     culling = NULL,
-    count = NULL,
+    count = NULL, # y2 y
     fit = TRUE,
-    values = NULL,
+    values = NULL, # y2 y
     rotate = 0,
-    outer = TRUE,
-    multiline = FALSE
+    outer = TRUE # y2 y
   )
+
+  tick <- modifyList(tick, list(...))
+
+  if (axis %in% c('y', 'y2')) {
+    tick <- tick[c('format', 'count', 'values', 'outer')]
+  }
 
   tick <- Filter(Negate(function(x) is.null(unlist(x))), tick)
 
-  tick <- modifyList(tick, list(...))
 
   c3$x$axis[[axis]]$tick <- tick
 
   return(c3)
 }
 
-#' Modify grid and line elements on both x and y axis
+#' RColorBrewer Palette S3 Method
 #'
 #' This is an S3 method.
 #' @family RColorBrewer
@@ -173,9 +208,10 @@ RColorBrewer <- function(x, ...){
   UseMethod('RColorBrewer')
 }
 
-#' Title
+#' RColorBrewer Palette
 #'
 #' @param c3
+#' @param pal character palette must match `RColorBrewer::brewer.pal.info`
 #' @param ...
 #'
 #' @return c3
@@ -208,7 +244,7 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 
 
 
-#' Title
+#' Viridis Paletta
 #'
 #' @param c3
 #' @param pal character palette options
@@ -241,20 +277,76 @@ c3_viridis <- function(c3, pal='D', ...) {
 
 
 
+#' Data Select
+#'
+#' @description Define options for selecting data within the plot area
+#' @param c3
+#' @param enabled boolean
+#' @param groued boolean
+#' @param multiple boolean
+#' @param draggable boolean
+#' @param isselectable character js function, wrap character or character vector in JS()
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
 c3_selection <- function(c3, ...) {
 
-  selection <- list(
-    enabled = FALSE,
-    grouped = FALSE,
-    multiple = FALSE,
-    draggable = FALSE,
-    isselectable = NULL # takes a function to define selectable
+  selection <- modifyList(
+    list(
+      enabled = FALSE,
+      grouped = FALSE,
+      multiple = FALSE,
+      draggable = FALSE,
+      isselectable = NULL # takes a function to define selectable
+    ),
+    list(...)
   )
 
-  selection <- modifyList(selection, list(...))
-
   c3$x$data$selection <- selection
+
+  return(c3)
 
 }
 
 
+
+#' Chart Size
+#'
+#' @description Modify the size of the chart within the htmlwidget area. Generally charts size
+#' to the div in which they are placed. These options enable finer scale sizing with the div
+#' @param c3
+#' @param left integer padding pixels
+#' @param right integer padding pixels
+#' @param top integer padding pixels
+#' @param bottom integer padding pixels
+#' @param width integer pixels
+#' @param height integer pixels
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
+c3_chart_size <- function(c3, ...) {
+
+  padding <- modifyList(
+    list(
+      left = 20,
+      right = 20,
+      top = 20,
+      bottom = 20),
+    list(...)
+    )
+
+  size <- modifyList(
+    list(width = ,
+         height = ),
+    list(...)
+  )
+
+  c3$x$padding <- padding
+  c3$x$size <- size
+
+  return(c3)
+}

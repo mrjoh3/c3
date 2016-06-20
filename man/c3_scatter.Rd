@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{c3_scatter}
 \alias{c3_scatter}
-\title{Title}
+\title{Scatter Plots}
 \usage{
 c3_scatter(c3, ...)
 }
@@ -10,6 +10,6 @@ c3_scatter(c3, ...)
 \item{...}{}
 }
 \description{
-Title
+Scatter Plots
 }
 

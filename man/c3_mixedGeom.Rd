@@ -2,7 +2,7 @@
 % Please edit documentation in R/plots.R
 \name{c3_mixedGeom}
 \alias{c3_mixedGeom}
-\title{Title}
+\title{Mixed Geometry Plots}
 \usage{
 c3_mixedGeom(c3, types, type = "line", stacked = NULL, ...)
 }
@@ -13,7 +13,25 @@ c3_mixedGeom(c3, types, type = "line", stacked = NULL, ...)
 
 \item{...}{}
 }
+\value{
+c3
+}
 \description{
-Title
+Mixed Geometry Plots
+}
+\examples{
+\dontrun{
+data <- data.frame(a = abs(rnorm(20) *10),
+                   b = abs(rnorm(20) *10)
+                   c = abs(rnorm(20) *10),
+                   d = abs(rnorm(20) *10))
+data \%>\%
+  c3() \%>\%
+  c3_mixedGeom(type = 'bar',
+               stacked = c('b','d'),
+               types = list(a='area',
+                            c='spline'))
+}
+
 }
 

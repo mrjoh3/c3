@@ -48,7 +48,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/fileafd41dcb297.png)
+![widget](img/filec8928a1d25d.png)
 
 
 
@@ -56,7 +56,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/fileafd2c58a811.png)
+![widget](img/filec8937039bff.png)
 
 
 
@@ -71,7 +71,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/fileafd2c7f8f04.png)
+![widget](img/filec8969677a56.png)
 
 
 ## Other Line Plots
@@ -95,7 +95,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/fileafd588e42c.png)
+![widget](img/filec892a73587d.png)
 
 
 #### Step
@@ -108,7 +108,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/fileafd2a720922.png)
+![widget](img/filec89670e3e93.png)
 
 
 ## Bar Plots
@@ -121,12 +121,12 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/fileafd6223d0b9.png)
+![widget](img/filec895cb3e8f0.png)
 
 
 ## Mixed Geometry Plots
 
-Mixed geometry currently only works with a horixontal `data.frame` where each numeric column is plotted.
+Mixed geometry currently only works with a horizontal `data.frame` where each numeric column is plotted.
 
 
 ```r
@@ -142,7 +142,7 @@ mixed.plot <- data %>%
 ```
 
 
-![widget](img/fileafd77a8aa40.png)
+![widget](img/filec8920d9f32.png)
 
 
 
@@ -159,7 +159,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/fileafd5017f6bd.png)
+![widget](img/filec89777c2b66.png)
 
 
 
@@ -173,7 +173,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/fileafd75eeb410.png)
+![widget](img/filec89368d0878.png)
 
 
 ## Donut Charts
@@ -186,7 +186,7 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/fileafd134ff1d5.png)
+![widget](img/filec89516edf5a.png)
 
 
 ## Gauge Charts
@@ -199,7 +199,7 @@ gauge.chart <- data.frame(data = 80) %>%
 ```
 
 
-![widget](img/fileafd7c28dd04.png)
+![widget](img/filec89308a631f.png)
 
 
 
@@ -217,7 +217,7 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/fileafd4c935498.png)
+![widget](img/filec89170ae6d5.png)
 
 
 ## Region Highlighting
@@ -234,7 +234,7 @@ region.plot <- data %>%
 ```
 
 
-![widget](img/fileafd6c2094ec.png)
+![widget](img/filec892a9ac3ab.png)
 
 
 ## Color Palette
@@ -251,7 +251,7 @@ pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60)
 ```
 
 
-![widget](img/fileafd6ed38d24.png)
+![widget](img/filec89163a7ea4.png)
 
 
 
@@ -263,4 +263,4 @@ pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>%
 ```
 
 
-![widget](img/fileafd41376330.png)
+![widget](img/filec8944e04c4e.png)
