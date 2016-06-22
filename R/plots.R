@@ -2,9 +2,10 @@
 #' Bar Plot
 #'
 #' @param c3
-#' @param statcked
-#' @param rotated
-#' @param bar_width
+#' @param statcked boolean
+#' @param rotated boolean
+#' @param bar_width numeric
+#' @param zerobased boolean
 #' @return c3
 #' @export
 #'
@@ -15,7 +16,7 @@
 #'   c3_bar()
 #'   }
 #'
-c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6, zerobased = TRUE) {
+c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zerobased = TRUE) {
 
   require(jsonlite)
 
@@ -82,7 +83,7 @@ c3_bar <- function(c3, stacked=FALSE, rotated=FALSE, bar_width = 0.6, zerobased 
 #'   c3_line('spline')
 #'   }
 #'
-c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL, ...) {
+c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL) {
 
   stopifnot(type %in% c('line', 'spline', 'step', 'area', 'area-step'))
   c3$x$data$type <- type
@@ -115,7 +116,6 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 #' @param type
 #' @param types list containing key value pairs of column header and plot type
 #' @param stacked character vector of column headers to stack
-#' @param ...
 #'
 #' @return c3
 #' @export
@@ -134,7 +134,7 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 #'                             c='spline'))
 #' }
 #'
-c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL, ...) {
+c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 
   stopifnot(type %in% c('bar', 'line', 'spline', 'step', 'area', 'area-step'))
 
@@ -186,8 +186,11 @@ c3_scatter <- function(c3, ...) {
 #' Pie Charts
 #'
 #' @param c3
-#' @param expand boolean
-#' @param threshold numeric
+#' @param expand boolean expand segment on hover
+#' @param show boolean show labels
+#' @param threshold numeric proportion of segment to hide label
+#' @param format character label js function, wrap character or character vector in JS()
+#'ric
 #'
 #' @return
 #' @export
@@ -212,12 +215,9 @@ c3_pie <- function(c3, expand = TRUE, ...) {
     list(...), keep.null = FALSE
   )
 
-  pie = modifyList(
-    list(
+  pie = list(
       expand = expand
-    ),
-    list(...), keep.null = FALSE
-  )
+    )
 
   if (length(label) > 0) {
     pie$label <- label
@@ -233,8 +233,12 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 #' Donut Charts
 #'
 #' @param c3
-#' @param title chasracter
-#' @param ...
+#' @param expand boolean expand segment on hover
+#' @param title character
+#' @param width integer pixels width of donut
+#' @param show boolean show labels
+#' @param threshold numeric proportion of segment to hide label
+#' @param format character label js function, wrap character or character vector in JS()
 #'
 #' @return
 #' @export
@@ -246,13 +250,36 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 #'   c3_donut(title = 'Colors')
 #'   }
 #'
-c3_donut <- function(c3, title = NULL, ...) {
+c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 
   c3$x$data$type <- 'donut'
 
+  label = modifyList(
+    list(
+      show = TRUE,
+      threshold = NULL,
+      format = NULL
+    ),
+    list(...), keep.null = FALSE
+  )
+
+  donut = list(
+      expand = expand,
+      width = width
+    )
+
   if (!is.null(title)) {
-    c3$x$donut$title <- title
+    donut$title <- title
   }
+
+  if (length(label) > 0) {
+    donut$label <- label
+  }
+
+  # remove nulls
+  donut <- Filter(Negate(function(x) is.null(unlist(x))), donut)
+
+  c3$x$donut <- donut
 
   return(c3)
 

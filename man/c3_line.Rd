@@ -4,8 +4,7 @@
 \alias{c3_line}
 \title{Line Plot}
 \usage{
-c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL,
-  ...)
+c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL)
 }
 \arguments{
 \item{type}{character type of line plot. Must be one of:

@@ -7,9 +7,14 @@
 c3_pie(c3, expand = TRUE, ...)
 }
 \arguments{
-\item{expand}{boolean}
+\item{expand}{boolean expand segment on hover}
 
-\item{threshold}{numeric}
+\item{show}{boolean show labels}
+
+\item{threshold}{numeric proportion of segment to hide label}
+
+\item{format}{character label js function, wrap character or character vector in JS()
+ric}
 }
 \description{
 Pie Charts

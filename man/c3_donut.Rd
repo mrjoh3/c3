@@ -4,12 +4,20 @@
 \alias{c3_donut}
 \title{Donut Charts}
 \usage{
-c3_donut(c3, title = NULL, ...)
+c3_donut(c3, expand = TRUE, title = NULL, width = NULL, ...)
 }
 \arguments{
-\item{title}{chasracter}
+\item{expand}{boolean expand segment on hover}
 
-\item{...}{}
+\item{title}{character}
+
+\item{width}{integer pixels width of donut}
+
+\item{show}{boolean show labels}
+
+\item{threshold}{numeric proportion of segment to hide label}
+
+\item{format}{character label js function, wrap character or character vector in JS()}
 }
 \description{
 Donut Charts

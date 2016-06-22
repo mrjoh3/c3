@@ -7,6 +7,15 @@
 c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
   zerobased = TRUE)
 }
+\arguments{
+\item{rotated}{boolean}
+
+\item{bar_width}{numeric}
+
+\item{zerobased}{boolean}
+
+\item{statcked}{boolean}
+}
 \value{
 c3
 }

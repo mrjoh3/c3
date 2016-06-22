@@ -4,23 +4,9 @@
 \alias{c3_chart_size}
 \title{Chart Size}
 \usage{
-c3_chart_size(c3, show = TRUE, r = 2.5, expand = TRUE, expand.r = 1.75,
-  select.r = 4)
-
-c3_chart_size(c3, show = TRUE, r = 2.5, expand = TRUE, expand.r = 1.75,
-  select.r = 4)
+c3_chart_size(c3, ...)
 }
 \arguments{
-\item{show}{boolean}
-
-\item{r}{numeric radius of point}
-
-\item{expand}{boolean}
-
-\item{expand.r}{numeric multiplier for radius expansion}
-
-\item{select.r}{numeric multiplier for radius expansion}
-
 \item{left}{integer padding pixels}
 
 \item{right}{integer padding pixels}
@@ -35,13 +21,9 @@ c3_chart_size(c3, show = TRUE, r = 2.5, expand = TRUE, expand.r = 1.75,
 }
 \value{
 c3
-
-c3
 }
 \description{
 Modify the size of the chart within the htmlwidget area. Generally charts size
 to the div in which they are placed. These options enable finer scale sizing with the div
-
-Modify point options
 }
 

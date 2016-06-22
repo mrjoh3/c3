@@ -36,7 +36,7 @@ iris \%>\%
 Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
   \code{\link{grid.c3}}, \code{\link{legend.c3}},
   \code{\link{subchart.c3}}, \code{\link{tooltip.c3}},
-  \code{\link{xAxis.c3}}
+  \code{\link{xAxis.c3}}, \code{\link{zoom.c3}}
 
 Other region: \code{\link{region}}
 }

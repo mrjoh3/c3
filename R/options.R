@@ -368,7 +368,7 @@ c3_chart_size <- function(c3, ...) {
 #' @export
 #'
 #' @examples
-c3_chart_size <- function(c3,
+point_options <- function(c3,
                           show = TRUE,
                           r = 2.5,
                           expand = TRUE,

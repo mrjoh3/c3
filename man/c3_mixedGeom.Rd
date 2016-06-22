@@ -4,14 +4,12 @@
 \alias{c3_mixedGeom}
 \title{Mixed Geometry Plots}
 \usage{
-c3_mixedGeom(c3, types, type = "line", stacked = NULL, ...)
+c3_mixedGeom(c3, types, type = "line", stacked = NULL)
 }
 \arguments{
 \item{types}{list containing key value pairs of column header and plot type}
 
 \item{stacked}{character vector of column headers to stack}
-
-\item{...}{}
 }
 \value{
 c3
