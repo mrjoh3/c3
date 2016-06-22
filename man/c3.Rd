@@ -21,7 +21,7 @@ c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
 \seealso{
 Other c3: \code{\link{RColorBrewer.c3}},
   \code{\link{grid.c3}}, \code{\link{legend.c3}},
-  \code{\link{region.c3}}, \code{\link{tooltip.c3}},
-  \code{\link{xAxis.c3}}
+  \code{\link{region.c3}}, \code{\link{subchart.c3}},
+  \code{\link{tooltip.c3}}, \code{\link{xAxis.c3}}
 }
 

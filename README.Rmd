@@ -390,6 +390,30 @@ cat(
 ```
 
 
+## Sub-chart
+
+
+
+```{r subchart, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+subchart.plot <- data %>%
+  c3(x = 'date') %>%
+  subchart()
+                
+
+```
+
+
+```{r subchart.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(subchart.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
+
+
 ## Color Palette
 
 Plot color palettes can be changed to either `RColorBrewer` or `viridis` palettes using either `RColorBrewer` (S3 method) or `c3_viridus`.

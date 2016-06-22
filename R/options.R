@@ -350,3 +350,46 @@ c3_chart_size <- function(c3, ...) {
 
   return(c3)
 }
+
+
+
+#' Point Options
+#'
+#' @description Modify point options
+#' @param c3
+#' @param show boolean
+#' @param r numeric radius of point
+#' @param expand boolean
+#' @param expand.r numeric multiplier for radius expansion
+#' @param select.r numeric multiplier for radius expansion
+
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
+c3_chart_size <- function(c3,
+                          show = TRUE,
+                          r = 2.5,
+                          expand = TRUE,
+                          expand.r = 1.75,
+                          select.r = 4) {
+
+  point <- list(
+    show = show,
+    r = r,
+    focus = list(
+      expand = list(
+        enabled = expand,
+        r = r * expand.r
+      )
+    ),
+    select = list(
+      r = r * select.r
+    )
+  )
+
+  c3$x$point <- point
+
+  return(c3)
+}

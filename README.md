@@ -48,7 +48,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/filec8928a1d25d.png)
+![widget](img/file95d75a88613.png)
 
 
 
@@ -56,7 +56,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/filec8937039bff.png)
+![widget](img/file95d6e732db0.png)
 
 
 
@@ -71,7 +71,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/filec8969677a56.png)
+![widget](img/file95d48bc5b9f.png)
 
 
 ## Other Line Plots
@@ -95,7 +95,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/filec892a73587d.png)
+![widget](img/file95d11c50d52.png)
 
 
 #### Step
@@ -108,7 +108,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/filec89670e3e93.png)
+![widget](img/file95d193c1057.png)
 
 
 ## Bar Plots
@@ -121,7 +121,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/filec895cb3e8f0.png)
+![widget](img/file95d33977faa.png)
 
 
 ## Mixed Geometry Plots
@@ -142,7 +142,7 @@ mixed.plot <- data %>%
 ```
 
 
-![widget](img/filec8920d9f32.png)
+![widget](img/file95d2a76d0aa.png)
 
 
 
@@ -159,7 +159,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/filec89777c2b66.png)
+![widget](img/file95d5cf7b56.png)
 
 
 
@@ -173,7 +173,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/filec89368d0878.png)
+![widget](img/file95d1bbe8c23.png)
 
 
 ## Donut Charts
@@ -186,7 +186,7 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/filec89516edf5a.png)
+![widget](img/file95def5499d.png)
 
 
 ## Gauge Charts
@@ -199,7 +199,7 @@ gauge.chart <- data.frame(data = 80) %>%
 ```
 
 
-![widget](img/filec89308a631f.png)
+![widget](img/file95d5c281adf.png)
 
 
 
@@ -217,7 +217,7 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/filec89170ae6d5.png)
+![widget](img/file95d68d9ff40.png)
 
 
 ## Region Highlighting
@@ -234,7 +234,22 @@ region.plot <- data %>%
 ```
 
 
-![widget](img/filec892a9ac3ab.png)
+![widget](img/file95d560bbfdb.png)
+
+
+## Sub-chart
+
+
+
+
+```r
+subchart.plot <- data %>%
+  c3(x = 'date') %>%
+  subchart()
+```
+
+
+![widget](img/file95d3422ae34.png)
 
 
 ## Color Palette
@@ -251,7 +266,7 @@ pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60)
 ```
 
 
-![widget](img/filec89163a7ea4.png)
+![widget](img/file95d31357193.png)
 
 
 
@@ -263,4 +278,4 @@ pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>%
 ```
 
 
-![widget](img/filec8944e04c4e.png)
+![widget](img/file95d605443a1.png)
