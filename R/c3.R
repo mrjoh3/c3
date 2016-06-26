@@ -10,7 +10,7 @@
 #' @import htmlwidgets
 #' @family c3
 #' @export
-c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = 800, height = 300, ...) {
+c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL, ...) {
 
   require(dplyr)
   require(data.table)
@@ -161,7 +161,13 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = 8
     x,
     width = width,
     height = height,
-    package = 'c3'
+    package = 'c3',
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      #viewer.padding = 0,
+      #viewer.paneHeight = 500,
+      browser.fill = TRUE,
+      viewer.fill = TRUE
+    )
   )
 }
 
@@ -182,7 +188,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = 8
 #' @name c3-shiny
 #'
 #' @export
-c3Output <- function(outputId, width = '100%', height = '400px'){
+c3Output <- function(outputId, width = '100%', height = '100%'){
   htmlwidgets::shinyWidgetOutput(outputId, 'c3', width, height, package = 'c3')
 }
 

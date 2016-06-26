@@ -7,6 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     // TODO: define shared variables for this instance
+    var chart;
 
     return {
 
@@ -18,6 +19,15 @@ HTMLWidgets.widget({
           el.innerText = x.message;
 
           x.bindto = '#' + el.id;
+
+          // set size if missing
+          if (x.size === null) {
+              x.size = {
+                width: el.getBoundingClientRect().width,
+                height: el.getBoundingClientRect().height
+              }
+              console.log('no size set')
+          }
 
           // this works because x.data always exists
           if (x.data.groups) {
@@ -48,7 +58,7 @@ HTMLWidgets.widget({
 
 
           //console.log(x.data.groups);
-          var chart = c3.generate(
+          chart = c3.generate(
               x
           );
 
@@ -58,13 +68,21 @@ HTMLWidgets.widget({
           //  b: '#000000'
           //});
 
-
       },
 
       resize: function(width, height) {
 
-        // TODO: code to re-render the widget with a new size
+        var w = el.getBoundingClientRect().width;
+        var h = el.getBoundingClientRect().height;
 
+        // TODO: code to re-render the widget with a new size
+        chart.resize({
+          height: h,
+          width: w
+        })
+
+        console.log(h)
+        console.log(el)
       }
 
     };

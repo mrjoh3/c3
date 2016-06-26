@@ -5,7 +5,7 @@
 \title{<Add Title>}
 \usage{
 c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
-  width = 800, height = 300, ...)
+  width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{labels}{character or list with otpions:

@@ -6,7 +6,7 @@
 \alias{renderC3}
 \title{Shiny bindings for c3}
 \usage{
-c3Output(outputId, width = "100\%", height = "400px")
+c3Output(outputId, width = "100\%", height = "100\%")
 
 renderC3(expr, env = parent.frame(), quoted = FALSE)
 }

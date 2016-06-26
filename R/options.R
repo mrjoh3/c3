@@ -332,16 +332,16 @@ c3_chart_size <- function(c3, ...) {
 
   padding <- modifyList(
     list(
-      left = 20,
-      right = 20,
-      top = 20,
-      bottom = 20),
+      left = NULL,
+      right = NULL,
+      top = NULL,
+      bottom = NULL),
     list(...)
     )
 
   size <- modifyList(
-    list(width = ,
-         height = ),
+    list(width = NULL,
+         height = NULL),
     list(...)
   )
 
