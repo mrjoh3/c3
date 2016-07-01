@@ -9,24 +9,38 @@ HTMLWidgets.widget({
     // TODO: define shared variables for this instance
     var chart;
 
+    // needto id when tab / plot becomes visible
+    //$('#' + el.id).on('onblur', function(){
+    //        jQuery(window).trigger('resize');
+    // })
+
     return {
 
       renderValue: function(x) {
-
-        // TODO: code to render the widget, e.g.
-          //console.log(x.grid);
 
           el.innerText = x.message;
 
           x.bindto = '#' + el.id;
 
+          // when tab hidden el.get... returns 0
+          var w = el.getBoundingClientRect().width;
+          var h = el.getBoundingClientRect().height;
+
+          console.log(h + ' - h - initial size')
+          console.log(w + ' - w - initial size')
+          //x.transition = {
+          //  duration: 1500
+          //}
+          //x.onresize = function() {
+          //  this.selectChart.style('max-height', h + "px");
+          //}
           // set size if missing
           if (x.size === null) {
               x.size = {
-                width: el.getBoundingClientRect().width,
-                height: el.getBoundingClientRect().height
+                height: h,
+                width: w
               }
-              console.log('no size set')
+          console.log('no size set')
           }
 
           // this works because x.data always exists
@@ -56,11 +70,13 @@ HTMLWidgets.widget({
             x.regions = HTMLWidgets.dataframeToD3(x.regions)
           }
 
-
-          //console.log(x.data.groups);
+          // Define the chart
           chart = c3.generate(
               x
           );
+
+          //setTimeout(chart.flush, 300)
+
 
           // set colours using column headers
           //chart.data.colors({
@@ -72,19 +88,25 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
+        //setTimeout(chart.flush, 600)
+
         var w = el.getBoundingClientRect().width;
         var h = el.getBoundingClientRect().height;
 
-        // TODO: code to re-render the widget with a new size
+        // code to re-render the widget with a new size
         chart.resize({
           height: h,
           width: w
         })
 
+        // http://stackoverflow.com/questions/26003591/c3-chart-sizing-is-too-big-when-initially-loaded
+        //jQuery('#' + el.id).trigger('resize');
+
         console.log(h)
-        console.log(el)
+        //console.log(el)
       }
 
     };
+
   }
 });
