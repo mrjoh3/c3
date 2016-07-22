@@ -108,11 +108,13 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
     groups <- as.character(unique(data[,group]))
 
-    tmp.df <- group_by(data, Species) %>%
+    flt_group <- interp(~(!is.na(var)), var = as.name(group))
+
+    tmp.df <- group_by_(data, interp(~var, var = as.name(group))) %>%
       mutate(id = 1:n())
 
     # need to change columns to group, group_x in xs and in data dataframe
-    data <- dcast(setDT(tmp.df), id ~ Species, value.var = c(y,x)) %>%
+    data <- dcast(setDT(tmp.df), formula(sprintf('id ~ %s', group)), value.var = c(y,x)) %>%
       as.data.frame() %>%
       select(-id)
 
@@ -166,7 +168,9 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
       #viewer.padding = 0,
       #viewer.paneHeight = 500,
       browser.fill = TRUE,
-      viewer.fill = TRUE
+      viewer.fill = TRUE,
+      knitr.defaultWidth = 800,
+      knitr.defaultHeight = 400
     )
   )
 }

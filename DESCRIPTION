@@ -12,6 +12,7 @@ Depends:
     htmltools,
     jsonlite,
     data.table,
+    lazyeval,
     dplyr
 URL: https://github.com/mrjoh3/c3
 BugReports: https://github.com/mrjoh3/c3/issues
