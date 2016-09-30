@@ -39,7 +39,7 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
   )
 
   if (stacked) {
-    group <- c3$x$data$keys
+    group <- fromJSON(c3$x$data$keys)
     if (!is.null(c3$x$x)) {
       group <- group[-grep(c3$x$x, group)]
     }
@@ -89,7 +89,7 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
   c3$x$data$type <- type
 
   if (stacked) {
-    group <- c3$x$data$keys
+    group <- fromJSON(c3$x$data$keys)
     if (!is.null(c3$x$x)) {
       group <- group[-grep(c3$x$x, group)]
     }

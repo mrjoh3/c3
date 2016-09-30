@@ -51,8 +51,12 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   # if x and y not defined drop non-numeric columns
   if (is.null(x) & is.null(y)) {
 
-    data <- data[, grep('numeric', sapply(data, class))]
-
+    # deal with single column data.frames but ensure column is numeric
+    if (ncol(data) == 1) {
+        stopifnot(class(data[,1]) == 'numeric')
+    } else {
+        data <- data[, grep('numeric', sapply(data, class))]
+    }
   # if there is an x value but no y a data type needs to be defined
   } else if (!is.null(x) & is.null(y)) {
 
@@ -142,7 +146,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
   # append data to data.object
   data.object$json <- jsonlite::toJSON(data, dataframe = 'rows')
-  data.object$keys <- list(value = colnames(data))
+  data.object$keys <- jsonlite::toJSON(list(value = colnames(data)))
 
   data.object <- Filter(Negate(function(x) is.null(unlist(x))), data.object)
 

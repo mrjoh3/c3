@@ -224,7 +224,7 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 
   require(RColorBrewer)
 
-  n <- length(c3$x$data$keys$value)
+  n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
 
   if (!is.null(c3$x$data$type)) {
     if (c3$x$data$type == 'scatter') {
@@ -258,7 +258,7 @@ c3_viridis <- function(c3, pal='D', ...) {
 
   require(viridis)
 
-  n <- length(c3$x$data$keys$value)
+  n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
 
   if (!is.null(c3$x$data$type)) {
     if (c3$x$data$type == 'scatter') {
