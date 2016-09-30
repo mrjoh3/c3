@@ -118,7 +118,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
       mutate(id = 1:n())
 
     # need to change columns to group, group_x in xs and in data dataframe
-    data <- dcast(setDT(tmp.df), formula(sprintf('id ~ %s', group)), value.var = c(y,x)) %>%
+    data <- data.table::dcast(setDT(tmp.df), formula(sprintf('id ~ %s', group)), value.var = c(y,x)) %>%
       as.data.frame() %>%
       select(-id)
 
