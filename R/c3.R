@@ -1,15 +1,29 @@
-#' <Add Title>
+#' C3
 #'
-#' <Add Description>
+#' @description The `c3` package is a wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
 #'
 #' @param labels character or list with otpions:
 #'  \itemize{
 #'  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
 #' }
 #' @param hide booleen or character vector of parameters to hide
+#' @param onclick character js function, wrap character or character vector in JS()
 #' @import htmlwidgets
 #' @family c3
 #' @export
+#'
+#' @examples
+#'\dontrun{
+#' data <- data.frame(a=c(1,2,3,2),b=c(2,3,1,5))
+#'
+#' data %>%
+#'   c3(onclick =  = htmlwidgets::JS("function(d, element){console.log(d)}"))
+#'
+#' data.frame(sugar=20,fat=45,salt=10) %>%
+#'   c3(onclick =  = htmlwidgets::JS("function(d, element){dp = d}")) %>%
+#'   c3_pie()
+#'   }
+#'
 c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL, ...) {
 
   require(dplyr)
