@@ -17,10 +17,10 @@
 #' data <- data.frame(a=c(1,2,3,2),b=c(2,3,1,5))
 #'
 #' data %>%
-#'   c3(onclick =  = htmlwidgets::JS("function(d, element){console.log(d)}"))
+#'   c3(onclick = htmlwidgets::JS("function(d, element){console.log(d)}"))
 #'
 #' data.frame(sugar=20,fat=45,salt=10) %>%
-#'   c3(onclick =  = htmlwidgets::JS("function(d, element){dp = d}")) %>%
+#'   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) %>%
 #'   c3_pie()
 #'   }
 #'
