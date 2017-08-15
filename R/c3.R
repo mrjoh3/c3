@@ -67,7 +67,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
     # deal with single column data.frames but ensure column is numeric
     if (ncol(data) == 1) {
-        stopifnot(class(data[,1]) == 'numeric')
+        stopifnot(class(data[[1]]) == 'numeric')
     } else {
         data <- data[, grep('numeric', sapply(data, class))]
     }
