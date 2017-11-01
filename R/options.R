@@ -244,7 +244,7 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 
 
 
-#' Viridis Paletta
+#' Viridis Palette
 #'
 #' @param c3
 #' @param pal character palette options
@@ -275,8 +275,25 @@ c3_viridis <- function(c3, pal='D', ...) {
   return(c3)
 }
 
+#' Colour Palette
+#'
+#' @param c3
+#' @param colours character vector of colours
+#' @param ...
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
+c3_colour <- function(c3, colours, ...) {
 
+  c3$x$color$pattern <- colours
 
+  return(c3)
+}
+                        
+                        
+                        
 #' Data Select
 #'
 #' @description Define options for selecting data within the plot area
