@@ -123,7 +123,7 @@ yAxis.c3 <- function(c3, ...){
 #' @family axis
 #' @export
 y2Axis <- function(x, ...){
-  UseMethod('yAxis')
+  UseMethod('y2Axis')
 }
 
 #' @rdname xAxis.c3
