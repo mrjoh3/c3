@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other subchart: \code{\link{subchart.c3}}
 }
-

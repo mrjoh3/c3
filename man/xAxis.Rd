@@ -9,4 +9,3 @@ xAxis(x, ...)
 \description{
 This is an S3 method.
 }
-

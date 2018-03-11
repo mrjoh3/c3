@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other axis: \code{\link{xAxis.c3}}, \code{\link{yAxis}}
 }
-

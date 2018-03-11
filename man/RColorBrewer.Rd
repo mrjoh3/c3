@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other RColorBrewer: \code{\link{RColorBrewer.c3}}
 }
-

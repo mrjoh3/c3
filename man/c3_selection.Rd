@@ -23,4 +23,3 @@ c3
 \description{
 Define options for selecting data within the plot area
 }
-

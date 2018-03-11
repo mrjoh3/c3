@@ -26,4 +26,3 @@ c3
 Modify the size of the chart within the htmlwidget area. Generally charts size
 to the div in which they are placed. These options enable finer scale sizing with the div
 }
-

@@ -34,4 +34,3 @@ c3
 \description{
 Axis Tick Options
 }
-

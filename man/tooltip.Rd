@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other tooltip: \code{\link{tooltip.c3}}
 }
-

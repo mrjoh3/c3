@@ -24,4 +24,3 @@ c3
 \description{
 Modify point options
 }
-

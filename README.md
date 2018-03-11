@@ -1,4 +1,12 @@
-# c3
+---
+title: "c3"
+#author: "mj"
+#date: "10 May 2016"
+output: 
+    html_document:
+        keep_md: true
+        self_contained: yes
+---
 
 
 
@@ -48,7 +56,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
 simple.plot <- c3(data)
 ```
 
-![widget](img/file8b335171bf9.png)
+![widget](img/file6c11729df03f.png)
 
 
 
@@ -56,7 +64,7 @@ simple.plot <- c3(data)
 simple.plot.date <- c3(data, x = 'date')
 ```
 
-![widget](img/file8b35a14f90a.png)
+![widget](img/file6c117a536215.png)
 
 
 
@@ -71,7 +79,7 @@ piped.plot <- data %>%
 ```
 
 
-![widget](img/file8b34f46e392.png)
+![widget](img/file6c112ca66dc0.png)
 
 
 ## Other Line Plots
@@ -95,7 +103,7 @@ spline.plot <- data %>%
 ```
 
 
-![widget](img/file8b31f4dd1cb.png)
+![widget](img/file6c113d853005.png)
 
 
 #### Step
@@ -108,7 +116,7 @@ step.plot <- data %>%
 ```
 
 
-![widget](img/file8b3365475db.png)
+![widget](img/file6c1128020cd.png)
 
 
 ## Bar Plots
@@ -121,7 +129,7 @@ bar.plot <- data[1:10, ] %>%
 ```
 
 
-![widget](img/file8b353399614.png)
+![widget](img/file6c1139d54d9.png)
 
 
 ## Mixed Geometry Plots
@@ -142,7 +150,7 @@ mixed.plot <- data %>%
 ```
 
 
-![widget](img/file8b33f6fe2af.png)
+![widget](img/file6c117c12a53e.png)
 
 
 
@@ -159,7 +167,7 @@ scatter.plot <- iris %>%
 ```
 
 
-![widget](img/file8b35709a362.png)
+![widget](img/file6c11e968679.png)
 
 
 
@@ -173,7 +181,7 @@ pie.chart <- data.frame(sugar=20,fat=45,salt=10) %>%
 ```
 
 
-![widget](img/file8b3127ec891.png)
+![widget](img/file6c1128f4630c.png)
 
 
 ## Donut Charts
@@ -186,7 +194,7 @@ donut.chart <- data.frame(red=82,green=33,blue=93) %>%
 ```
 
 
-![widget](img/file8b377c4b8cc.png)
+![widget](img/file6c117855f9bd.png)
 
 
 ## Gauge Charts
@@ -199,7 +207,7 @@ gauge.chart <- data.frame(data = 80) %>%
 ```
 
 
-![widget](img/file8b336997a91.png)
+![widget](img/file6c1163072d25.png)
 
 
 
@@ -217,7 +225,7 @@ grid.plot <- data %>%
 ```
 
 
-![widget](img/file8b3624f675.png)
+![widget](img/file6c1174a3a9a7.png)
 
 
 ## Region Highlighting
@@ -234,7 +242,7 @@ region.plot <- data %>%
 ```
 
 
-![widget](img/file8b3e523621.png)
+![widget](img/file6c115800a158.png)
 
 
 ## Sub-chart
@@ -249,7 +257,7 @@ subchart.plot <- data %>%
 ```
 
 
-![widget](img/file8b3495f888d.png)
+![widget](img/file6c1131c60208.png)
 
 
 ## Color Palette
@@ -266,7 +274,7 @@ pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60)
 ```
 
 
-![widget](img/file8b32c486a39.png)
+![widget](img/file6c11850d5ab.png)
 
 
 
@@ -278,7 +286,7 @@ pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>%
 ```
 
 
-![widget](img/file8b3575588f2.png)
+![widget](img/file6c112defbe81.png)
 
 
 
@@ -294,4 +302,18 @@ point.plot <- data %>%
 ```
 
 
-![widget](img/file8b34db13cf4.png)
+![widget](img/file6c117536f3d8.png)
+
+
+## On Click
+
+Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [c3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
+
+
+```r
+onclick.plot <- data %>% 
+    c3(onclick = htmlwidgets::JS('function(d, element){console.log(d)}'))
+```
+
+
+

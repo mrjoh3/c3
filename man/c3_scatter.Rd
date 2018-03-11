@@ -12,4 +12,3 @@ c3_scatter(c3, ...)
 \description{
 Scatter Plots
 }
-

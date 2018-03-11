@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other region: \code{\link{region.c3}}
 }
-

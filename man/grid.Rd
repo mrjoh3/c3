@@ -12,4 +12,3 @@ This is an S3 method.
 \seealso{
 Other grid: \code{\link{grid.c3}}
 }
-

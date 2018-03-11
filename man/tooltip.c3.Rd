@@ -36,4 +36,3 @@ Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
 
 Other tooltip: \code{\link{tooltip}}
 }
-

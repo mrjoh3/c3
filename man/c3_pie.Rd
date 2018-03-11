@@ -27,4 +27,3 @@ data.frame(red=20,green=45,blue=10) \%>\%
   }
 
 }
-

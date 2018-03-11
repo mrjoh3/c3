@@ -2,8 +2,8 @@
 % Please edit documentation in R/options.R
 \name{xAxis.c3}
 \alias{xAxis.c3}
-\alias{y2Axis.c3}
 \alias{yAxis.c3}
+\alias{y2Axis.c3}
 \title{Modify plot elements that relate to the axis.}
 \usage{
 \method{xAxis}{c3}(c3, ...)
@@ -67,11 +67,10 @@ c3
 Modify plot elements that relate to the axis.
 }
 \seealso{
-Other axis: \code{\link{y2Axis}}, \code{\link{yAxis}}
-
 Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
   \code{\link{grid.c3}}, \code{\link{legend.c3}},
   \code{\link{region.c3}}, \code{\link{subchart.c3}},
   \code{\link{tooltip.c3}}, \code{\link{zoom.c3}}
-}
 
+Other axis: \code{\link{y2Axis}}, \code{\link{yAxis}}
+}

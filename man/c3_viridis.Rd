@@ -2,7 +2,7 @@
 % Please edit documentation in R/options.R
 \name{c3_viridis}
 \alias{c3_viridis}
-\title{Viridis Paletta}
+\title{Viridis Palette}
 \usage{
 c3_viridis(c3, pal = "D", ...)
 }
@@ -15,6 +15,5 @@ c3_viridis(c3, pal = "D", ...)
 c3
 }
 \description{
-Viridis Paletta
+Viridis Palette
 }
-
