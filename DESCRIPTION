@@ -19,4 +19,4 @@ BugReports: https://github.com/mrjoh3/c3/issues
 License: GPL (>= 3)
 LazyData: TRUE
 Encoding: UTF-8
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

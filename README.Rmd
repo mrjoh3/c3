@@ -484,3 +484,18 @@ cat(
 )
 
 ```
+
+
+## On Click
+
+Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [c3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
+
+```{r onclick, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+onclick.plot <- data %>% 
+    c3(onclick = htmlwidgets::JS('function(d, element){console.log(d)}'))
+
+```
+
+
+
