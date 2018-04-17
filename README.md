@@ -42,26 +42,20 @@ data = data.frame(a = abs(rnorm(20) * 10),
                   b = abs(rnorm(20) * 10),
                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
-simple.plot <- c3(data)
+c3(data)
 ```
 
-![widget](img/file3d5457deae50.png)
-
-``` r
-simple.plot.date <- c3(data, x = 'date')
-```
-
-![widget](img/file3d542f044913.png)
+<img src="README_files/figure-markdown_github/data-1.png" style="display: block; margin: auto;" />
 
 ### Piping
 
 The package also imports the [migrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) piping function (`%>%`) to simplify syntax.
 
 ``` r
-piped.plot <- data %>% c3() 
+data %>% c3() 
 ```
 
-![widget](img/file3d5439680514.png)
+<img src="README_files/figure-markdown_github/pipe-1.png" style="display: block; margin: auto;" />
 
 Other Line Plots
 ----------------
@@ -82,7 +76,7 @@ data %>%
   c3_line('spline')
 ```
 
-![widget](img/file3d545a7cc6ff.png)
+<img src="README_files/figure-markdown_github/spline-1.png" style="display: block; margin: auto;" />
 
 #### Step
 
@@ -92,7 +86,7 @@ data %>%
   c3_line('area-step')
 ```
 
-![widget](img/file3d5430426550.png)
+<img src="README_files/figure-markdown_github/step-1.png" style="display: block; margin: auto;" />
 
 Bar Plots
 ---------
@@ -104,7 +98,7 @@ data[1:10, ] %>%
          rotate = TRUE)
 ```
 
-![widget](img/file3d5419505b30.png)
+<img src="README_files/figure-markdown_github/bar-1.png" style="display: block; margin: auto;" />
 
 Mixed Geometry Plots
 --------------------
@@ -120,10 +114,11 @@ data %>%
   c3_mixedGeom(type = 'bar', 
                stacked = c('b','d'),
                types = list(a='area',
-                            c='spline'))
+                            c='spline')
+               )
 ```
 
-![widget](img/file3d54162a7b04.png)
+<img src="README_files/figure-markdown_github/mixed-1.png" style="display: block; margin: auto;" />
 
 Secondary Y Axis
 ----------------
@@ -154,6 +149,8 @@ iris %>%
   c3_scatter()
 ```
 
+<img src="README_files/figure-markdown_github/scatter-1.png" style="display: block; margin: auto;" />
+
 Pie Charts
 ----------
 
@@ -164,6 +161,8 @@ data.frame(sugar = 20,
   c3() %>% 
   c3_pie()
 ```
+
+<img src="README_files/figure-markdown_github/pie-1.png" style="display: block; margin: auto;" />
 
 Donut Charts
 ------------
@@ -176,7 +175,7 @@ data.frame(red = 82, green = 33, blue = 93) %>%
   c3_donut(title = '#d053ee')
 ```
 
-![widget](img/file3d545476f3b3.png)
+<img src="README_files/figure-markdown_github/donut-1.png" style="display: block; margin: auto;" />
 
 Gauge Charts
 ------------
@@ -187,10 +186,10 @@ data.frame(data = 80) %>%
   c3_gauge()
 ```
 
-![widget](img/file3d5475c41a58.png)
+<img src="README_files/figure-markdown_github/gauge-1.png" style="display: block; margin: auto;" />
 
-Grid Lines
-----------
+Grid Lines & Annotation
+-----------------------
 
 ``` r
 data %>%
@@ -202,7 +201,7 @@ data %>%
                           text= c('Line 1','Line 2')))
 ```
 
-![widget](img/file3d541b078a1c.png)
+<img src="README_files/figure-markdown_github/grid-1.png" style="display: block; margin: auto;" />
 
 Region Highlighting
 -------------------
@@ -217,7 +216,7 @@ data %>%
                     end = 6))
 ```
 
-![widget](img/file3d544e1c68b3.png)
+<img src="README_files/figure-markdown_github/region-1.png" style="display: block; margin: auto;" />
 
 Sub-chart
 ---------
@@ -228,7 +227,7 @@ data %>%
   subchart()
 ```
 
-![widget](img/file3d5470c0f5b.png)
+<img src="README_files/figure-markdown_github/subchart-1.png" style="display: block; margin: auto;" />
 
 Color Palette
 -------------
@@ -245,7 +244,7 @@ data.frame(sugar = 20,
   RColorBrewer()
 ```
 
-![widget](img/file3d54509681f2.png)
+<img src="README_files/figure-markdown_github/brewer-1.png" style="display: block; margin: auto;" />
 
 ``` r
 data.frame(sugar = 20, 
@@ -257,7 +256,7 @@ data.frame(sugar = 20,
   c3_viridis()
 ```
 
-![widget](img/file3d541085f28.png)
+<img src="README_files/figure-markdown_github/viridis-1.png" style="display: block; margin: auto;" />
 
 Point Size
 ----------
@@ -270,8 +269,6 @@ data %>%
 ```
 
 <img src="README_files/figure-markdown_github/point-1.png" style="display: block; margin: auto;" />
-
-![widget](img/file3d544678c908.png)
 
 On Click
 --------

@@ -7,38 +7,7 @@ output:
 ---
 
 
-```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
 
-library(webshot)
-
-# thanks to https://rud.is/b/2016/03/04/capturing-wild-widgets-with-webshot/
-capture_widget <- function(wdgt,
-                           output=c("path", "markdown", "html", "inline"),
-                           height, width,
-                           png_render_path=tempfile(tmpdir = 'img', fileext=".png")) {
- 
-  wdgt_html_tf <- tempfile(fileext=".html")
- 
-  htmlwidgets::saveWidget(wdgt, wdgt_html_tf)
- 
-  webshot::webshot(url=sprintf("file://%s", wdgt_html_tf),
-                   selector="#htmlwidget_container",
-                   file=png_render_path,
-                   vwidth=width, vheight=height,
-                   delay = 2,
-                   zoom = 2)
- 
-  # done with HTML
-  unlink(wdgt_html_tf)
- 
-  switch(match.arg(output, c("path", "markdown", "html", "inline")),
-             `path`=png_render_path,
-         `markdown`=sprintf("![widget](%s)", png_render_path),
-             `html`=sprintf("<img src='%s'/>", png_render_path),
-           `inline`=base64::img(png_render_path))
- 
-}
-```
 
 The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.  
 
@@ -75,7 +44,7 @@ The `c3` package is intended to be as simple and lightweight as possible. As a s
 
 Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. `Date` x-axis can be parsed with not additional setting if in the format `%Y-%m-%d` (ie '2014-01-01') 
 
-```{r data, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r data, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 library(c3)
 
@@ -83,38 +52,7 @@ data = data.frame(a = abs(rnorm(20) * 10),
                   b = abs(rnorm(20) * 10),
                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
-simple.plot <- c3(data)
-
-```
-
-```{r data.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-library(c3)
-
-data = data.frame(a = abs(rnorm(20) * 10),
-                  b = abs(rnorm(20) * 10),
-                  date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
-
-cat(
-    capture_widget(c3(data, width = 800, height = 300),
-                   'markdown', height=400, width=1100)
-)
-
-```
-
-
-```{r date, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
-
-simple.plot.date <- c3(data, x = 'date')
-
-```
-
-```{r date.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-cat(
-    capture_widget(c3(data, x = 'date', width = 800, height = 300),
-                   'markdown', height=400, width=1100)
-)
+c3(data)
 
 ```
 
@@ -124,19 +62,9 @@ cat(
 
 The package also imports the [migrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) piping function (`%>%`) to simplify syntax.
 
-```{r pipe, eval = FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r pipe, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
-piped.plot <- data %>% c3() 
-
-```
-
-
-```{r pipe.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-cat(
-    capture_widget(c3(data, width = 800, height = 300),
-                   'markdown', height=400, width=1100)
-)
+data %>% c3() 
 
 ```
 
@@ -154,7 +82,7 @@ There are 5 different line plots available:
 
 #### Spline
 
-```{r spline, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r spline, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3() %>%
@@ -163,23 +91,10 @@ data %>%
 ```
 
 
-```{r spline.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-spline.plot <- data %>%
-  c3(width = 800, height = 300) %>%
-  c3_line('spline')
-
-cat(
-    capture_widget(spline.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 #### Step
 
-```{r step, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r step, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3(x = 'date') %>%
@@ -188,23 +103,10 @@ data %>%
 ```
 
 
-```{r step.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-step.plot <- data %>%
-  c3(x = 'date', width = 800, height = 300) %>%
-  c3_line('area-step')
-
-cat(
-    capture_widget(step.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 ## Bar Plots
 
-```{r bar, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r bar, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data[1:10, ] %>%
   c3() %>%
@@ -215,25 +117,12 @@ data[1:10, ] %>%
 ```
 
 
-```{r bar.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-bar.plot <- data[1:10, ] %>%
-  c3(width = 800, height = 300) %>%
-  c3_bar(stacked = TRUE, rotate = TRUE)
-
-cat(
-    capture_widget(bar.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 ## Mixed Geometry Plots
 
 Mixed geometry currently only works with a horizontal `data.frame` where each numeric column is plotted.
 
-```{r mixed, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r mixed, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data$c = abs(rnorm(20) *10)
 data$d = abs(rnorm(20) *10)
@@ -243,29 +132,11 @@ data %>%
   c3_mixedGeom(type = 'bar', 
                stacked = c('b','d'),
                types = list(a='area',
-                            c='spline'))
-                
+                            c='spline')
+               )
 
 ```
 
-```{r mixed.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-data$c = abs(rnorm(20) *10)
-data$d = abs(rnorm(20) *10)
-
-mixed.plot <- data %>%
-  c3(width = 800, height = 300) %>%
-  c3_mixedGeom(type = 'bar',
-               stacked = c('b','d'),
-               types = list(a='area',
-                            c='spline'))
-
-cat(
-    capture_widget(mixed.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
 
 
 ## Secondary Y Axis
@@ -319,7 +190,7 @@ data.frame(sugar = 20,
 
 ## Donut Charts
 
-```{r donut, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r donut, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
 data.frame(red = 82, green = 33, blue = 93) %>% 
   c3(colors = list(red = 'red',
@@ -327,54 +198,25 @@ data.frame(red = 82, green = 33, blue = 93) %>%
                    blue = 'blue')) %>% 
   c3_donut(title = '#d053ee')
                 
-
 ```
 
-
-```{r donut.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis', fig.align='center'}
-
-donut.chart <- data.frame(red=82,green=33,blue=93) %>% 
-  c3(colors=list(red='red',green='green',blue='blue'), width = 500, height = 300) %>% 
-  c3_donut(title = '#d053ee')
-
-cat(
-    capture_widget(donut.chart,
-                   'markdown', height=400, width=1100)
-)
-
-```
 
 
 ## Gauge Charts
 
-```{r gauge, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r gauge, warning=FALSE, message=FALSE, fig.align='center', fig.width=6, fig.height=3}
 
 data.frame(data = 80) %>% 
   c3() %>% 
   c3_gauge()
                 
-
-```
-
-
-```{r gauge.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-gauge.chart <- data.frame(data = 80) %>% 
-  c3(width = 500, height = 300) %>% 
-  c3_gauge()
-
-cat(
-    capture_widget(gauge.chart,
-                   'markdown', height=400, width=1100)
-)
-
 ```
 
 
 
-## Grid Lines
+## Grid Lines & Annotation
 
-```{r grid, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r grid, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3() %>%
@@ -384,31 +226,15 @@ data %>%
        lines = data.frame(value = c(3, 10), 
                           text= c('Line 1','Line 2')))
                 
-
 ```
 
-
-```{r grid.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-grid.plot <- data %>%
-  c3(width = 800, height = 300) %>%
-  grid('y') %>%
-  grid('x', show=F, lines = data.frame(value=c(3,10), 
-                                       text= c('Line 1','Line 2')))
-
-cat(
-    capture_widget(grid.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
 
 
 ## Region Highlighting
 
 To highlight regions pass a single `data.frame` with columns `axis`, `start`, `end` and `class`. Multiple regions can be defined within the one `data.frame` for any axis (`x`, `y`, `y2`). Each row in the `data.frame` defines a separate region to be highlighted  
 
-```{r region, eval = FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r region, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3() %>%
@@ -419,27 +245,12 @@ data %>%
 ```
 
 
-```{r region.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-region.plot <- data %>%
-  c3(width = 800, height = 300) %>%
-  region(data.frame(axis = 'x',
-                    start = 5,
-                    end = 6))
-
-cat(
-    capture_widget(region.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 ## Sub-chart
 
 
 
-```{r subchart, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r subchart, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3(x = 'date') %>%
@@ -448,26 +259,13 @@ data %>%
 ```
 
 
-```{r subchart.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-subchart.plot <- data %>%
-  c3(x = 'date', width = 800, height = 300) %>%
-  subchart()
-
-cat(
-    capture_widget(subchart.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 ## Color Palette
 
 Plot color palettes can be changed to either `RColorBrewer` or `viridis` palettes using either `RColorBrewer` (S3 method) or `c3_viridus`.
 
 
-```{r brewer, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r brewer, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
 data.frame(sugar = 20, 
            fat = 45, 
@@ -480,22 +278,10 @@ data.frame(sugar = 20,
 ```
 
 
-```{r brewer.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-pie.RColorBrewer <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
-  c3() %>% 
-  c3_pie() %>%
-  RColorBrewer()
-
-cat(
-    capture_widget(pie.RColorBrewer,
-                   'markdown', height=400, width=1100)
-)
-
-```
 
 
-```{r viridis, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+```{r viridis, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
 
 data.frame(sugar = 20, 
            fat = 45, 
@@ -505,22 +291,6 @@ data.frame(sugar = 20,
   c3_pie() %>%
   c3_viridis()
                 
-
-```
-
-
-```{r viridis.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-pie.viridis <- data.frame(sugar = 20, fat = 45, salt = 10, vegetables = 60) %>% 
-  c3() %>% 
-  c3_pie() %>%
-  c3_viridis()
-
-cat(
-    capture_widget(pie.viridis,
-                   'markdown', height=400, width=1100)
-)
-
 ```
 
 
@@ -528,7 +298,7 @@ cat(
 ## Point Size
 
 
-```{r point, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r point, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
 data %>%
   c3(x = 'date') %>%
@@ -538,25 +308,12 @@ data %>%
 ```
 
 
-```{r point.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
-
-point.plot <- data %>%
-  c3(x = 'date', width = 800, height = 300) %>%
-  point_options(r = 6, expand.r = 2)
-
-cat(
-    capture_widget(point.plot,
-                   'markdown', height=400, width=1100)
-)
-
-```
-
 
 ## On Click
 
 Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [c3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
 
-```{r onclick, eval=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r onclick, eval=FALSE}
 
 data %>% 
     c3(onclick = htmlwidgets::JS('function(d, element){console.log(d)}'))
