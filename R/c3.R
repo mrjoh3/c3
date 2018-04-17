@@ -8,6 +8,7 @@
 #' @param onclick character js function, wrap character or character vector in JS()
 #' @param onmouseover character js function, wrap character or character vector in JS()
 #' @param onmouseout character js function, wrap character or character vector in JS()
+#' @param axes list, use to assign plot elements to secondary y axis
 #' @import htmlwidgets
 #' @family c3
 #' @export
@@ -18,6 +19,11 @@
 #'
 #' data %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){console.log(d)}"))
+#'
+#' data %>% 
+#'   c3(axes = list(a = 'y',
+#'                  b = 'y2')) %>%
+#'   y2Axis()
 #'
 #' data.frame(sugar=20,fat=45,salt=10) %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) %>%
