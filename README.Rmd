@@ -244,8 +244,31 @@ cat(
 ```
 
 
+## Secondary Y Axis
+
+To use a secondary Y axis columns must first be matched to an axis and then the secondary axis made visible. 
+
+```{r y2, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+
+y2.plot <- data %>% 
+  c3(x = 'date',
+     axes = list(a = 'y',
+                 b = 'y2')) %>% 
+  c3_mixedGeom(types = list(a='line',
+                            b='area')) %>% 
+  y2Axis()
+
+```
 
 
+```{r y2.webshot, echo=FALSE, warning=FALSE, message=FALSE, comment=NA, results='asis'}
+
+cat(
+    capture_widget(y2.plot,
+                   'markdown', height=400, width=1100)
+)
+
+```
 
 ## Scatter Plot
 
