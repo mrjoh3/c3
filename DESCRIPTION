@@ -2,7 +2,7 @@ Package: c3
 Type: Package
 Title: C3 Charts via R
 Description: The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812).
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Matt", "Johnson", email = "mrjoh3@gmail.com",
     role = c("aut", "cre"))
