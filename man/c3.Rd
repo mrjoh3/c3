@@ -20,6 +20,8 @@ c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
 \item{onmouseover}{character js function, wrap character or character vector in JS()}
 
 \item{onmouseout}{character js function, wrap character or character vector in JS()}
+
+\item{axes}{list, use to assign plot elements to secondary y axis}
 }
 \description{
 The `c3` package is a wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
@@ -30,6 +32,11 @@ data <- data.frame(a=c(1,2,3,2),b=c(2,3,1,5))
 
 data \%>\%
   c3(onclick = htmlwidgets::JS("function(d, element){console.log(d)}"))
+
+data \%>\%
+  c3(axes = list(a = 'y',
+                 b = 'y2')) \%>\%
+  y2Axis()
 
 data.frame(sugar=20,fat=45,salt=10) \%>\%
   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) \%>\%

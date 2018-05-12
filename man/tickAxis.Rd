@@ -31,6 +31,3 @@ option effects tick labels  (x-axis only)}
 \value{
 c3
 }
-\description{
-Axis Tick Options
-}

@@ -19,9 +19,6 @@ c3_donut(c3, expand = TRUE, title = NULL, width = NULL, ...)
 
 \item{format}{character label js function, wrap character or character vector in JS()}
 }
-\description{
-Donut Charts
-}
 \examples{
 \dontrun{
 data.frame(red=20,green=45,blue=10) \%>\%

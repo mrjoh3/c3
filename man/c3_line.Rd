@@ -30,9 +30,6 @@ c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL)
 \value{
 c3
 }
-\description{
-Line Plot
-}
 \examples{
 \dontrun{
 data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%

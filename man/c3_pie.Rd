@@ -16,9 +16,6 @@ c3_pie(c3, expand = TRUE, ...)
 \item{format}{character label js function, wrap character or character vector in JS()
 ric}
 }
-\description{
-Pie Charts
-}
 \examples{
 \dontrun{
 data.frame(red=20,green=45,blue=10) \%>\%

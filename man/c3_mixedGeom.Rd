@@ -14,9 +14,6 @@ c3_mixedGeom(c3, types, type = "line", stacked = NULL)
 \value{
 c3
 }
-\description{
-Mixed Geometry Plots
-}
 \examples{
 \dontrun{
 data <- data.frame(a = abs(rnorm(20) *10),

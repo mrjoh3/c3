@@ -14,6 +14,7 @@ Imports:
     jsonlite,
     data.table,
     lazyeval,
+    htmlwidgets,
     dplyr
 URL: https://github.com/mrjoh3/c3
 BugReports: https://github.com/mrjoh3/c3/issues

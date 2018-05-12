@@ -12,7 +12,6 @@
 #' @importFrom utils modifyList
 #' @importFrom dplyr mutate
 #' @importFrom data.table dcast
-#' @import htmlwidgets
 #' @family c3
 #' @export
 #'
