@@ -4,7 +4,7 @@
 \alias{xAxis.c3}
 \alias{yAxis.c3}
 \alias{y2Axis.c3}
-\title{Modify plot elements that relate to the axis.}
+\title{C3 xaxis}
 \usage{
 \method{xAxis}{c3}(c3, ...)
 

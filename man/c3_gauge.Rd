@@ -32,9 +32,6 @@ c3_gauge(c3, ...)
  \item{values}{: numeric vector of threhold values for color change}
 }}
 }
-\description{
-Gauge Charts
-}
 \examples{
 \dontrun{
 data.frame(red=20,green=45,blue=10) \%>\%

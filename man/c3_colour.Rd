@@ -14,6 +14,3 @@ c3_colour(c3, colours, ...)
 \value{
 c3
 }
-\description{
-Colour Palette
-}

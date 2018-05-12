@@ -19,9 +19,6 @@ c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
 \value{
 c3
 }
-\description{
-Bar Plot
-}
 \examples{
 \dontrun{
 data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%

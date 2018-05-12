@@ -9,6 +9,3 @@ c3_scatter(c3, ...)
 \arguments{
 \item{...}{}
 }
-\description{
-Scatter Plots
-}
