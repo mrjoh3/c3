@@ -2,7 +2,6 @@
 #'
 #' Imports the pipe operator from magrittr.
 #'
-#' @importFrom magrittr %>%
 #' @export
 #' @param lhs a \code{\link{c3}} object
 #' @param rhs a pie settings function
