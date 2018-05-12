@@ -9,6 +9,9 @@
 #' @param onmouseover character js function, wrap character or character vector in JS()
 #' @param onmouseout character js function, wrap character or character vector in JS()
 #' @param axes list, use to assign plot elements to secondary y axis
+#' @importFrom utils modifyList
+#' @importFrom dplyr mutate
+#' @importFrom data.table dcast
 #' @import htmlwidgets
 #' @family c3
 #' @export
@@ -20,7 +23,7 @@
 #' data %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){console.log(d)}"))
 #'
-#' data %>% 
+#' data %>%
 #'   c3(axes = list(a = 'y',
 #'                  b = 'y2')) %>%
 #'   y2Axis()
@@ -36,7 +39,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   require(data.table)
 
   # create data object
-  data.object = list(
+  data.object <- list(
     #x = x,
     xFormat = NULL,
     xLocaltime = NULL,
@@ -84,7 +87,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
                      grep('numeric', sapply(data, class)))]
 
     # define x axis type
-    dtype = switch(class(data[,x]),
+    dtype <- switch(class(data[,x]),
                    'Date' = 'timeseries',
                    'character' = 'category',
                    'numeric' = 'indexed')
@@ -92,7 +95,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
     #opts$xType = dtype
 
     # create axis
-    axis = list(x = list(label = x,
+    axis <- list(x = list(label = x,
                          type = dtype))
     data.object$x <- x
 
@@ -103,7 +106,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
     data <- data[, c(x,y)]
 
     # define x axis type
-    dtype = switch(class(data[,x]),
+    dtype <- switch(class(data[,x]),
                    'Date' = 'timeseries',
                    'character' = 'category',
                    'numeric' = 'indexed')
@@ -111,14 +114,14 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
     #opts$xType = dtype
 
     # create axis
-    axis = list(x = list(label = x,
+    axis <- list(x = list(label = x,
                          type = dtype),
                 y = list(label = y))
 
     data.object$x <- x
 
-    xs = list()
-    xs[[y]] = x
+    xs <- list()
+    xs[[y]] <- x
 
   } else if (!is.null(group)) {
 
@@ -142,18 +145,18 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
       as.data.frame() %>%
       select(-id)
 
-    xs = list()
+    xs <- list()
 
     # need to change columns to group, group_x in xs and in data dataframe
     for (g in groups) {
-      xs[[g]] = paste(g, 'x', sep = '_')
+      xs[[g]] <- paste(g, 'x', sep = '_')
 
       colnames(data) <- sub(paste(y, g, sep = '_'), g, colnames(data))
       colnames(data) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data))
 
     }
 
-    axis = list(x = list(label = x),
+    axis <- list(x = list(label = x),
                 y = list(label = y))
 
 
@@ -174,7 +177,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
   if ('xs' %in% ls()) {data.object$xs <- xs}
 
-  x = list(
+  x <- list(
     data = data.object#,
     #opts = opts
   )

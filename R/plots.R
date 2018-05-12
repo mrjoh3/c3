@@ -1,5 +1,5 @@
 
-#' Bar Plot
+#' @title Bar Plot
 #'
 #' @param c3
 #' @param statcked boolean
@@ -53,7 +53,7 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
 
 
 
-#' Line Plot
+#' @title Line Plot
 #'
 #' @param c3
 #' @param type character type of line plot. Must be one of:
@@ -110,7 +110,7 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 
 
 
-#' Mixed Geometry Plots
+#' @title Mixed Geometry Plots
 #'
 #' @param c3
 #' @param type
@@ -155,7 +155,7 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 
 
 
-#' Scatter Plots
+#' @title Scatter Plots
 #'
 #' @param c3
 #' @param ...
@@ -183,7 +183,7 @@ c3_scatter <- function(c3, ...) {
 
 
 
-#' Pie Charts
+#' @title Pie Charts
 #'
 #' @param c3
 #' @param expand boolean expand segment on hover
@@ -230,7 +230,7 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 }
 
 
-#' Donut Charts
+#' @title Donut Charts
 #'
 #' @param c3
 #' @param expand boolean expand segment on hover
@@ -286,7 +286,7 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 }
 
 
-#' Gauge Charts
+#' @title Gauge Charts
 #'
 #' @param c3
 #' @param label list with options:

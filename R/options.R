@@ -13,7 +13,8 @@ xAxis <- function(x, ...){
 }
 
 
-#' Modify plot elements that relate to the axis.
+#' @title C3 xaxis
+#' @description Modify plot elements that relate to the axis.
 #'
 #' @param c3
 #' @param ...
@@ -150,7 +151,7 @@ y2Axis.c3 <- function(c3, ...){
   return(c3)
 }
 
-#' Axis Tick Options
+#' @title Axis Tick Options
 #'
 #' @param c3
 #' @param axis character 'x', 'y' or 'y2' axis
@@ -275,7 +276,7 @@ c3_viridis <- function(c3, pal='D', ...) {
   return(c3)
 }
 
-#' Colour Palette
+#' @title Colour Palette
 #'
 #' @param c3
 #' @param colours character vector of colours
@@ -291,10 +292,10 @@ c3_colour <- function(c3, colours, ...) {
 
   return(c3)
 }
-                        
-                        
-                        
-#' Data Select
+
+
+
+#' @title Data Select
 #'
 #' @description Define options for selecting data within the plot area
 #' @param c3
@@ -329,7 +330,7 @@ c3_selection <- function(c3, ...) {
 
 
 
-#' Chart Size
+#' @title Chart Size
 #'
 #' @description Modify the size of the chart within the htmlwidget area. Generally charts size
 #' to the div in which they are placed. These options enable finer scale sizing with the div
@@ -370,7 +371,7 @@ c3_chart_size <- function(c3, ...) {
 
 
 
-#' Point Options
+#' @title Point Options
 #'
 #' @description Modify point options
 #' @param c3
