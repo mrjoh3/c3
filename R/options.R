@@ -215,6 +215,8 @@ RColorBrewer <- function(x, ...){
 #' @param pal character palette must match `RColorBrewer::brewer.pal.info`
 #' @param ...
 #'
+#' @importFrom jsonlite fromJSON
+#'
 #' @return c3
 #' @family c3
 #' @family RColorBrewer
@@ -222,8 +224,6 @@ RColorBrewer <- function(x, ...){
 #'
 #' @examples
 RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
-
-  require(RColorBrewer)
 
   n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
 
@@ -237,7 +237,7 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
   #color <- '' #js function
 
   #c3$x$data$colors <- colors
-  c3$x$color$pattern <- brewer.pal(n, pal)
+  c3$x$color$pattern <- RColorBrewer::brewer.pal(n, pal)
 
   return(c3)
   }
@@ -251,13 +251,13 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 #' @param pal character palette options
 #' @param ...
 #'
+#' @importFrom jsonlite fromJSON
+#'
 #' @return c3
 #' @export
 #'
 #' @examples
 c3_viridis <- function(c3, pal='D', ...) {
-
-  require(viridis)
 
   n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
 
@@ -271,7 +271,7 @@ c3_viridis <- function(c3, pal='D', ...) {
   #color <- '' #js function
 
   #c3$x$data$colors <- colors
-  c3$x$color$pattern <- strtrim(viridis(n, option = pal), 7)
+  c3$x$color$pattern <- strtrim(viridis::viridis(n, option = pal), 7)
 
   return(c3)
 }
