@@ -7,7 +7,7 @@
 \method{legend}{c3}(c3, ...)
 }
 \arguments{
-\item{...}{}
+\item{...}{all variables passed via ...}
 
 \item{hide}{boolean or character of parameters to hide}
 
@@ -33,6 +33,15 @@ c3
 }
 \description{
 Title
+}
+\examples{
+\dontrun{
+iris \%>\%
+ c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') \%>\%
+ c3_scatter() \%>\%
+ legend(position = 'right')
+}
+
 }
 \seealso{
 Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},

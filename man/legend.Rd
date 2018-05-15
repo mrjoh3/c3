@@ -2,12 +2,13 @@
 % Please edit documentation in R/legend.R
 \name{legend}
 \alias{legend}
-\title{Modify plot elements that relate to the second y-axis.}
+\title{Modify plot elements that relate to the legend.}
 \usage{
 legend(x, ...)
 }
 \description{
-This is an S3 method.
+This is an S3 method. The c3 legend is on by default, this function allows the
+legend to be removed, or other legend attributes to be set.
 }
 \seealso{
 Other legend: \code{\link{legend.c3}}

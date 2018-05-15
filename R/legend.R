@@ -1,8 +1,9 @@
 
 
-#' Modify plot elements that relate to the second y-axis.
+#' Modify plot elements that relate to the legend.
 #'
-#' This is an S3 method.
+#' This is an S3 method. The c3 legend is on by default, this function allows the
+#' legend to be removed, or other legend attributes to be set.
 #' @family legend
 #' @export
 legend <- function(x, ...){
@@ -27,7 +28,7 @@ legend <- function(x, ...){
 #'  \item{onmouseover}{: character js function, wrap character or character vector in JS()}
 #'  \item{onmouseout}{: character js function, wrap character or character vector in JS()}
 #' }
-#' @param ...
+#' @param ... all variables passed via ...
 #'
 #' @family c3
 #' @family legend
@@ -35,9 +36,16 @@ legend <- function(x, ...){
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' iris %>%
+#'  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>%
+#'  c3_scatter() %>%
+#'  legend(position = 'right')
+#' }
+#'
 legend.c3 <- function(c3, ...){
 
-  legend <- list(hide = TRUE,
+  legend <- list(hide = FALSE,
                position = NULL,
                inset = NULL,
                item = NULL
