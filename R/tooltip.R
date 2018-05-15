@@ -1,7 +1,7 @@
 
 
 
-#' Modify plot elements that relate to the second y-axis.
+#' Modify plot elements that relate to tooltips.
 #'
 #' This is an S3 method.
 #' @family tooltip

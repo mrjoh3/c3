@@ -2,7 +2,7 @@
 % Please edit documentation in R/tooltip.R
 \name{tooltip}
 \alias{tooltip}
-\title{Modify plot elements that relate to the second y-axis.}
+\title{Modify plot elements that relate to tooltips.}
 \usage{
 tooltip(x, ...)
 }
