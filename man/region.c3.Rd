@@ -2,7 +2,7 @@
 % Please edit documentation in R/region.R
 \name{region.c3}
 \alias{region.c3}
-\title{Title}
+\title{Modify region elements on both x and y axis}
 \usage{
 \method{region}{c3}(c3, regions)
 }

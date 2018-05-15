@@ -70,3 +70,53 @@ test_that('colors can be set manually', {
   expect_is(clr, "htmlwidget")
 
 })
+
+test_that('grids can be added', {
+
+  grd <- grid(cp,'y')
+
+  expect_true(grd$x$grid$y$show)
+
+  expect_is(grd, "c3")
+  expect_is(grd, "htmlwidget")
+
+})
+
+
+test_that('legends can be removed', {
+
+  lgd <- legend(cp, hide = TRUE)
+
+  expect_true(lgd$x$legend$hide)
+
+  expect_is(lgd, "c3")
+  expect_is(lgd, "htmlwidget")
+
+})
+
+
+test_that('legends attribute can be modified', {
+
+  lgd <- legend(cp, position = 'right')
+
+  expect_equal(lgd$x$legend$position, 'right')
+  expect_false(lgd$x$legend$hide)
+
+  expect_is(lgd, "c3")
+  expect_is(lgd, "htmlwidget")
+
+})
+
+test_that('regions can be added', {
+
+  reg <- region(cp, data.frame(axis = 'x',
+                               start = 5,
+                               end = 12))
+
+  expect_equal(reg$x$regions$start, 5)
+  expect_equal(reg$x$regions$axis, factor('x'))
+
+  expect_is(reg, "c3")
+  expect_is(reg, "htmlwidget")
+
+})

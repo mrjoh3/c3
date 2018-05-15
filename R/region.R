@@ -2,16 +2,16 @@
 
 
 
-#' Modify region elements on both x and y axis
+#' @title Modify region elements on both x and y axis
 #'
-#' This is an S3 method.
+#' @description This is an S3 method. Regions are defined in multiple axis by passing a single `data.frame`
 #' @family region
 #' @export
 region <- function(x, ...){
   UseMethod('region')
 }
 
-#' Title
+#' @title Modify region elements on both x and y axis
 #' @description Regions are defined in multiple axis by passing a single `data.frame`
 #' @param c3
 #' @param regions data.frame with columns:
