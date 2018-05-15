@@ -73,6 +73,7 @@ test_that('colors can be set manually', {
 
 
 ## grid.R
+
 test_that('grids can be added', {
 
   grd <- grid(cp,'y')
@@ -85,7 +86,9 @@ test_that('grids can be added', {
 })
 
 
+
 ## legend.R
+
 test_that('legends can be removed', {
 
   lgd <- legend(cp, hide = TRUE)
@@ -111,7 +114,6 @@ test_that('legends attribute can be modified', {
 })
 
 
-
 ## region.R
 
 test_that('regions can be added', {
@@ -127,6 +129,7 @@ test_that('regions can be added', {
   expect_is(reg, "htmlwidget")
 
 })
+
 
 
 ## subchart.R
@@ -180,4 +183,5 @@ test_that('tooltips attributes can be set', {
   expect_is(tt, "htmlwidget")
 
 })
+
 
