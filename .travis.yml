@@ -2,6 +2,10 @@ language: r
 
 warnings_are_errors: false
 
+addons:
+  apt:
+    update: true
+
 r_packages:
   - covr
 
