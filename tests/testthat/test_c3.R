@@ -21,6 +21,22 @@ test_that("C3 line options can be set", {
   expect_is(c_l, "htmlwidget")
 })
 
+test_that('data structure is in the expected format', {
+
+  expect_is(cp$x$data$json, 'json')
+
+})
+
+test_that('the data structure can be converted', {
+
+  df <- fromJSON(cp$x$data$json)
+
+  expect_is(df, 'data.frame')
+  expect_equal(colnames(df), c('a','b','c','d'))
+  expect_equal(nrow(df), 20)
+
+})
+
 
 # test_that("C3 mixed geometry options can be set", {
 #
@@ -185,3 +201,16 @@ test_that('tooltips attributes can be set', {
 })
 
 
+## zoom.R
+
+test_that('zoom settings work', {
+
+  zm <- zoom(cp, rescale = TRUE)
+
+  expect_true(zm$x$zoom$enabled)
+  expect_true(zm$x$zoom$rescale)
+
+  expect_is(zm, "c3")
+  expect_is(zm, "htmlwidget")
+
+})
