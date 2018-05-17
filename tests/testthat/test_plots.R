@@ -82,6 +82,7 @@ test_that('scatter plots work', {
 })
 
 
+
 ## c3_pie()
 
 test_that('Pie charts work', {
@@ -129,3 +130,4 @@ test_that('Guage charts work', {
   expect_is(c, "htmlwidget")
 
 })
+

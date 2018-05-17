@@ -36,7 +36,7 @@ c3_gauge(c3, ...)
 \dontrun{
 data.frame(red=20,green=45,blue=10) \%>\%
   c3() \%>\%
-  c3_donut(title = 'Colors')
+  c3_gauga(title = 'Colors')
   }
 
 }
