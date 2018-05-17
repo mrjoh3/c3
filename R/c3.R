@@ -66,7 +66,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   #options carried through, used to store info about data for later validation
   opts = list(x = x,
               y = y,
-              types = sapply(data, class))
+              types = lapply(data, class))
 
   # check for and replace '.' in column names
   names(data) <- gsub('\\.', '_', names(data))

@@ -80,6 +80,15 @@ xAxis.c3 <- function(c3, ...){
   x <- modifyList(x, list(...))
   x <- Filter(Negate(function(x) is.null(unlist(x))), x)
 
+  # check data types match
+  if (x$type == 'timeseries' & c3$x$opts$types[c3$x$opts$x] != 'Date') {
+    warning('Axis type "timeseries" does not match data types')
+    message(paste(sapply(names(c3$x$opts$types), function(x) {
+      paste0(as.character(x), ": ",
+             c3$x$opts$types[[x]])}),
+      collapse = '\n'))
+  }
+
   c3$x$axis$x <- x
   return(c3)
 }
