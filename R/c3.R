@@ -63,10 +63,10 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
   data.object <- modifyList(data.object, list(...))
 
-  #options carried through
-  # opts = list(x = x,
-  #             y = y,
-  #             xType = NULL)
+  #options carried through, used to store info about data for later validation
+  opts = list(x = x,
+              y = y,
+              types = sapply(data, class))
 
   # check for and replace '.' in column names
   names(data) <- gsub('\\.', '_', names(data))
@@ -178,8 +178,8 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   if ('xs' %in% ls()) {data.object$xs <- xs}
 
   x <- list(
-    data = data.object#,
-    #opts = opts
+    data = data.object,
+    opts = opts
   )
 
   if ('axis' %in% ls()) {x$axis <- axis}
