@@ -9,3 +9,13 @@ c3_scatter(c3, ...)
 \arguments{
 \item{...}{}
 }
+\examples{
+\dontrun{
+  iris \%>\%
+    c3(x = 'Sepal_Length',
+       y = 'Sepal_Width',
+       group = 'Species') \%>\%
+    c3_scatter()
+  }
+
+}

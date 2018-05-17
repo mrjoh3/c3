@@ -15,7 +15,8 @@ Imports:
     data.table,
     lazyeval,
     htmlwidgets,
-    dplyr
+    dplyr,
+    lazyeval
 URL: https://github.com/mrjoh3/c3
 BugReports: https://github.com/mrjoh3/c3/issues
 License: GPL (>= 3)

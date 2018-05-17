@@ -12,6 +12,7 @@
 #' @importFrom utils modifyList
 #' @importFrom dplyr mutate
 #' @importFrom data.table dcast
+#' @importFrom lazyeval interp
 #' @family c3
 #' @export
 #'

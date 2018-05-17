@@ -13,8 +13,7 @@ c3_pie(c3, expand = TRUE, ...)
 
 \item{threshold}{numeric proportion of segment to hide label}
 
-\item{format}{character label js function, wrap character or character vector in JS()
-ric}
+\item{format}{character label js function, wrap character or character vector in JS()}
 }
 \examples{
 \dontrun{
