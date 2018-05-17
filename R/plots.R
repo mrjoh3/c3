@@ -321,7 +321,7 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 #'\dontrun{
 #' data.frame(red=20,green=45,blue=10) %>%
 #'   c3() %>%
-#'   c3_donut(title = 'Colors')
+#'   c3_gauga(title = 'Colors')
 #'   }
 #'
 c3_gauge <- function(c3, ...) {
