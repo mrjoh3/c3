@@ -110,7 +110,7 @@ test_that('Donut charts work', {
   expect_equal(dc$x$data$type, 'donut')
   expect_equal(dc$x$donut$title, 'test')
 
-  expect_is(c, "c3")
+  expect_is(dc, "c3")
   expect_is(dc, "htmlwidget")
 
 })
@@ -126,7 +126,7 @@ test_that('Guage charts work', {
 
   expect_equal(c$x$data$type, 'gauge')
 
-  expect_is(d, "c3")
+  expect_is(c, "c3")
   expect_is(c, "htmlwidget")
 
 })
