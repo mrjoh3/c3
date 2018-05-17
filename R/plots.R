@@ -164,6 +164,14 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#'   iris %>%
+#'     c3(x = 'Sepal_Length',
+#'        y = 'Sepal_Width',
+#'        group = 'Species') %>%
+#'     c3_scatter()
+#'   }
+#'
 c3_scatter <- function(c3, ...) {
 
   # take a two column dataframe x and y, if third charactor/factor column group
@@ -190,7 +198,6 @@ c3_scatter <- function(c3, ...) {
 #' @param show boolean show labels
 #' @param threshold numeric proportion of segment to hide label
 #' @param format character label js function, wrap character or character vector in JS()
-#'ric
 #'
 #' @return
 #' @export

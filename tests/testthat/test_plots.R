@@ -31,3 +31,52 @@ test_that('bar plots settings can be set', {
   expect_equal(grp, c("a","b","c","d"))
 
 })
+
+
+## c3_line()
+
+test_that("C3 line options can be set", {
+
+  c_l <- c3_line(cp, 'spline')
+
+  expect_equal(c_l$x$data$type, 'spline')
+
+  expect_is(c_l, "c3")
+  expect_is(c_l, "htmlwidget")
+})
+
+
+## c3_mixedgeometry
+
+test_that("C3 mixed geometry options can be set", {
+
+  typs <- list(a='area',
+               c='spline')
+  mg <- c3_mixedGeom(cp, types = typs)
+
+  expect_equal(mg$x$data$type, 'line') # default value
+  expect_equal(mg$x$data$types$a, 'area')
+  expect_equal(mg$x$data$types$c, 'spline')
+
+  expect_is(mg, "c3")
+  expect_is(mg, "htmlwidget")
+
+})
+
+
+## c3_scatter()
+
+test_that('scatter plots work', {
+
+  sp <- c3(iris,
+           x = 'Sepal_Length',
+           y = 'Sepal_Width',
+           group = 'Species')
+
+  sc <- c3_scatter(sp)
+
+  expect_is(sc, "c3")
+  expect_is(sc, "htmlwidget")
+
+
+})
