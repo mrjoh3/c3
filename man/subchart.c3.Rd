@@ -15,7 +15,8 @@
 c3
 }
 \description{
-subcharts are defined in multiple axis by passing a single `data.frame`
+subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
+experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation})
 }
 \examples{
 \dontrun{
@@ -23,7 +24,7 @@ data.frame(a = abs(rnorm(20) * 10),
            b = abs(rnorm(20) * 10),
            date = seq(as.Date("2014-01-01"), by = "month", length.out = 20)) \%>\%
      c3(x = 'date') \%>\%
-     subchart(height = 20)
+     subchart(height = 20, onbrush = 'function (domain) { console.log(domain) }')
 }
 
 }

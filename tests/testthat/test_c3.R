@@ -157,6 +157,20 @@ test_that('subcharts attributes can be set', {
 
 })
 
+test_that('subcharts onbrush attributes can be set', {
+
+  b1 <- subchart(cp, onbrush = 'function (domain) { console.log(domain) }')
+  b2 <- subchart(cp, onbrush = JS('function (domain) { console.log(domain) }'))
+
+  expect_is(b1$x$subchart$onbrush, "JS_EVAL")
+  expect_is(b2$x$subchart$onbrush, "JS_EVAL")
+
+  expect_is(b1, "c3")
+  expect_is(b1, "htmlwidget")
+  expect_is(b2, "c3")
+  expect_is(b2, "htmlwidget")
+
+})
 
 ## tooltip.R
 

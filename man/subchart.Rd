@@ -2,7 +2,7 @@
 % Please edit documentation in R/subchart.R
 \name{subchart}
 \alias{subchart}
-\title{Modify subchart}
+\title{Add subchart}
 \usage{
 subchart(x, ...)
 }
