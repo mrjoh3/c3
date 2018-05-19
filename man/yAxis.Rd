@@ -2,7 +2,7 @@
 % Please edit documentation in R/options.R
 \name{yAxis}
 \alias{yAxis}
-\title{Modify plot elements that relate to the y-axis. S3 Method}
+\title{Modify plot elements that relate to the y-axis.}
 \usage{
 yAxis(x, ...)
 }

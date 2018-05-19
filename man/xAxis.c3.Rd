@@ -66,6 +66,15 @@ c3
 \description{
 Modify plot elements that relate to the axis.
 }
+\examples{
+\dontrun{
+data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
+  c3() \%>\%
+   xAxis(label = list(text = 'testing',
+                      position = 'inner-center'))
+  }
+
+}
 \seealso{
 Other c3: \code{\link{RColorBrewer.c3}}, \code{\link{c3}},
   \code{\link{grid.c3}}, \code{\link{legend.c3}},

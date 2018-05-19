@@ -6,6 +6,9 @@
 #' @param rotated boolean
 #' @param bar_width numeric
 #' @param zerobased boolean
+#'
+#' @importFrom jsonlite fromJSON toJSON
+#'
 #' @return c3
 #' @export
 #'
@@ -73,6 +76,8 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
 #'  \item{step-before}
 #' }
 #'
+#' @importFrom jsonlite fromJSON toJSON
+#'
 #' @return c3
 #' @export
 #'
@@ -116,6 +121,8 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 #' @param type
 #' @param types list containing key value pairs of column header and plot type
 #' @param stacked character vector of column headers to stack
+#'
+#' @importFrom jsonlite toJSON
 #'
 #' @return c3
 #' @export

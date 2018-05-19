@@ -61,6 +61,13 @@ xAxis <- function(x, ...){
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
+#'   c3() %>%
+#'    xAxis(label = list(text = 'testing',
+#'                       position = 'inner-center'))
+#'   }
+#'
 xAxis.c3 <- function(c3, ...){
 
     x = list(show = TRUE,
@@ -81,12 +88,16 @@ xAxis.c3 <- function(c3, ...){
   x <- Filter(Negate(function(x) is.null(unlist(x))), x)
 
   # check data types match
-  if (x$type == 'timeseries' & c3$x$opts$types[c3$x$opts$x] != 'Date') {
+  if (x$type == 'timeseries') {
+    if (is.null(c3$x$opts$x)) {
+      warning('xaxis column must be set before type')
+    } else if (c3$x$opts$types[c3$x$opts$x] != 'Date') {
     warning('Axis type "timeseries" does not match data types')
     message(paste(sapply(names(c3$x$opts$types), function(x) {
       paste0(as.character(x), ": ",
              c3$x$opts$types[[x]])}),
       collapse = '\n'))
+    }
   }
 
   c3$x$axis$x <- x
@@ -94,7 +105,7 @@ xAxis.c3 <- function(c3, ...){
 }
 
 
-#' Modify plot elements that relate to the y-axis. S3 Method
+#' Modify plot elements that relate to the y-axis.
 #'
 #' This is an S3 method.
 #' @family axis
@@ -108,8 +119,6 @@ yAxis <- function(x, ...){
 yAxis.c3 <- function(c3, ...){
 
   y <- list(show = TRUE,
-            #type = 'indexed', # 'timeseries' or 'category'
-            #default = c(0, 1000) # used to setup plot space without data (not implimented here)
             inner = NULL, # show inside axis
             max = NULL,
             min = NULL,
@@ -141,8 +150,6 @@ y2Axis <- function(x, ...){
 y2Axis.c3 <- function(c3, ...){
 
   y2 <- list(show = TRUE,
-            #type = 'indexed', # 'timeseries' or 'category'
-            #default = c(0, 1000) # used to setup plot space without data (not implimented here)
             inner = NULL, # show inside axis
             max = NULL,
             min = NULL,
