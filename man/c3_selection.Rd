@@ -23,3 +23,13 @@ c3
 \description{
 Define options for selecting data within the plot area
 }
+\examples{
+\dontrun{
+data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
+  c3() \%>\%
+  c3_selection(cp,
+               enabled = TRUE,
+               multiple = TRUE)
+  }
+
+}

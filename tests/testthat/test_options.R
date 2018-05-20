@@ -96,6 +96,9 @@ test_that('axis tick options can be set', {
   expect_false(tky2$x$axis$y$tick$outer)
   expect_equal(tky2$x$axis$y$tick$count, 5)
 
+  expect_is(tky2, "c3")
+  expect_is(tky2, "htmlwidget")
+
 })
 
 
@@ -116,4 +119,54 @@ test_that('selection works as expected', {
 
   expect_is(sl$x$data$selection$isselectable, "JS_EVAL")
 
+  expect_is(sl, "c3")
+  expect_is(sl, "htmlwidget")
+
+  })
+
+
+
+## c3_chart_size()
+
+test_that('chart size options can be set', {
+
+  cp <- c3(d, x = 'date')
+
+  sz <- c3_chart_size(cp, left = 20, right = 20, top = 20, bottom = 20, width = 600, height = 200)
+
+  expect_equal(sz$x$size$height, 200)
+  expect_equal(sz$x$size$width, 600)
+
+  expect_equal(sz$x$padding$left, 20)
+  expect_equal(sz$x$padding$right, 20)
+  expect_equal(sz$x$padding$top, 20)
+  expect_equal(sz$x$padding$bottom, 20)
+
+  expect_is(sz, "c3")
+  expect_is(sz, "htmlwidget")
+
 })
+
+
+## point_options()
+
+test_that('point options can be set', {
+
+  cp <- c3(d, x = 'date')
+
+  pt <- point_options(cp, show = TRUE, r = 10, expand = TRUE, expand.r = 2, select.r = 15)
+
+  expect_true(pt$x$point$show)
+  expect_true(pt$x$point$focus$expand$enabled)
+
+  expect_equal(pt$x$point$focus$expand$r, 20) # r * expand.r
+  expect_equal(pt$x$point$r, 10)
+  expect_equal(pt$x$point$select$r, 150) # r * select.r
+
+  expect_is(pt, "c3")
+  expect_is(pt, "htmlwidget")
+
+})
+
+
+
