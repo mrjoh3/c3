@@ -37,14 +37,31 @@ test_that('bar plots settings can be set', {
 
 test_that("C3 line options can be set", {
 
-  c_l <- c3_line(cp, 'spline')
+  cl <- c3_line(cp, 'spline')
+  cs <- c3_line(cp, 'step', stacked = TRUE, step_type = 'step')
+  grp <- fromJSON(cs$x$data$groups)$value # indicates stacking
 
-  expect_equal(c_l$x$data$type, 'spline')
+  expect_error(c3_line(cp)) #line type not being defined
 
-  expect_is(c_l, "c3")
-  expect_is(c_l, "htmlwidget")
+  expect_equal(cl$x$data$type, 'spline')
+  expect_equal(cs$x$data$type, 'step')
+  expect_equal(grp, c("a","b","c","d"))
+
+  expect_is(cl, "c3")
+  expect_is(cl, "htmlwidget")
+
 })
 
+test_that('Null values can be connected', {
+
+  d = data.frame(a=c(1,2,3,2),b=c(2,NA,1,5))
+  p = c3(d)
+
+  cp <- c3_line(p, 'line', connectNull = TRUE)
+
+  expect_true(cp$x$line$connectNull)
+
+})
 
 ## c3_mixedgeometry
 

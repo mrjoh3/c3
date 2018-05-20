@@ -8,6 +8,8 @@ c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
   zerobased = TRUE)
 }
 \arguments{
+\item{c3}{c3 object}
+
 \item{rotated}{boolean}
 
 \item{bar_width}{numeric}
