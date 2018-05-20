@@ -25,5 +25,6 @@ Encoding: UTF-8
 RoxygenNote: 6.0.1
 Suggests: testthat,
     RColorBrewer,
-    knitr
+    knitr,
+    webshot
 VignetteBuilder: knitr
