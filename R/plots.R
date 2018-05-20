@@ -1,13 +1,39 @@
 
+
+#' @title Check groups for stacked plots
+#' @description For plots where stacking is required this function will
+#' define the columns to be stacked based on column headers.
+#'
+#' @param c3 c3 object
+#' @param stacked boolean
+#'
+#' @importFrom jsonlite fromJSON toJSON
+#'
+#' @return c3 object
+#'
+#' @examples
+check_stacked <- function(c3, stacked) {
+
+  if (stacked) {
+    group <- fromJSON(c3$x$data$keys)
+    if (!is.null(c3$x$x)) {
+      group <- group[-grep(c3$x$x, group)]
+    }
+    c3$x$data$groups <- toJSON(group)
+  }
+
+  return(c3)
+
+}
+
+
 #' @title Bar Plot
 #'
-#' @param c3
+#' @param c3 c3 object
 #' @param statcked boolean
 #' @param rotated boolean
 #' @param bar_width numeric
 #' @param zerobased boolean
-#'
-#' @importFrom jsonlite fromJSON toJSON
 #'
 #' @return c3
 #' @export
@@ -20,8 +46,6 @@
 #'   }
 #'
 c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zerobased = TRUE) {
-
-  require(jsonlite)
 
   c3$x$data$type <- 'bar'
 
@@ -41,14 +65,7 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
     #//width: 100 // this makes bar width 100px
   )
 
-  if (stacked) {
-    group <- fromJSON(c3$x$data$keys)
-    if (!is.null(c3$x$x)) {
-      group <- group[-grep(c3$x$x, group)]
-    }
-    c3$x$data$groups <- toJSON(group)
-  }
-
+  c3 <- check_stacked(c3, stacked)
 
   return(c3)
 
@@ -76,8 +93,6 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
 #'  \item{step-before}
 #' }
 #'
-#' @importFrom jsonlite fromJSON toJSON
-#'
 #' @return c3
 #' @export
 #'
@@ -93,13 +108,7 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
   stopifnot(type %in% c('line', 'spline', 'step', 'area', 'area-step'))
   c3$x$data$type <- type
 
-  if (stacked) {
-    group <- fromJSON(c3$x$data$keys)
-    if (!is.null(c3$x$x)) {
-      group <- group[-grep(c3$x$x, group)]
-    }
-    c3$x$data$groups <- toJSON(group)
-  }
+  c3 <- check_stacked(c3, stacked)
 
   line = list()
   if (connectNull) {line$connectNull = TRUE}
