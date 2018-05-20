@@ -321,10 +321,20 @@ c3_colour <- function(c3, colours, ...) {
 #' @param draggable boolean
 #' @param isselectable character js function, wrap character or character vector in JS()
 #'
+#' @importFrom htmlwidgets JS
+#'
 #' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
+#'   c3() %>%
+#'   c3_selection(cp,
+#'                enabled = TRUE,
+#'                multiple = TRUE)
+#'   }
+#'
 c3_selection <- function(c3, ...) {
 
   selection <- modifyList(
@@ -333,10 +343,14 @@ c3_selection <- function(c3, ...) {
       grouped = FALSE,
       multiple = FALSE,
       draggable = FALSE,
-      isselectable = NULL # takes a function to define selectable
+      isselectable = JS('function () { return true; }') # takes a function to define selectable
     ),
     list(...)
   )
+
+  if (class(selection$isselectable) != "JS_EVAL") {
+    selection$isselectable <- JS(selection$isselectable)
+  }
 
   c3$x$data$selection <- selection
 
