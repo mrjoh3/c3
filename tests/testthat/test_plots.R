@@ -69,11 +69,14 @@ test_that("C3 mixed geometry options can be set", {
 
   typs <- list(a='area',
                c='spline')
-  mg <- c3_mixedGeom(cp, types = typs)
+  stk <- c('b','d')
+  mg <- c3_mixedGeom(cp, types = typs, stacked = stk)
+  grp <- fromJSON(mg$x$data$groups) # indicates stacking
 
   expect_equal(mg$x$data$type, 'line') # default value
   expect_equal(mg$x$data$types$a, 'area')
   expect_equal(mg$x$data$types$c, 'spline')
+  expect_equal(grp, stk)
 
   expect_is(mg, "c3")
   expect_is(mg, "htmlwidget")
