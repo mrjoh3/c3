@@ -3,9 +3,9 @@ c3
 
 [![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778) [![Build Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3) [![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3)
 
-The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.
+The `C3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.
 
-The `c3` library is very versatile and includes a lot of options. Currently this package wraps most of the [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available.
+The `C3` library is very versatile and includes a lot of options. Currently this package wraps most of the `C3` [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available.
 
 Warning
 -------
@@ -275,9 +275,26 @@ data %>%
 On Click
 --------
 
-Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [c3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
+Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [C3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
 
 ``` r
 data %>% 
     c3(onclick = htmlwidgets::JS('function(d, element){console.log(d)}'))
 ```
+
+Tooltips
+--------
+
+`C3` tooltips are readily modified with the use of javascript functions. For further detail see the `C3.js` [documentation](http://c3js.org/reference.html#tooltip-format-title). Or for more advanced usage see the `C3.js` [examples](http://c3js.org/samples/tooltip_format.html) page.
+
+``` r
+library(htmlwidgets)
+
+data %>%
+  c3() %>%
+  tooltip(format = list(title = JS("function (x) { return 'Data ' + x; }"),
+                        name = JS('function (name, ratio, id, index) { return name; }'),
+                        value = JS('function (value, ratio, id, index) { return ratio; }')))
+```
+
+<img src="README_files/figure-markdown_github/tooltip-1.png" style="display: block; margin: auto;" />
