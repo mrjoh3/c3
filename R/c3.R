@@ -85,7 +85,7 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
   } else if (!is.null(x) & is.null(y)) {
 
     data <- data[, c(grep(x, colnames(data)),
-                     grep('numeric', sapply(data, class)))]
+                     grep('numeric|integer', sapply(data, class)))]
 
     # define x axis type
     dtype <- switch(class(data[,x]),
