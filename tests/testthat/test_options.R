@@ -72,3 +72,24 @@ test_that('second yaxis can be set', {
   expect_is(cy, "htmlwidget")
 
 })
+
+## tickAxis()
+
+test_that('axis tick options can be set', {
+
+  cp <- c3(d, x = 'date')
+
+  tkx <- tickAxis(cp, 'x', culling = list(max = 3), centered = FALSE, rotate = 45)
+  tky1 <- tickAxis(cp, 'y', values = c(0,10,20))
+  tky2 <- tickAxis(cp, 'y', count = 5, outer = FALSE)
+
+  expect_false(tkx$x$axis$x$tick$centered)
+  expect_equal(tkx$x$axis$x$tick$rotate, 45)
+  expect_equal(tkx$x$axis$x$tick$culling$max, 3)
+
+  expect_equal(tky1$x$axis$y$tick$values, c(0,10,20))
+
+  expect_false(tky2$x$axis$y$tick$outer)
+  expect_equal(tky2$x$axis$y$tick$count, 5)
+
+})
