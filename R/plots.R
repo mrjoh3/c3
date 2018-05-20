@@ -11,7 +11,6 @@
 #'
 #' @return c3 object
 #'
-#' @examples
 check_stacked <- function(c3, stacked) {
 
   if (stacked) {

@@ -3,6 +3,10 @@ d <- data.frame(a = abs(rnorm(20) * 10),
                 b = abs(rnorm(20) * 10),
                 date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
+
+context('options')
+
+
 test_that('xaxis options can be set', {
 
   cp <- c3(d, x = 'date')
@@ -91,5 +95,25 @@ test_that('axis tick options can be set', {
 
   expect_false(tky2$x$axis$y$tick$outer)
   expect_equal(tky2$x$axis$y$tick$count, 5)
+
+})
+
+
+
+## c3_selection()
+
+test_that('selection works as expected', {
+
+  cp <- c3(d, x = 'date')
+
+  sl <- c3_selection(cp, enabled = TRUE, multiple = TRUE)
+
+  expect_true(sl$x$data$selection$enabled)
+  expect_true(sl$x$data$selection$multiple)
+
+  expect_false(sl$x$data$selection$grouped)
+  expect_false(sl$x$data$selection$draggable)
+
+  expect_is(sl$x$data$selection$isselectable, "JS_EVAL")
 
 })

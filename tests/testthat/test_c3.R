@@ -8,6 +8,9 @@ d$d = abs(rnorm(20) *10)
 cp <- c3(d)
 
 
+context('main package')
+
+
 
 test_that("a simple plot works", {
   expect_is(cp, "c3")

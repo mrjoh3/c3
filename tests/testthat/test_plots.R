@@ -9,6 +9,10 @@ d$d = abs(rnorm(20) *10)
 cp <- c3(d)
 
 
+context('plots')
+
+
+
 ## c3_bar()
 
 test_that("bar plots works", {
