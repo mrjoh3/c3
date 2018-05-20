@@ -7,13 +7,23 @@
 c3_viridis(c3, pal = "D", ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{pal}{character palette options}
 
-\item{...}{}
+\item{...}{all variable passed using ...}
 }
 \value{
 c3
 }
 \description{
-Viridis Palette
+Use Viridis palette options
+}
+\examples{
+\dontrun{
+data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
+  c3() \%>\%
+  c3_viridis()
+  }
+
 }

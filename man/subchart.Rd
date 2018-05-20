@@ -7,7 +7,8 @@
 subchart(x, ...)
 }
 \description{
-This is an S3 method.
+Subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
+experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation}). This is an S3 method.
 }
 \seealso{
 Other subchart: \code{\link{subchart.c3}}

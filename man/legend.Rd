@@ -2,13 +2,13 @@
 % Please edit documentation in R/legend.R
 \name{legend}
 \alias{legend}
-\title{Modify plot elements that relate to the legend.}
+\title{C3 Legend Options}
 \usage{
 legend(x, ...)
 }
 \description{
-This is an S3 method. The c3 legend is on by default, this function allows the
-legend to be removed, or other legend attributes to be set.
+Modify plot elements that relate to the legend. The c3 legend is on by default, this function allows the
+legend to be removed, or other legend attributes to be set. This is an S3 method.
 }
 \seealso{
 Other legend: \code{\link{legend.c3}}

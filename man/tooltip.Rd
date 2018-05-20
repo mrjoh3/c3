@@ -2,12 +2,12 @@
 % Please edit documentation in R/tooltip.R
 \name{tooltip}
 \alias{tooltip}
-\title{Modify plot elements that relate to tooltips.}
+\title{C3 Tooltips}
 \usage{
 tooltip(x, ...)
 }
 \description{
-This is an S3 method.
+Modify plot elements that relate to tooltips. This is an S3 method.
 }
 \seealso{
 Other tooltip: \code{\link{tooltip.c3}}

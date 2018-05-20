@@ -4,18 +4,26 @@
 \alias{RColorBrewer.c3}
 \title{RColorBrewer Palette}
 \usage{
-\method{RColorBrewer}{c3}(c3, pal = "Spectral", ...)
+\method{RColorBrewer}{c3}(c3, pal = "Spectral")
 }
 \arguments{
-\item{pal}{character palette must match `RColorBrewer::brewer.pal.info`}
+\item{c3}{c3 htmlwidget object}
 
-\item{...}{}
+\item{pal}{character palette must match `RColorBrewer::brewer.pal.info`}
 }
 \value{
 c3
 }
 \description{
-RColorBrewer Palette
+Use RColorBrewer palettes
+}
+\examples{
+\dontrun{
+data.frame(a = c(1,2,3,2), b = c(2,4,1,5), c = c(5,3,4,1)) \%>\%
+  c3() \%>\%
+  RColorBrewer()
+  }
+
 }
 \seealso{
 Other c3: \code{\link{c3}}, \code{\link{grid.c3}},

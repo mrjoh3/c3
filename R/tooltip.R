@@ -1,19 +1,20 @@
 
 
 
-#' Modify plot elements that relate to tooltips.
+#' @title C3 Tooltips
+#' @description Modify plot elements that relate to tooltips. This is an S3 method.
 #'
-#' This is an S3 method.
 #' @family tooltip
 #' @export
 tooltip <- function(x, ...){
   UseMethod('tooltip')
 }
 
-#' Title
+#' @title C3 Tooltips
+#' @description Modify plot elements that relate to tooltips. C3.js documentation contains an \href{http://c3js.org/samples/tooltip_format.html}{extended example}.
 #'
-#' @param c3
-#' @param show boolean
+#' @param c3 c3 htmlwidget object
+#' @param show boolean show or hide tooltips
 #' @param grouped boolean
 #' @param format list with options:
 #' \itemize{
@@ -30,14 +31,26 @@ tooltip <- function(x, ...){
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data <- data.frame(a = abs(rnorm(20) *10),
+#'                    b = abs(rnorm(20) *10)
+#'                    c = abs(rnorm(20) *10),
+#'                    d = abs(rnorm(20) *10))
+#' data %>%
+#'   c3() %>%
+#'   tooltip(format = list(title = JS('function (x) { return 'Data ' + x; }'),
+#'                         name = JS('function (name, ratio, id, index) { return name; }'),
+#'                         value = JS('function (value, ratio, id, index) { return ratio; }')))
+#' }
+#'
 tooltip.c3 <- function(c3, ...){
 
   tooltip <- list(show = TRUE,
-               grouped = TRUE,
-               format = NULL,
-               position = NULL,
-               contents = NULL
-  )
+                   grouped = TRUE,
+                   format = NULL,
+                   position = NULL,
+                   contents = NULL
+      )
 
   tooltip <- modifyList(tooltip, list(...))
 

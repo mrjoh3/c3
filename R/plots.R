@@ -4,7 +4,7 @@
 #' @description For plots where stacking is required this function will
 #' define the columns to be stacked based on column headers.
 #'
-#' @param c3 c3 object
+#' @param c3 c3 htmlwidget object
 #' @param stacked boolean
 #'
 #' @importFrom jsonlite fromJSON toJSON
@@ -27,11 +27,12 @@ check_stacked <- function(c3, stacked) {
 
 
 #' @title Bar Plot
+#' @description Add bars to a C3 plot
 #'
-#' @param c3 c3 object
-#' @param statcked boolean
-#' @param rotated boolean
-#' @param bar_width numeric
+#' @param c3 c3 htmlwidget object
+#' @param stacked boolean place bars on top of each other
+#' @param rotated boolean use to make x-axis vertical
+#' @param bar_width numeric pixel width of bars
 #' @param zerobased boolean
 #'
 #' @return c3
@@ -41,7 +42,7 @@ check_stacked <- function(c3, stacked) {
 #'\dontrun{
 #' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
 #'   c3() %>%
-#'   c3_bar()
+#'   c3_bar(stacked = TRUE)
 #'   }
 #'
 c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zerobased = TRUE) {
@@ -60,8 +61,6 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
     width = list(
       ratio = bar_width #// this makes bar width 50% of length between ticks
     )
-    #// or
-    #//width: 100 // this makes bar width 100px
   )
 
   c3 <- check_stacked(c3, stacked)
@@ -73,8 +72,9 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
 
 
 #' @title Line Plot
+#' @description Add lines to a C3 plot
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param type character type of line plot. Must be one of:
 #' \itemize{
 #'  \item{line}
@@ -124,9 +124,10 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 
 
 #' @title Mixed Geometry Plots
+#' @description Use multiple geometry types in a single plot
 #'
-#' @param c3
-#' @param type
+#' @param c3 c3 htmlwidget object
+#' @param type character default plot type where not defined
 #' @param types list containing key value pairs of column header and plot type
 #' @param stacked character vector of column headers to stack
 #'
@@ -171,11 +172,11 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 
 
 #' @title Scatter Plots
+#' @description For scatter plots options are defined in the `c3` function. OPtions are limited to x, y and groups
 #'
-#' @param c3
-#' @param ...
+#' @param c3 c3 htmlwidget object
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
@@ -187,7 +188,7 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 #'     c3_scatter()
 #'   }
 #'
-c3_scatter <- function(c3, ...) {
+c3_scatter <- function(c3) {
 
   # take a two column dataframe x and y, if third charactor/factor column group
   # might need to add data here or add groupby option to c3() later prob best
@@ -207,19 +208,20 @@ c3_scatter <- function(c3, ...) {
 
 
 #' @title Pie Charts
+#' @description C3 Pie Charts
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param expand boolean expand segment on hover
 #' @param show boolean show labels
 #' @param threshold numeric proportion of segment to hide label
 #' @param format character label js function, wrap character or character vector in JS()
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
-#'\dontrun{
-#' data.frame(red=20,green=45,blue=10) %>%
+#' \dontrun{
+#' data.frame(red = 20, green = 45, blue = 10) %>%
 #'   c3() %>%
 #'   c3_pie()
 #'   }
@@ -253,8 +255,9 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 
 
 #' @title Donut Charts
+#' @description Create simple Donut charts
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param expand boolean expand segment on hover
 #' @param title character
 #' @param width integer pixels width of donut
@@ -262,7 +265,7 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 #' @param threshold numeric proportion of segment to hide label
 #' @param format character label js function, wrap character or character vector in JS()
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
@@ -309,8 +312,8 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 
 
 #' @title Gauge Charts
-#'
-#' @param c3
+#' @description Create simple Guage Charts
+#' @param c3 c3 htmlwidget object
 #' @param label list with options:
 #' \itemize{
 #'  \item{show}{: boolean}
@@ -327,13 +330,13 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 #'  \item{max}{: numeric}
 #'  \item{values}{: numeric vector of threhold values for color change}
 #' }
-#' @param ...
+#' @param ... all variable passed using ...
 #'
-#' @return
+#' @return c3
 #' @export
 #'
 #' @examples
-#'\dontrun{
+#' \dontrun{
 #' data.frame(data=10) %>%
 #'   c3() %>%
 #'   c3_gauge(title = 'Colors')

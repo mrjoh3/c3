@@ -7,6 +7,8 @@
 c3_selection(c3, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{enabled}{boolean}
 
 \item{groued}{boolean}
@@ -25,7 +27,7 @@ Define options for selecting data within the plot area
 }
 \examples{
 \dontrun{
-data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
+data.frame(a = c(1,2,3,2), b = c(2,3,1,5)) \%>\%
   c3() \%>\%
   c3_selection(cp,
                enabled = TRUE,

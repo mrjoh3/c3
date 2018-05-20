@@ -2,12 +2,12 @@
 % Please edit documentation in R/zoom.R
 \name{zoom}
 \alias{zoom}
-\title{Modify zoom}
+\title{Add C3 Zoom}
 \usage{
 zoom(x, ...)
 }
 \description{
-This is an S3 method.
+Enable chart Zoom. This is an S3 method.
 }
 \seealso{
 Other zoom: \code{\link{zoom.c3}}

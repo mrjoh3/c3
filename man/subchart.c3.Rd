@@ -7,6 +7,8 @@
 \method{subchart}{c3}(c3, height = 20, onbrush = NULL)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{height}{integer pixels}
 
 \item{onbrush}{character js function, wrap character or character vector in JS()}
@@ -15,8 +17,8 @@
 c3
 }
 \description{
-subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
-experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation})
+Subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
+experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation}).
 }
 \examples{
 \dontrun{

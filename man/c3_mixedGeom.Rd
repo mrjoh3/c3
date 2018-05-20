@@ -7,12 +7,19 @@
 c3_mixedGeom(c3, types, type = "line", stacked = NULL)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{types}{list containing key value pairs of column header and plot type}
+
+\item{type}{character default plot type where not defined}
 
 \item{stacked}{character vector of column headers to stack}
 }
 \value{
 c3
+}
+\description{
+Use multiple geometry types in a single plot
 }
 \examples{
 \dontrun{

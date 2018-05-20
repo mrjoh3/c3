@@ -2,11 +2,13 @@
 % Please edit documentation in R/legend.R
 \name{legend.c3}
 \alias{legend.c3}
-\title{Title}
+\title{C3 Legend Options}
 \usage{
 \method{legend}{c3}(c3, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{...}{all variables passed via ...}
 
 \item{hide}{boolean or character of parameters to hide}
@@ -32,7 +34,8 @@
 c3
 }
 \description{
-Title
+Modify plot elements that relate to the legend. The c3 legend is on by default, this function allows the
+legend to be removed, or other legend attributes to be set.
 }
 \examples{
 \dontrun{

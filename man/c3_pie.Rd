@@ -7,6 +7,8 @@
 c3_pie(c3, expand = TRUE, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{expand}{boolean expand segment on hover}
 
 \item{show}{boolean show labels}
@@ -15,9 +17,15 @@ c3_pie(c3, expand = TRUE, ...)
 
 \item{format}{character label js function, wrap character or character vector in JS()}
 }
+\value{
+c3
+}
+\description{
+C3 Pie Charts
+}
 \examples{
 \dontrun{
-data.frame(red=20,green=45,blue=10) \%>\%
+data.frame(red = 20, green = 45, blue = 10) \%>\%
   c3() \%>\%
   c3_pie()
   }

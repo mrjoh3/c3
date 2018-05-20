@@ -4,7 +4,7 @@
 \alias{xAxis.c3}
 \alias{yAxis.c3}
 \alias{y2Axis.c3}
-\title{C3 xaxis}
+\title{C3 Axis}
 \usage{
 \method{xAxis}{c3}(c3, ...)
 
@@ -13,6 +13,10 @@
 \method{y2Axis}{c3}(c3, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
+\item{...}{all variable passed using ... all variable passed via ...}
+
 \item{show}{boolean}
 
 \item{type}{character on of 'indexed', timeseries' or 'category'}

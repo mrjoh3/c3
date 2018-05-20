@@ -7,9 +7,11 @@
 tickAxis(c3, axis, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{axis}{character 'x', 'y' or 'y2' axis}
 
-\item{...}{}
+\item{...}{all variable passed using ...}
 
 \item{centered}{boolean (x-axis only)}
 
@@ -30,4 +32,15 @@ option effects tick labels  (x-axis only)}
 }
 \value{
 c3
+}
+\description{
+Modify axis tick formatting options
+}
+\examples{
+\dontrun{
+data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
+  c3() \%>\%
+  tickAxis('y', values = c(1,3))
+  }
+
 }

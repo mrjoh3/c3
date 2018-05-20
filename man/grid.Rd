@@ -2,12 +2,12 @@
 % Please edit documentation in R/grid.R
 \name{grid}
 \alias{grid}
-\title{Modify grid and line elements on both x and y axis}
+\title{C3 Grid}
 \usage{
 grid(x, ...)
 }
 \description{
-This is an S3 method.
+Modify grid and line elements on both x and y axis. This is an S3 method.
 }
 \seealso{
 Other grid: \code{\link{grid.c3}}

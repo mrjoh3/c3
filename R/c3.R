@@ -10,15 +10,16 @@
 #' @param onmouseout character js function, wrap character or character vector in JS()
 #' @param axes list, use to assign plot elements to secondary y axis
 #' @importFrom utils modifyList
-#' @importFrom dplyr mutate
-#' @importFrom data.table dcast
+#' @importFrom dplyr mutate select n
+#' @importFrom data.table dcast setDT
+#' @importFrom stats formula
 #' @importFrom lazyeval interp
 #' @family c3
 #' @export
 #'
 #' @examples
 #'\dontrun{
-#' data <- data.frame(a=c(1,2,3,2),b=c(2,3,1,5))
+#' data <- data.frame(a = c(1,2,3,2), b = c(2,3,1,5))
 #'
 #' data %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){console.log(d)}"))
@@ -28,7 +29,7 @@
 #'                  b = 'y2')) %>%
 #'   y2Axis()
 #'
-#' data.frame(sugar=20,fat=45,salt=10) %>%
+#' data.frame(sugar = 20, fat = 45, salt = 10) %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) %>%
 #'   c3_pie()
 #'   }

@@ -3,9 +3,9 @@
 
 
 
-#' Modify plot elements that relate to the x-axis.
+#' @title C3 xaxis
+#' @description Modify plot elements that relate to the axis. This is an S3 method.
 #'
-#' This is an S3 method.
 #' @family xAxis
 #' @export
 xAxis <- function(x, ...){
@@ -13,11 +13,10 @@ xAxis <- function(x, ...){
 }
 
 
-#' @title C3 xaxis
+#' @title C3 Axis
 #' @description Modify plot elements that relate to the axis.
 #'
-#' @param c3
-#' @param ...
+#' @param c3 c3 htmlwidget object
 #' @param show boolean
 #' @param type character on of 'indexed', timeseries' or 'category'
 #' @param localtime boolean
@@ -55,6 +54,8 @@ xAxis <- function(x, ...){
 #'  \item{outer-middle}
 #'  \item{outer-bottom}
 #' }
+#' @param ... all variable passed using ... all variable passed via ...
+#'
 #' @family c3
 #' @family axis
 #' @return c3
@@ -105,9 +106,9 @@ xAxis.c3 <- function(c3, ...){
 }
 
 
-#' Modify plot elements that relate to the y-axis.
+#' @title C3 yaxis
+#' @description Modify plot elements that relate to the y-axis. This is an S3 method.
 #'
-#' This is an S3 method.
 #' @family axis
 #' @export
 yAxis <- function(x, ...){
@@ -136,9 +137,9 @@ yAxis.c3 <- function(c3, ...){
   return(c3)
 }
 
-#' Modify plot elements that relate to the second y-axis. S3 Method
+#' @title C3 y2axis
+#' @description Modify plot elements that relate to the second y-axis. This is an S3 method.
 #'
-#' This is an S3 method.
 #' @family axis
 #' @export
 y2Axis <- function(x, ...){
@@ -168,8 +169,9 @@ y2Axis.c3 <- function(c3, ...){
 }
 
 #' @title Axis Tick Options
+#' @description Modify axis tick formatting options
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param axis character 'x', 'y' or 'y2' axis
 #' @param centered boolean (x-axis only)
 #' @param format character js function, wrap character or character vector in JS()
@@ -180,12 +182,18 @@ y2Axis.c3 <- function(c3, ...){
 #' @param values vector. Must match axis format type
 #' @param rotate integer degrees to rotate labels  (x-axis only)
 #' @param outer boolean show axis outer tick
-#' @param ...
+#' @param ... all variable passed using ...
 #'
 #' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   tickAxis('y', values = c(1,3))
+#'   }
+#'
 tickAxis <- function(c3, axis,  ...) {
 
   stopifnot(!missing(axis),
@@ -216,20 +224,20 @@ tickAxis <- function(c3, axis,  ...) {
   return(c3)
 }
 
-#' RColorBrewer Palette S3 Method
+#' @title RColorBrewer Palette
+#' @description Use RColorBrewer palettes. This is an S3 method.
 #'
-#' This is an S3 method.
 #' @family RColorBrewer
 #' @export
 RColorBrewer <- function(x, ...){
   UseMethod('RColorBrewer')
 }
 
-#' RColorBrewer Palette
+#' @title RColorBrewer Palette
+#' @description Use RColorBrewer palettes
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param pal character palette must match `RColorBrewer::brewer.pal.info`
-#' @param ...
 #'
 #' @importFrom jsonlite fromJSON
 #'
@@ -239,7 +247,13 @@ RColorBrewer <- function(x, ...){
 #' @export
 #'
 #' @examples
-RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5), c = c(5,3,4,1)) %>%
+#'   c3() %>%
+#'   RColorBrewer()
+#'   }
+#'
+RColorBrewer.c3 <- function(c3, pal='Spectral') {
 
   n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
 
@@ -249,10 +263,6 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
     }
   }
 
-  #colors <- list() # list of colours per parameter
-  #color <- '' #js function
-
-  #c3$x$data$colors <- colors
   c3$x$color$pattern <- RColorBrewer::brewer.pal(n, pal)
 
   return(c3)
@@ -261,21 +271,29 @@ RColorBrewer.c3 <- function(c3, pal='Spectral', ...) {
 
 
 
-#' Viridis Palette
+#' @title Viridis Palette
+#' @description Use Viridis palette options
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param pal character palette options
-#' @param ...
+#' @param ... all variable passed using ...
 #'
 #' @importFrom jsonlite fromJSON
+#' @importFrom viridis viridis
 #'
 #' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   c3_viridis()
+#'   }
+#'
 c3_viridis <- function(c3, pal='D', ...) {
 
-  n <- length(jsonlite::fromJSON(c3$x$data$keys)$value)
+  n <- length(fromJSON(c3$x$data$keys)$value)
 
   if (!is.null(c3$x$data$type)) {
     if (c3$x$data$type == 'scatter') {
@@ -283,25 +301,28 @@ c3_viridis <- function(c3, pal='D', ...) {
     }
   }
 
-  #colors <- list() # list of colours per parameter
-  #color <- '' #js function
-
-  #c3$x$data$colors <- colors
-  c3$x$color$pattern <- strtrim(viridis::viridis(n, option = pal), 7)
+  c3$x$color$pattern <- strtrim(viridis(n, option = pal), 7)
 
   return(c3)
 }
 
 #' @title Colour Palette
+#' @description Manually assign colours
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param colours character vector of colours
-#' @param ...
+#' @param ... all variable passed using ... all variable passed using ...
 #'
 #' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   c3_colour(c('red','black'))
+#'   }
+#'
 c3_colour <- function(c3, colours, ...) {
 
   c3$x$color$pattern <- colours
@@ -310,11 +331,35 @@ c3_colour <- function(c3, colours, ...) {
 }
 
 
+#' @title Color Palette
+#' @description Manually assign colors
+#'
+#' @param c3 c3 htmlwidget object
+#' @param colours character vector of colors
+#' @param ... all variable passed using ... all variable passed using ...
+#'
+#' @return c3
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   c3_color(c('red','black'))
+#'   }
+#'
+c3_color <- function(c3, colors, ...) {
+
+  c3$x$color$pattern <- colors
+
+  return(c3)
+}
+
 
 #' @title Data Select
 #'
 #' @description Define options for selecting data within the plot area
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param enabled boolean
 #' @param groued boolean
 #' @param multiple boolean
@@ -328,7 +373,7 @@ c3_colour <- function(c3, colours, ...) {
 #'
 #' @examples
 #' \dontrun{
-#' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
+#' data.frame(a = c(1,2,3,2), b = c(2,3,1,5)) %>%
 #'   c3() %>%
 #'   c3_selection(cp,
 #'                enabled = TRUE,
@@ -364,7 +409,7 @@ c3_selection <- function(c3, ...) {
 #'
 #' @description Modify the size of the chart within the htmlwidget area. Generally charts size
 #' to the div in which they are placed. These options enable finer scale sizing with the div
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param left integer padding pixels
 #' @param right integer padding pixels
 #' @param top integer padding pixels
@@ -376,6 +421,12 @@ c3_selection <- function(c3, ...) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   c3_chart_size(width = 600, height = 200)
+#'   }
+#'
 c3_chart_size <- function(c3, ...) {
 
   padding <- modifyList(
@@ -404,18 +455,23 @@ c3_chart_size <- function(c3, ...) {
 #' @title Point Options
 #'
 #' @description Modify point options
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param show boolean
 #' @param r numeric radius of point
 #' @param expand boolean
 #' @param expand.r numeric multiplier for radius expansion
 #' @param select.r numeric multiplier for radius expansion
-
 #'
 #' @return c3
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
+#'   c3() %>%
+#'   point_options(r = 5, expand.r = 2)
+#'   }
+#'
 point_options <- function(c3,
                           show = TRUE,
                           r = 2.5,

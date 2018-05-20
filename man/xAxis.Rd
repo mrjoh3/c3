@@ -2,10 +2,10 @@
 % Please edit documentation in R/options.R
 \name{xAxis}
 \alias{xAxis}
-\title{Modify plot elements that relate to the x-axis.}
+\title{C3 xaxis}
 \usage{
 xAxis(x, ...)
 }
 \description{
-This is an S3 method.
+Modify plot elements that relate to the axis. This is an S3 method.
 }

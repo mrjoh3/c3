@@ -7,7 +7,9 @@
 c3_gauge(c3, ...)
 }
 \arguments{
-\item{...}{}
+\item{c3}{c3 htmlwidget object}
+
+\item{...}{all variable passed using ...}
 
 \item{label}{list with options:
 \itemize{
@@ -31,6 +33,12 @@ c3_gauge(c3, ...)
  \item{max}{: numeric}
  \item{values}{: numeric vector of threhold values for color change}
 }}
+}
+\value{
+c3
+}
+\description{
+Create simple Guage Charts
 }
 \examples{
 \dontrun{

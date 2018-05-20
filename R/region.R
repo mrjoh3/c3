@@ -3,8 +3,8 @@
 
 
 #' @title Modify region elements on both x and y axis
+#' @description This is an S3 method. Regions are defined in multiple axis by passing a single `data.frame`. This is an S3 method.
 #'
-#' @description This is an S3 method. Regions are defined in multiple axis by passing a single `data.frame`
 #' @family region
 #' @export
 region <- function(x, ...){
@@ -13,7 +13,7 @@ region <- function(x, ...){
 
 #' @title Modify region elements on both x and y axis
 #' @description Regions are defined in multiple axis by passing a single `data.frame`
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param regions data.frame with columns:
 #' \itemize{
 #'  \item{axis}{: character one of 'x', 'y', 'y2'}

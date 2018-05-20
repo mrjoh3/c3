@@ -2,12 +2,12 @@
 % Please edit documentation in R/options.R
 \name{RColorBrewer}
 \alias{RColorBrewer}
-\title{RColorBrewer Palette S3 Method}
+\title{RColorBrewer Palette}
 \usage{
 RColorBrewer(x, ...)
 }
 \description{
-This is an S3 method.
+Use RColorBrewer palettes. This is an S3 method.
 }
 \seealso{
 Other RColorBrewer: \code{\link{RColorBrewer.c3}}

@@ -8,24 +8,27 @@ c3_bar(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6,
   zerobased = TRUE)
 }
 \arguments{
-\item{c3}{c3 object}
+\item{c3}{c3 htmlwidget object}
 
-\item{rotated}{boolean}
+\item{stacked}{boolean place bars on top of each other}
 
-\item{bar_width}{numeric}
+\item{rotated}{boolean use to make x-axis vertical}
+
+\item{bar_width}{numeric pixel width of bars}
 
 \item{zerobased}{boolean}
-
-\item{statcked}{boolean}
 }
 \value{
 c3
+}
+\description{
+Add bars to a C3 plot
 }
 \examples{
 \dontrun{
 data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
   c3() \%>\%
-  c3_bar()
+  c3_bar(stacked = TRUE)
   }
 
 }

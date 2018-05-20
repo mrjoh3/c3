@@ -7,7 +7,7 @@
 check_stacked(c3, stacked)
 }
 \arguments{
-\item{c3}{c3 object}
+\item{c3}{c3 htmlwidget object}
 
 \item{stacked}{boolean}
 }

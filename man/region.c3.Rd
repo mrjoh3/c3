@@ -7,6 +7,8 @@
 \method{region}{c3}(c3, regions)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{regions}{data.frame with columns:
 \itemize{
  \item{axis}{: character one of 'x', 'y', 'y2'}

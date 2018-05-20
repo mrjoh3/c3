@@ -2,14 +2,16 @@
 % Please edit documentation in R/zoom.R
 \name{zoom.c3}
 \alias{zoom.c3}
-\title{Add Zoom}
+\title{Add C3 Zoom}
 \usage{
 \method{zoom}{c3}(c3, ...)
 }
 \arguments{
-\item{enabled}{boolean}
+\item{c3}{c3 htmlwidget object}
 
-\item{rescale}{boolean}
+\item{enabled}{boolean default is TRUE}
+
+\item{rescale}{boolean rescale axis when zooming}
 
 \item{extent}{numeric vector}
 
@@ -23,14 +25,13 @@
 c3
 }
 \description{
-Enable chart Zoom
+Enable chart Zoom.
 }
 \examples{
 \dontrun{
 data.frame(a = abs(rnorm(20) * 10),
-           b = abs(rnorm(20) * 10),
-           date = seq(as.Date("2014-01-01"), by = "month", length.out = 20)) \%>\%
-     c3(x = 'date') \%>\%
+           b = abs(rnorm(20) * 10)) \%>\%
+     c3() \%>\%
      zoom()
 }
 

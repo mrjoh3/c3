@@ -4,10 +4,16 @@
 \alias{c3_scatter}
 \title{Scatter Plots}
 \usage{
-c3_scatter(c3, ...)
+c3_scatter(c3)
 }
 \arguments{
-\item{...}{}
+\item{c3}{c3 htmlwidget object}
+}
+\value{
+c3
+}
+\description{
+For scatter plots options are defined in the `c3` function. OPtions are limited to x, y and groups
 }
 \examples{
 \dontrun{

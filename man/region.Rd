@@ -7,7 +7,7 @@
 region(x, ...)
 }
 \description{
-This is an S3 method. Regions are defined in multiple axis by passing a single `data.frame`
+This is an S3 method. Regions are defined in multiple axis by passing a single `data.frame`. This is an S3 method.
 }
 \seealso{
 Other region: \code{\link{region.c3}}

@@ -4,7 +4,8 @@
 
 #' @title Add subchart
 #'
-#' @description This is an S3 method.
+#' @description Subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
+#' experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation}). This is an S3 method.
 #' @family subchart
 #' @export
 subchart <- function(x, ...){
@@ -12,9 +13,9 @@ subchart <- function(x, ...){
 }
 
 #' @title Add Subchart
-#' @description subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
-#' experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation})
-#' @param c3
+#' @description Subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
+#' experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation}).
+#' @param c3 c3 htmlwidget object
 #' @param height integer pixels
 #' @param onbrush character js function, wrap character or character vector in JS()
 #'

@@ -7,6 +7,8 @@
 c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{type}{character type of line plot. Must be one of:
 \itemize{
  \item{line}
@@ -29,6 +31,9 @@ c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL)
 }
 \value{
 c3
+}
+\description{
+Add lines to a C3 plot
 }
 \examples{
 \dontrun{

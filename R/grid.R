@@ -1,18 +1,18 @@
 
 
 
-#' Modify grid and line elements on both x and y axis
-#'
-#' This is an S3 method.
+#' @title C3 Grid
+#' @description Modify grid and line elements on both x and y axis. This is an S3 method.
 #' @family grid
 #' @export
 grid <- function(x, ...){
   UseMethod('grid')
 }
 
-#' Title
+#' @title C3 Grid
+#' @description Modify grid and line elements on both x and y axis
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param axis character 'x' or 'y'
 #' @param show boolean
 #' @param lines dataframe with options:

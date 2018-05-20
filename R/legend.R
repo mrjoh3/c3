@@ -1,18 +1,20 @@
 
 
-#' Modify plot elements that relate to the legend.
+#' @title C3 Legend Options
+#' @description Modify plot elements that relate to the legend. The c3 legend is on by default, this function allows the
+#' legend to be removed, or other legend attributes to be set. This is an S3 method.
 #'
-#' This is an S3 method. The c3 legend is on by default, this function allows the
-#' legend to be removed, or other legend attributes to be set.
 #' @family legend
 #' @export
 legend <- function(x, ...){
   UseMethod('legend')
 }
 
-#' Title
+#' @title C3 Legend Options
+#' @description Modify plot elements that relate to the legend. The c3 legend is on by default, this function allows the
+#' legend to be removed, or other legend attributes to be set.
 #'
-#' @param c3
+#' @param c3 c3 htmlwidget object
 #' @param hide boolean or character of parameters to hide
 #' @param position character one of 'bottom', 'right', 'inset'
 #' @param inset list with options:

@@ -2,11 +2,13 @@
 % Please edit documentation in R/grid.R
 \name{grid.c3}
 \alias{grid.c3}
-\title{Title}
+\title{C3 Grid}
 \usage{
 \method{grid}{c3}(c3, axis, ...)
 }
 \arguments{
+\item{c3}{c3 htmlwidget object}
+
 \item{axis}{character 'x' or 'y'}
 
 \item{show}{boolean}
@@ -23,7 +25,7 @@
 c3
 }
 \description{
-Title
+Modify grid and line elements on both x and y axis
 }
 \examples{
 \dontrun{

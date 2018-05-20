@@ -2,12 +2,12 @@
 % Please edit documentation in R/options.R
 \name{y2Axis}
 \alias{y2Axis}
-\title{Modify plot elements that relate to the second y-axis. S3 Method}
+\title{C3 y2axis}
 \usage{
 y2Axis(x, ...)
 }
 \description{
-This is an S3 method.
+Modify plot elements that relate to the second y-axis. This is an S3 method.
 }
 \seealso{
 Other axis: \code{\link{xAxis.c3}}, \code{\link{yAxis}}
