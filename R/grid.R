@@ -22,6 +22,7 @@ grid <- function(x, ...){
 #'  \item{class}{: character css class (optional)}
 #'  \item{position}{: character one of 'start', 'middle', 'end' (optional)}
 #' }
+#' @param ... additional options passed to the grid object
 #'
 #' @family c3
 #' @family grid
@@ -38,13 +39,18 @@ grid <- function(x, ...){
 #'                                       text= c('Line 1','Line 2')))
 #' }
 #'
-grid.c3 <- function(c3, axis, ...){
+grid.c3 <- function(c3,
+                    axis,
+                    show = TRUE,
+                    lines = NULL, # show inside axis
+                    ticks = NULL,
+                    ...){
 
   stopifnot(!missing(axis))
 
-  grid <- list(show = TRUE,
-               lines = NULL, # show inside axis
-               ticks = NULL # only for yAxis
+  grid <- list(show = show,
+               lines = lines, # show inside axis
+               ticks = ticks # only for yAxis
   )
 
   grid <- modifyList(grid, list(...))
