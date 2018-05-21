@@ -4,7 +4,7 @@
 \alias{grid.c3}
 \title{C3 Grid}
 \usage{
-\method{grid}{c3}(c3, axis, ...)
+\method{grid}{c3}(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -20,6 +20,8 @@
  \item{class}{: character css class (optional)}
  \item{position}{: character one of 'start', 'middle', 'end' (optional)}
 }}
+
+\item{...}{additional options passed to the grid object}
 }
 \value{
 c3

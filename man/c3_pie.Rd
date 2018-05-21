@@ -4,18 +4,21 @@
 \alias{c3_pie}
 \title{Pie Charts}
 \usage{
-c3_pie(c3, expand = TRUE, ...)
+c3_pie(c3, show = TRUE, threshold = NULL, format = NULL, expand = TRUE,
+  ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
-
-\item{expand}{boolean expand segment on hover}
 
 \item{show}{boolean show labels}
 
 \item{threshold}{numeric proportion of segment to hide label}
 
 \item{format}{character label js function, wrap character or character vector in JS()}
+
+\item{expand}{boolean expand segment on hover}
+
+\item{...}{additional values passed to the pie label object}
 }
 \value{
 c3
