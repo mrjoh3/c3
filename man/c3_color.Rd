@@ -4,12 +4,10 @@
 \alias{c3_color}
 \title{Color Palette}
 \usage{
-c3_color(c3, colors, ...)
+c3_color(c3, colors)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
-
-\item{...}{all variable passed using ... all variable passed using ...}
 
 \item{colours}{character vector of colors}
 }

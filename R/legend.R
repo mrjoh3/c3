@@ -30,7 +30,7 @@ legend <- function(x, ...){
 #'  \item{onmouseover}{: character js function, wrap character or character vector in JS()}
 #'  \item{onmouseout}{: character js function, wrap character or character vector in JS()}
 #' }
-#' @param ... all variables passed via ...
+#' @param ... additional options passed to the legend object
 #'
 #' @family c3
 #' @family legend
@@ -45,12 +45,17 @@ legend <- function(x, ...){
 #'  legend(position = 'right')
 #' }
 #'
-legend.c3 <- function(c3, ...){
+legend.c3 <- function(c3,
+                      hide = FALSE,
+                      position = NULL,
+                      inset = NULL,
+                      item = NULL,
+                      ...){
 
-  legend <- list(hide = FALSE,
-               position = NULL,
-               inset = NULL,
-               item = NULL
+  legend <- list(hide = hide,
+               position = position,
+               inset = inset,
+               item = item
   )
 
   legend <- modifyList(legend, list(...))

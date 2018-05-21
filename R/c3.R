@@ -1,5 +1,13 @@
 #' @title C3
 #' @description The `c3` package is a wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
+#'
+#' @param data data.frame or tibble
+#' @param x character column name
+#' @param y character column name
+#' @param group character column name
+#' @param message
+#' @param width
+#' @param height
 #' @param labels character or list with otpions:
 #'  \itemize{
 #'  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}

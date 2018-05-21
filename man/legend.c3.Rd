@@ -4,12 +4,11 @@
 \alias{legend.c3}
 \title{C3 Legend Options}
 \usage{
-\method{legend}{c3}(c3, ...)
+\method{legend}{c3}(c3, hide = FALSE, position = NULL, inset = NULL,
+  item = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
-
-\item{...}{all variables passed via ...}
 
 \item{hide}{boolean or character of parameters to hide}
 
@@ -29,6 +28,8 @@
  \item{onmouseover}{: character js function, wrap character or character vector in JS()}
  \item{onmouseout}{: character js function, wrap character or character vector in JS()}
 }}
+
+\item{...}{additional options passed to the legend object}
 }
 \value{
 c3
