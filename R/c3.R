@@ -10,7 +10,7 @@
 #' @param onmouseout character js function, wrap character or character vector in JS()
 #' @param axes list, use to assign plot elements to secondary y axis
 #' @importFrom utils modifyList
-#' @importFrom dplyr mutate select n
+#' @importFrom dplyr mutate select n group_by_
 #' @importFrom data.table dcast setDT
 #' @importFrom stats formula
 #' @importFrom lazyeval interp
@@ -35,9 +35,6 @@
 #'   }
 #'
 c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL, ...) {
-
-  require(dplyr)
-  require(data.table)
 
   # create data object
   data.object <- list(
