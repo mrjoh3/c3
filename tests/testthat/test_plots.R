@@ -1,19 +1,20 @@
 
-d <- data.frame(a = abs(rnorm(20) * 10),
-                b = abs(rnorm(20) * 10),
-                date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
-
-d$c = abs(rnorm(20) *10)
-d$d = abs(rnorm(20) *10)
-
-cp <- c3(d)
-
 
 context('plots')
 
 
+d <- data.frame(a = abs(rnorm(20) * 10),
+                b = abs(rnorm(20) * 10),
+                date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
-## c3_bar()
+d$c <- abs(rnorm(20) *10)
+d$d <- abs(rnorm(20) *10)
+
+cp <- c3(d)
+
+
+
+context('c3_bar()')
 
 test_that("bar plots works", {
 
@@ -37,7 +38,7 @@ test_that('bar plots settings can be set', {
 })
 
 
-## c3_line()
+context('c3_line()')
 
 test_that("C3 line options can be set", {
 
@@ -58,8 +59,8 @@ test_that("C3 line options can be set", {
 
 test_that('Null values can be connected', {
 
-  d = data.frame(a=c(1,2,3,2),b=c(2,NA,1,5))
-  p = c3(d)
+  d <- data.frame(a = c(1,2,3,2), b = c(2,NA,1,5))
+  p <- c3(d)
 
   cp <- c3_line(p, 'line', connectNull = TRUE)
 
@@ -67,7 +68,7 @@ test_that('Null values can be connected', {
 
 })
 
-## c3_mixedgeometry
+context('c3_mixedgeometry()')
 
 test_that("C3 mixed geometry options can be set", {
 
@@ -88,7 +89,7 @@ test_that("C3 mixed geometry options can be set", {
 })
 
 
-## c3_scatter()
+context('c3_scatter()')
 
 test_that('scatter plots work', {
 
@@ -107,7 +108,7 @@ test_that('scatter plots work', {
 
 
 
-## c3_pie()
+context('c3_pie()')
 
 test_that('Pie charts work', {
 
@@ -123,7 +124,7 @@ test_that('Pie charts work', {
 })
 
 
-## c3_donut()
+context('c3_donut()')
 
 test_that('Donut charts work', {
 
@@ -141,7 +142,7 @@ test_that('Donut charts work', {
 
 
 
-## c3_guage()
+context('c3_guage()')
 
 test_that('Guage charts work', {
 

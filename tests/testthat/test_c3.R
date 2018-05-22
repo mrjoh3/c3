@@ -1,15 +1,17 @@
-d <- data.frame(a = abs(rnorm(20) * 10),
-               b = abs(rnorm(20) * 10),
-               date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
-
-d$c = abs(rnorm(20) *10)
-d$d = abs(rnorm(20) *10)
-
-cp <- c3(d)
 
 
 context('main package')
 
+
+
+d <- data.frame(a = abs(rnorm(20) * 10),
+               b = abs(rnorm(20) * 10),
+               date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
+
+d$c <- abs(rnorm(20) *10)
+d$d <- abs(rnorm(20) *10)
+
+cp <- c3(d)
 
 
 test_that("a simple plot works", {
@@ -36,7 +38,7 @@ test_that('the data structure can be converted', {
 })
 
 
-
+context('color palettes')
 
 test_that('colors can be set by RColorBrewer', {
 
@@ -74,7 +76,7 @@ test_that('colors can be set manually', {
 })
 
 
-## grid.R
+context('grid.R')
 
 test_that('grids can be added', {
 
@@ -89,7 +91,7 @@ test_that('grids can be added', {
 
 
 
-## legend.R
+context('legend.R')
 
 test_that('legends can be removed', {
 
@@ -116,13 +118,18 @@ test_that('legends attribute can be modified', {
 })
 
 
-## region.R
+context('region.R')
 
 test_that('regions can be added', {
 
   reg <- region(cp, data.frame(axis = 'x',
                                start = 5,
                                end = 12))
+
+  expect_error(region(cp, data.frame(axis = 'x',
+                               start = 5,
+                               error = 4))
+               )
 
   expect_equal(reg$x$regions$start, 5)
   expect_equal(reg$x$regions$axis, factor('x'))
@@ -134,7 +141,7 @@ test_that('regions can be added', {
 
 
 
-## subchart.R
+context('subchart.R')
 
 test_that('subcharts can be added', {
 
@@ -175,7 +182,7 @@ test_that('subcharts onbrush attributes can be set', {
 
 })
 
-## tooltip.R
+context('tooltip.R')
 
 test_that('tooltips can be switched off', {
 
@@ -201,7 +208,7 @@ test_that('tooltips attributes can be set', {
 })
 
 
-## zoom.R
+context('zoom.R')
 
 test_that('zoom settings work', {
 
