@@ -1,11 +1,15 @@
 
 
 
-#' @title C3 Grid
-#' @description Modify grid and line elements on both x and y axis. This is an S3 method.
+#' @rdname grid.c3
 #' @family grid
 #' @export
-grid <- function(x, ...){
+grid <- function(c3,
+                 axis,
+                 show = TRUE,
+                 lines = NULL,
+                 ticks = NULL,
+                 ...){
   UseMethod('grid')
 }
 
@@ -15,6 +19,7 @@ grid <- function(x, ...){
 #' @param c3 c3 htmlwidget object
 #' @param axis character 'x' or 'y'
 #' @param show boolean
+#' @param ticks boolean placeholder. Not yet implimented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}
 #' @param lines dataframe with options:
 #' \itemize{
 #'  \item{value}{: numeric, character or date depending on axis}
@@ -30,19 +35,17 @@ grid <- function(x, ...){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' iris %>%
-#'  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>%
+#'  c3(x = 'Sepal_Length', y = 'Sepal_Width', group = 'Species') %>%
 #'  c3_scatter() %>%
 #'  grid('y') %>%
-#'  grid('x', show=F, lines = data.frame(value=c(5,6),
-#'                                       text= c('Line 1','Line 2')))
-#' }
+#'  grid('x', show = FALSE, lines = data.frame(value=c(5, 6),
+#'                                             text= c('Line 1', 'Line 2')))
 #'
 grid.c3 <- function(c3,
                     axis,
                     show = TRUE,
-                    lines = NULL, # show inside axis
+                    lines = NULL,
                     ticks = NULL,
                     ...){
 

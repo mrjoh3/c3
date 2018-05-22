@@ -1,12 +1,16 @@
 
 
 
-#' @title C3 Tooltips
-#' @description Modify plot elements that relate to tooltips. This is an S3 method.
-#'
+#' @rdname tooltip.c3
 #' @family tooltip
 #' @export
-tooltip <- function(x, ...){
+tooltip <- function(c3,
+                    show = TRUE,
+                    grouped = TRUE,
+                    format = NULL,
+                    position = NULL,
+                    contents = NULL,
+                    ...){
   UseMethod('tooltip')
 }
 

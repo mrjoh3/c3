@@ -2,12 +2,17 @@
 
 
 
-#' @title Add C3 Zoom
-#' @description Enable chart Zoom. This is an S3 method.
-#'
+#' @rdname zoom.c3
 #' @family zoom
 #' @export
-zoom <- function(x, ...){
+zoom <- function(c3,
+                 enabled = TRUE,
+                 rescale = NULL,
+                 extent = NULL,
+                 onzoom = NULL,
+                 onzoomstart = NULL,
+                 onzoomend = NULL,
+                 ...){
   UseMethod('zoom')
 }
 

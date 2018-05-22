@@ -3,12 +3,21 @@
 
 
 
-#' @title C3 xaxis
-#' @description Modify plot elements that relate to the axis. This is an S3 method.
-#'
+#' @rdname xAxis.c3
 #' @family xAxis
 #' @export
-xAxis <- function(x, ...){
+xAxis <- function(c3,
+                  show = TRUE,
+                  type = 'indexed',
+                  localtime = NULL,
+                  categories = NULL,
+                  max = NULL,
+                  min = NULL,
+                  padding = list(),
+                  height = NULL,
+                  extent = NULL,
+                  label = NULL,
+                  ...){
   UseMethod('xAxis')
 }
 
@@ -54,20 +63,23 @@ xAxis <- function(x, ...){
 #'  \item{outer-middle}
 #'  \item{outer-bottom}
 #' }
+#' @param inner boolean show axis inside chart (Y and Y2 axis only)
+#' @param inverted boolean TRUE will reverse the direction of the axis (Y and Y2 axis only)
+#' @param center integer or numeric value for center line (Y and Y2 axis only)
 #' @param ... additional options passed to the axis object
 #'
 #' @family c3
-#' @family axis
+#' @family xAxis
 #' @return c3
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
-#'   c3() %>%
+#'   c3(axes = list(a = 'y',
+#'                  b = 'y2')) %>%
 #'    xAxis(label = list(text = 'testing',
-#'                       position = 'inner-center'))
-#'   }
+#'                       position = 'inner-center')) %>%
+#'    y2Axis()
 #'
 xAxis.c3 <- function(c3,
                      show = TRUE,
@@ -82,7 +94,7 @@ xAxis.c3 <- function(c3,
                      label = NULL,
                      ...){
 
-    x = list(show = show,
+    x <- list(show = show,
              type = type, # 'timeseries' or 'category'
              localtime = localtime,
              categories = categories,
@@ -117,16 +129,24 @@ xAxis.c3 <- function(c3,
 }
 
 
-#' @title C3 yaxis
-#' @description Modify plot elements that relate to the y-axis. This is an S3 method.
-#'
-#' @family axis
+#' @rdname xAxis.c3
+#' @family yAxis
 #' @export
-yAxis <- function(x, ...){
+yAxis <- function(c3,
+                  show = TRUE,
+                  inner = NULL,
+                  max = NULL,
+                  min = NULL,
+                  padding = NULL,
+                  inverted = NULL,
+                  center = NULL,
+                  label = NULL,
+                  ...){
   UseMethod('yAxis')
 }
 
 #' @rdname xAxis.c3
+#' @family yAxis
 #' @export
 yAxis.c3 <- function(c3,
                      show = TRUE,
@@ -157,16 +177,24 @@ yAxis.c3 <- function(c3,
   return(c3)
 }
 
-#' @title C3 y2axis
-#' @description Modify plot elements that relate to the second y-axis. This is an S3 method.
-#'
-#' @family axis
+#' @rdname xAxis.c3
+#' @family y2Axis
 #' @export
-y2Axis <- function(x, ...){
+y2Axis <- function(c3,
+                   show = TRUE,
+                   inner = NULL,
+                   max = NULL,
+                   min = NULL,
+                   padding = NULL,
+                   inverted = NULL,
+                   center = NULL,
+                   label = NULL,
+                   ...){
   UseMethod('y2Axis')
 }
 
 #' @rdname xAxis.c3
+#' @family yAxis
 #' @export
 y2Axis.c3 <- function(c3,
                       show = TRUE,
@@ -211,17 +239,15 @@ y2Axis.c3 <- function(c3,
 #' @param values vector. Must match axis format type
 #' @param rotate integer degrees to rotate labels  (x-axis only)
 #' @param outer boolean show axis outer tick
-#' @param ... all variable passed using ...
+#' @param ... additional options passed to axis tick object
 #'
 #' @return c3
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   tickAxis('y', values = c(1,3))
-#'   }
 #'
 tickAxis <- function(c3,
                      axis,
@@ -238,7 +264,7 @@ tickAxis <- function(c3,
   stopifnot(!missing(axis),
             axis %in% c('x', 'y', 'y2'))
 
-  tick = list(
+  tick <- list(
     centered = centered,
     format = format, # y2 y
     culling = culling,
@@ -263,12 +289,10 @@ tickAxis <- function(c3,
   return(c3)
 }
 
-#' @title RColorBrewer Palette
-#' @description Use RColorBrewer palettes. This is an S3 method.
-#'
+#' @rdname RColorBrewer.c3
 #' @family RColorBrewer
 #' @export
-RColorBrewer <- function(x, ...){
+RColorBrewer <- function(c3, pal='Spectral'){
   UseMethod('RColorBrewer')
 }
 
@@ -286,11 +310,9 @@ RColorBrewer <- function(x, ...){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5), c = c(5,3,4,1)) %>%
 #'   c3() %>%
 #'   RColorBrewer()
-#'   }
 #'
 RColorBrewer.c3 <- function(c3, pal='Spectral') {
 
@@ -323,11 +345,9 @@ RColorBrewer.c3 <- function(c3, pal='Spectral') {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   c3_viridis()
-#'   }
 #'
 c3_viridis <- function(c3, pal='D') {
 
@@ -354,11 +374,9 @@ c3_viridis <- function(c3, pal='D') {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   c3_colour(c('red','black'))
-#'   }
 #'
 c3_colour <- function(c3, colours) {
 
@@ -378,11 +396,9 @@ c3_colour <- function(c3, colours) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   c3_color(c('red','black'))
-#'   }
 #'
 c3_color <- function(c3, colors) {
 
@@ -397,7 +413,7 @@ c3_color <- function(c3, colors) {
 #' @description Define options for selecting data within the plot area
 #' @param c3 c3 htmlwidget object
 #' @param enabled boolean
-#' @param groued boolean
+#' @param grouped boolean
 #' @param multiple boolean
 #' @param draggable boolean
 #' @param isselectable character js function, wrap character or character vector in JS()
@@ -409,13 +425,10 @@ c3_color <- function(c3, colors) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,3,1,5)) %>%
 #'   c3() %>%
-#'   c3_selection(cp,
-#'                enabled = TRUE,
+#'   c3_selection(enabled = TRUE,
 #'                multiple = TRUE)
-#'   }
 #'
 c3_selection <- function(c3,
                          enabled = FALSE,
@@ -465,11 +478,9 @@ c3_selection <- function(c3,
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   c3_chart_size(width = 600, height = 200)
-#'   }
 #'
 c3_chart_size <- function(c3,
                           left = NULL,
@@ -517,11 +528,9 @@ c3_chart_size <- function(c3,
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) %>%
 #'   c3() %>%
 #'   point_options(r = 5, expand.r = 2)
-#'   }
 #'
 point_options <- function(c3,
                           show = TRUE,

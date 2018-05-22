@@ -1,12 +1,14 @@
 
 
-#' @title C3 Legend Options
-#' @description Modify plot elements that relate to the legend. The c3 legend is on by default, this function allows the
-#' legend to be removed, or other legend attributes to be set. This is an S3 method.
-#'
+#' @rdname legend.c3
 #' @family legend
 #' @export
-legend <- function(x, ...){
+legend <- function(c3,
+                   hide = FALSE,
+                   position = NULL,
+                   inset = NULL,
+                   item = NULL,
+                   ...){
   UseMethod('legend')
 }
 

@@ -39,24 +39,22 @@ check_stacked <- function(c3, stacked) {
 #' @export
 #'
 #' @examples
-#'\dontrun{
 #' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
 #'   c3() %>%
 #'   c3_bar(stacked = TRUE)
-#'   }
 #'
 c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zerobased = TRUE) {
 
   c3$x$data$type <- 'bar'
 
-  c3$x$axis = list(
+  c3$x$axis <- list(
     x = list(
       type = 'category' #// this needed to load string x value
     ),
     rotated = rotated
   )
 
-  c3$x$bar = list(
+  c3$x$bar <- list(
     zerobased = zerobased,
     width = list(
       ratio = bar_width #// this makes bar width 50% of length between ticks
@@ -96,11 +94,9 @@ c3_bar <- function(c3, stacked = FALSE, rotated = FALSE, bar_width = 0.6, zeroba
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) %>%
 #'   c3() %>%
 #'   c3_line('spline')
-#'   }
 #'
 c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL) {
 
@@ -109,9 +105,10 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 
   c3 <- check_stacked(c3, stacked)
 
-  line = list()
-  if (connectNull) {line$connectNull = TRUE}
-  if (!is.null(step_type)) {line$step$type = step_type}
+  line <- list()
+
+  if (connectNull) {line$connectNull <- TRUE}
+  if (!is.null(step_type)) {line$step$type <- step_type}
 
   if (length(line) > 0) {
     c3$x$line <- line
@@ -137,9 +134,8 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data <- data.frame(a = abs(rnorm(20) *10),
-#'                    b = abs(rnorm(20) *10)
+#'                    b = abs(rnorm(20) *10),
 #'                    c = abs(rnorm(20) *10),
 #'                    d = abs(rnorm(20) *10))
 #' data %>%
@@ -148,7 +144,6 @@ c3_line <- function(c3, type, stacked = FALSE, connectNull = FALSE, step_type = 
 #'                stacked = c('b','d'),
 #'                types = list(a='area',
 #'                             c='spline'))
-#' }
 #'
 c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 
@@ -180,13 +175,11 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #'   iris %>%
 #'     c3(x = 'Sepal_Length',
 #'        y = 'Sepal_Width',
 #'        group = 'Species') %>%
 #'     c3_scatter()
-#'   }
 #'
 c3_scatter <- function(c3) {
 
@@ -221,11 +214,9 @@ c3_scatter <- function(c3) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(red = 20, green = 45, blue = 10) %>%
 #'   c3() %>%
 #'   c3_pie()
-#'   }
 #'
 c3_pie <- function(c3,
                    show = TRUE,
@@ -235,7 +226,7 @@ c3_pie <- function(c3,
 
   c3$x$data$type <- 'pie'
 
-  label = modifyList(
+  label <- modifyList(
     list(
       show = show,
       threshold = threshold,
@@ -244,7 +235,7 @@ c3_pie <- function(c3,
     list(...), keep.null = FALSE
   )
 
-  pie = list(
+  pie <- list(
       expand = expand
     )
 
@@ -275,11 +266,9 @@ c3_pie <- function(c3,
 #' @export
 #'
 #' @examples
-#'\dontrun{
 #' data.frame(red=20,green=45,blue=10) %>%
 #'   c3() %>%
 #'   c3_donut(title = 'Colors')
-#'   }
 #'
 c3_donut <- function(c3,
                      expand = TRUE,
@@ -291,7 +280,7 @@ c3_donut <- function(c3,
 
   c3$x$data$type <- 'donut'
 
-  label = modifyList(
+  label <- modifyList(
     list(
       show = show,
       threshold = threshold,
@@ -300,7 +289,7 @@ c3_donut <- function(c3,
     list(...), keep.null = FALSE
   )
 
-  donut = list(
+  donut <- list(
       expand = expand,
       width = width
     )
@@ -334,6 +323,8 @@ c3_donut <- function(c3,
 #' @param min numeric
 #' @param max numeric
 #' @param units character appended to numeric value
+#' @param height integer pixel height of the chart. Proprtion of guage
+#' never changes so height scales with width despite this setting.
 #' @param width integer pixel width of the arc
 #' @param pattern character vector or pallete of colors
 #' @param threshold list with options:
@@ -348,11 +339,9 @@ c3_donut <- function(c3,
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' data.frame(data=10) %>%
 #'   c3() %>%
 #'   c3_gauge(title = 'Colors')
-#'   }
 #'
 c3_gauge <- function(c3,
                      label = NULL,
@@ -386,7 +375,7 @@ c3_gauge <- function(c3,
       threshold = threshold
     ), list(...))
 
-  size = modifyList(
+  size <- modifyList(
     list(
       height = height
     ), list(...))
