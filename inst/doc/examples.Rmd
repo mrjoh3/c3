@@ -61,7 +61,7 @@ Where no options are supplied a simple line plot is produced by default. Where n
 
 library(c3)
 
-data = data.frame(a = abs(rnorm(20) * 10),
+data <- data.frame(a = abs(rnorm(20) * 10),
                   b = abs(rnorm(20) * 10),
                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
@@ -137,8 +137,8 @@ Mixed geometry currently only works with a horizontal `data.frame` where each nu
 
 ```{r mixed, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
-data$c = abs(rnorm(20) *10)
-data$d = abs(rnorm(20) *10)
+data$c <- abs(rnorm(20) *10)
+data$d <- abs(rnorm(20) *10)
 
 data %>%
   c3() %>%
@@ -163,8 +163,8 @@ data %>%
   c3(x = 'date',
      axes = list(a = 'y',
                  b = 'y2')) %>% 
-  c3_mixedGeom(types = list(a='line',
-                            b='area')) %>% 
+  c3_mixedGeom(types = list(a = 'line',
+                            b = 'area')) %>% 
   y2Axis()
 
 ```

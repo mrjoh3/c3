@@ -12,7 +12,7 @@ library(dplyr)
 
 library(c3)
 
-data = data.frame(a = abs(rnorm(20) * 10),
+data <- data.frame(a = abs(rnorm(20) * 10),
                   b = abs(rnorm(20) * 10),
                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
@@ -49,8 +49,8 @@ data[1:10, ] %>%
 
 ## ----mixed, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3----
 
-data$c = abs(rnorm(20) *10)
-data$d = abs(rnorm(20) *10)
+data$c <- abs(rnorm(20) *10)
+data$d <- abs(rnorm(20) *10)
 
 data %>%
   c3() %>%
@@ -68,8 +68,8 @@ data %>%
   c3(x = 'date',
      axes = list(a = 'y',
                  b = 'y2')) %>% 
-  c3_mixedGeom(types = list(a='line',
-                            b='area')) %>% 
+  c3_mixedGeom(types = list(a = 'line',
+                            b = 'area')) %>% 
   y2Axis()
 
 

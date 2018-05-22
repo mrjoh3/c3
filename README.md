@@ -40,9 +40,9 @@ Where no options are supplied a simple line plot is produced by default. Where n
 ``` r
 library(c3)
 
-data = data.frame(a = abs(rnorm(20) * 10),
-                  b = abs(rnorm(20) * 10),
-                  date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
+data <- data.frame(a = abs(rnorm(20) * 10),
+                   b = abs(rnorm(20) * 10),
+                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
 c3(data)
 ```
@@ -108,8 +108,8 @@ Mixed Geometry Plots
 Mixed geometry currently only works with a horizontal `data.frame` where each numeric column is plotted.
 
 ``` r
-data$c = abs(rnorm(20) *10)
-data$d = abs(rnorm(20) *10)
+data$c <- abs(rnorm(20) *10)
+data$d <- abs(rnorm(20) *10)
 
 data %>%
   c3() %>%
@@ -133,8 +133,8 @@ data %>%
   c3(x = 'date',
      axes = list(a = 'y',
                  b = 'y2')) %>% 
-  c3_mixedGeom(types = list(a='line',
-                            b='area')) %>% 
+  c3_mixedGeom(types = list(a = 'line',
+                            b = 'area')) %>% 
   y2Axis()
 ```
 
@@ -200,7 +200,7 @@ data %>%
   grid('x', 
        show = F, 
        lines = data.frame(value = c(3, 10), 
-                          text= c('Line 1','Line 2')))
+                          text = c('Line 1','Line 2')))
 ```
 
 <img src="README_files/figure-markdown_github/grid-1.png" style="display: block; margin: auto;" />
