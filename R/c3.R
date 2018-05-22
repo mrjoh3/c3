@@ -1,13 +1,12 @@
 #' @title C3
-#' @description The `c3` package is a wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
+#' @description An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
 #'
 #' @param data data.frame or tibble
 #' @param x character column name
 #' @param y character column name
 #' @param group character column name
-#' @param message
-#' @param width
-#' @param height
+#' @param width integer htmlwidget width (separate from plot width)
+#' @param height integer htmlwidget height (separate from plot height)
 #' @param labels character or list with otpions:
 #'  \itemize{
 #'  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
@@ -17,6 +16,7 @@
 #' @param onmouseover character js function, wrap character or character vector in JS()
 #' @param onmouseout character js function, wrap character or character vector in JS()
 #' @param axes list, use to assign plot elements to secondary y axis
+#' @param ... addition options passed to the data object
 #' @importFrom utils modifyList
 #' @importFrom dplyr mutate select n group_by_
 #' @importFrom data.table dcast setDT
@@ -26,7 +26,6 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
 #' data <- data.frame(a = c(1,2,3,2), b = c(2,3,1,5))
 #'
 #' data %>%
@@ -40,9 +39,20 @@
 #' data.frame(sugar = 20, fat = 45, salt = 10) %>%
 #'   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) %>%
 #'   c3_pie()
-#'   }
 #'
-c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = NULL, height = NULL, ...) {
+c3 <- function(data,
+               x = NULL,
+               y = NULL,
+               group = NULL,
+               width = NULL,
+               height = NULL,
+               axes = NULL,
+               labels = NULL,
+               hide = NULL,
+               onclick = NULL,
+               onmouseover = NULL,
+               onmouseout = NULL,
+               ...) {
 
   # create data object
   data.object <- list(
@@ -52,25 +62,25 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
     xSort = NULL,
     names = NULL,
     classes = NULL,
-    axes = NULL,
+    axes = axes,
     type = NULL,
     types = NULL,
-    labels = NULL,
+    labels = labels,
     order = NULL,
     regions = NULL, # may need to pull this out into separate function
     colors = NULL, # pullcolor and colors into separate function
     color = NULL,
-    hide = NULL,
+    hide = hide,
     empty = NULL,
-    onclick = NULL,
-    onmouseover = NULL,
-    onmouseout = NULL
+    onclick = onclick,
+    onmouseover = onmouseover,
+    onmouseout = onmouseout
   )
 
   data.object <- modifyList(data.object, list(...))
 
   #options carried through, used to store info about data for later validation
-  opts = list(x = x,
+  opts <- list(x = x,
               y = y,
               types = lapply(data, class))
 
@@ -141,15 +151,16 @@ c3 <- function(data, x = NULL, y = NULL, group = NULL, message = NULL, width = N
 
     groups <- as.character(unique(data[,group]))
 
-    flt_group <- interp(~(!is.na(var)), var = as.name(group))
+    #flt_group <- interp(~(!is.na(var)), var = as.name(group))
 
     tmp.df <- group_by_(data, interp(~var, var = as.name(group))) %>%
       mutate(id = 1:n())
 
     # need to change columns to group, group_x in xs and in data dataframe
-    data <- data.table::dcast(setDT(tmp.df), formula(sprintf('id ~ %s', group)), value.var = c(y,x)) %>%
-      as.data.frame() %>%
-      select(-id)
+    data <- data.table::dcast(setDT(tmp.df),
+                              formula(sprintf('id ~ %s', group)),
+                              value.var = c(y,x))
+    data <- as.data.frame(data[, -1]) # need to remove id column (always in pos 1)
 
     xs <- list()
 
