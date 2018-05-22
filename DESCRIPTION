@@ -1,7 +1,7 @@
 Package: c3
 Type: Package
-Title: C3 Chart Library via R
-Description: A [htmlwidget](http://www.htmlwidgets.org/) wrapper for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812).
+Title: C3.js Chart Library via R
+Description: Create interactive charts with the `C3.js` <http://c3js.org/> charting library.
 Version: 0.2.0
 Authors@R: c(
     person("Matt", "Johnson", email = "mrjoh3@gmail.com",
@@ -26,5 +26,6 @@ RoxygenNote: 6.0.1
 Suggests: testthat,
     RColorBrewer,
     knitr,
+    rmarkdown,
     webshot
 VignetteBuilder: knitr
