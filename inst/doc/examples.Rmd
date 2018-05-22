@@ -12,9 +12,6 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown} 
   %\VignetteEncoding{UTF-8}
 ---
-[![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778)
-[![Build Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3)
-[![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3)
 
 ```{r setup, warning=FALSE, message=FALSE, echo=FALSE}
 
@@ -73,7 +70,7 @@ c3(data)
 
 ### Piping
 
-The package also imports the [migrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) piping function (`%>%`) to simplify syntax.
+The package also imports the [migrittr](https://CRAN.R-project.org/package=magrittr) piping function (`%>%`) to simplify syntax.
 
 ```{r pipe, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
