@@ -1,8 +1,8 @@
 Package: c3
 Type: Package
-Title: C3 Charts via R
+Title: C3 Chart Library via R
 Description: A [htmlwidget](http://www.htmlwidgets.org/) wrapper for the [c3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812).
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: c(
     person("Matt", "Johnson", email = "mrjoh3@gmail.com",
     role = c("aut", "cre"))
@@ -11,7 +11,6 @@ Maintainer: Matt Johnson <mrjoh3@gmail.com>
 Depends:
     R (>= 3.2.2)
 Imports:
-    htmltools,
     jsonlite,
     data.table,
     lazyeval,
