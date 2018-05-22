@@ -27,10 +27,8 @@ c3
 Modify point options
 }
 \examples{
-\dontrun{
 data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
   c3() \%>\%
   point_options(r = 5, expand.r = 2)
-  }
 
 }

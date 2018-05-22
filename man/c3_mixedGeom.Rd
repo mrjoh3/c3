@@ -22,9 +22,8 @@ c3
 Use multiple geometry types in a single plot
 }
 \examples{
-\dontrun{
 data <- data.frame(a = abs(rnorm(20) *10),
-                   b = abs(rnorm(20) *10)
+                   b = abs(rnorm(20) *10),
                    c = abs(rnorm(20) *10),
                    d = abs(rnorm(20) *10))
 data \%>\%
@@ -33,6 +32,5 @@ data \%>\%
                stacked = c('b','d'),
                types = list(a='area',
                             c='spline'))
-}
 
 }

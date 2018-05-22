@@ -9,7 +9,7 @@ c3_color(c3, colors)
 \arguments{
 \item{c3}{c3 htmlwidget object}
 
-\item{colours}{character vector of colors}
+\item{colors}{character vector of colors}
 }
 \value{
 c3
@@ -18,10 +18,8 @@ c3
 Manually assign colors
 }
 \examples{
-\dontrun{
 data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
   c3() \%>\%
   c3_color(c('red','black'))
-  }
 
 }

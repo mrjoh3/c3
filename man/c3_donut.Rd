@@ -31,10 +31,8 @@ c3
 Create simple Donut charts
 }
 \examples{
-\dontrun{
 data.frame(red=20,green=45,blue=10) \%>\%
   c3() \%>\%
   c3_donut(title = 'Colors')
-  }
 
 }

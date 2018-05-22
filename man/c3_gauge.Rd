@@ -35,6 +35,9 @@ c3_gauge(c3, label = NULL, min = 0, max = 100, units = NULL,
  \item{values}{: numeric vector of threhold values for color change}
 }}
 
+\item{height}{integer pixel height of the chart. Proprtion of guage
+never changes so height scales with width despite this setting.}
+
 \item{...}{additional values passed to the guage, color and size objects}
 }
 \value{
@@ -44,10 +47,8 @@ c3
 Create simple Guage Charts
 }
 \examples{
-\dontrun{
 data.frame(data=10) \%>\%
   c3() \%>\%
   c3_gauge(title = 'Colors')
-  }
 
 }

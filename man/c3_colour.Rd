@@ -18,10 +18,8 @@ c3
 Manually assign colours
 }
 \examples{
-\dontrun{
 data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
   c3() \%>\%
   c3_colour(c('red','black'))
-  }
 
 }

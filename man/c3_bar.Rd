@@ -25,10 +25,8 @@ c3
 Add bars to a C3 plot
 }
 \examples{
-\dontrun{
 data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
   c3() \%>\%
   c3_bar(stacked = TRUE)
-  }
 
 }

@@ -4,10 +4,25 @@
 \alias{c3}
 \title{C3}
 \usage{
-c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
-  width = NULL, height = NULL, ...)
+c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
+  height = NULL, axes = NULL, labels = NULL, hide = NULL,
+  onclick = NULL, onmouseover = NULL, onmouseout = NULL, ...)
 }
 \arguments{
+\item{data}{data.frame or tibble}
+
+\item{x}{character column name}
+
+\item{y}{character column name}
+
+\item{group}{character column name}
+
+\item{width}{integer htmlwidget width (separate from plot width)}
+
+\item{height}{integer htmlwidget height (separate from plot height)}
+
+\item{axes}{list, use to assign plot elements to secondary y axis}
+
 \item{labels}{character or list with otpions:
  \itemize{
  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
@@ -21,13 +36,12 @@ c3(data, x = NULL, y = NULL, group = NULL, message = NULL,
 
 \item{onmouseout}{character js function, wrap character or character vector in JS()}
 
-\item{axes}{list, use to assign plot elements to secondary y axis}
+\item{...}{addition options passed to the data object}
 }
 \description{
-The `c3` package is a wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
+An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
 }
 \examples{
-\dontrun{
 data <- data.frame(a = c(1,2,3,2), b = c(2,3,1,5))
 
 data \%>\%
@@ -41,13 +55,11 @@ data \%>\%
 data.frame(sugar = 20, fat = 45, salt = 10) \%>\%
   c3(onclick = htmlwidgets::JS("function(d, element){dp = d}")) \%>\%
   c3_pie()
-  }
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer.c3}},
-  \code{\link{grid.c3}}, \code{\link{legend.c3}},
-  \code{\link{region.c3}}, \code{\link{subchart.c3}},
-  \code{\link{tooltip.c3}}, \code{\link{xAxis.c3}},
-  \code{\link{zoom.c3}}
+Other c3: \code{\link{RColorBrewer}}, \code{\link{grid}},
+  \code{\link{legend}}, \code{\link{region}},
+  \code{\link{subchart}}, \code{\link{tooltip}},
+  \code{\link{xAxis}}, \code{\link{zoom}}
 }

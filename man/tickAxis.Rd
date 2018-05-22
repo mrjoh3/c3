@@ -30,7 +30,7 @@ option effects tick labels  (x-axis only)}
 
 \item{outer}{boolean show axis outer tick}
 
-\item{...}{all variable passed using ...}
+\item{...}{additional options passed to axis tick object}
 }
 \value{
 c3
@@ -39,10 +39,8 @@ c3
 Modify axis tick formatting options
 }
 \examples{
-\dontrun{
 data.frame(a = c(1,2,3,2), b = c(2,4,1,5)) \%>\%
   c3() \%>\%
   tickAxis('y', values = c(1,3))
-  }
 
 }

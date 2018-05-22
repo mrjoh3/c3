@@ -16,12 +16,10 @@ c3
 For scatter plots options are defined in the `c3` function. OPtions are limited to x, y and groups
 }
 \examples{
-\dontrun{
   iris \%>\%
     c3(x = 'Sepal_Length',
        y = 'Sepal_Width',
        group = 'Species') \%>\%
     c3_scatter()
-  }
 
 }
