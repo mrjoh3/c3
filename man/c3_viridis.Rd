@@ -4,14 +4,12 @@
 \alias{c3_viridis}
 \title{Viridis Palette}
 \usage{
-c3_viridis(c3, pal = "D", ...)
+c3_viridis(c3, pal = "D")
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
 
 \item{pal}{character palette options}
-
-\item{...}{all variable passed using ...}
 }
 \value{
 c3

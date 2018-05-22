@@ -4,14 +4,14 @@
 \alias{tickAxis}
 \title{Axis Tick Options}
 \usage{
-tickAxis(c3, axis, ...)
+tickAxis(c3, axis, centered = TRUE, format = NULL, culling = NULL,
+  count = NULL, fit = TRUE, values = NULL, rotate = 0, outer = TRUE,
+  ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
 
 \item{axis}{character 'x', 'y' or 'y2' axis}
-
-\item{...}{all variable passed using ...}
 
 \item{centered}{boolean (x-axis only)}
 
@@ -29,6 +29,8 @@ option effects tick labels  (x-axis only)}
 \item{rotate}{integer degrees to rotate labels  (x-axis only)}
 
 \item{outer}{boolean show axis outer tick}
+
+\item{...}{all variable passed using ...}
 }
 \value{
 c3

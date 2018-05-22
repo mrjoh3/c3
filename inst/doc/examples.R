@@ -1,3 +1,8 @@
+## ----setup, warning=FALSE, message=FALSE, echo=FALSE---------------------
+
+library(dplyr)
+
+
 ## ----install, eval=FALSE-------------------------------------------------
 #  
 #  devtools::install_github("mrjoh3/c3")

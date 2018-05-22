@@ -4,7 +4,8 @@
 \alias{tooltip.c3}
 \title{C3 Tooltips}
 \usage{
-\method{tooltip}{c3}(c3, ...)
+\method{tooltip}{c3}(c3, show = TRUE, grouped = TRUE, format = NULL,
+  position = NULL, contents = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -23,6 +24,8 @@
 \item{position}{character js function, wrap character or character vector in JS()}
 
 \item{contents}{character js function, wrap character or character vector in JS()}
+
+\item{...}{addition options passed to the tooltip object}
 }
 \value{
 c3

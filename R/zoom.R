@@ -21,6 +21,7 @@ zoom <- function(x, ...){
 #' @param onzoom character js function, wrap character or character vector in JS()
 #' @param onzoomstart character js function, wrap character or character vector in JS()
 #' @param onzoomend character js function, wrap character or character vector in JS()
+#' @param ... additional options passed to the zoom object
 #'
 #' @family c3
 #' @family zoom
@@ -35,18 +36,25 @@ zoom <- function(x, ...){
 #'      zoom()
 #' }
 #'
-zoom.c3 <- function(c3, ...){
+zoom.c3 <- function(c3,
+                    enabled = TRUE,
+                    rescale = NULL,
+                    extent = NULL,
+                    onzoom = NULL,
+                    onzoomstart = NULL,
+                    onzoomend = NULL,
+                    ...){
 
   #stopifnot()
 
   zoom <- modifyList(
     list(
-      enabled = TRUE,
-      rescale = NULL,
-      extent = NULL,
-      onzoom = NULL,
-      onzoomstart = NULL,
-      onzoomend = NULL
+      enabled = enabled,
+      rescale = rescale,
+      extent = extent,
+      onzoom = onzoom,
+      onzoomstart = onzoomstart,
+      onzoomend = onzoomend
     ), list(...), keep.null = FALSE
   )
 

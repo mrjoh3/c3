@@ -54,7 +54,7 @@ xAxis <- function(x, ...){
 #'  \item{outer-middle}
 #'  \item{outer-bottom}
 #' }
-#' @param ... all variable passed using ... all variable passed via ...
+#' @param ... additional options passed to the axis object
 #'
 #' @family c3
 #' @family axis
@@ -69,18 +69,29 @@ xAxis <- function(x, ...){
 #'                       position = 'inner-center'))
 #'   }
 #'
-xAxis.c3 <- function(c3, ...){
+xAxis.c3 <- function(c3,
+                     show = TRUE,
+                     type = 'indexed',
+                     localtime = NULL,
+                     categories = NULL,
+                     max = NULL,
+                     min = NULL,
+                     padding = list(),
+                     height = NULL,
+                     extent = NULL,
+                     label = NULL,
+                     ...){
 
-    x = list(show = TRUE,
-             type = 'indexed', # 'timeseries' or 'category'
-             localtime = NULL,
-             categories = NULL,
-             max = NULL,
-             min = NULL,
-             padding = list(),
-             height = NULL,
-             extent = NULL,
-             label = NULL
+    x = list(show = show,
+             type = type, # 'timeseries' or 'category'
+             localtime = localtime,
+             categories = categories,
+             max = max,
+             min = min,
+             padding = padding,
+             height = height,
+             extent = extent,
+             label = label
              )
 
   # culling needs to be done separately as is dependant on type
@@ -117,16 +128,25 @@ yAxis <- function(x, ...){
 
 #' @rdname xAxis.c3
 #' @export
-yAxis.c3 <- function(c3, ...){
+yAxis.c3 <- function(c3,
+                     show = TRUE,
+                     inner = NULL,
+                     max = NULL,
+                     min = NULL,
+                     padding = NULL,
+                     inverted = NULL,
+                     center = NULL,
+                     label = NULL,
+                     ...){
 
-  y <- list(show = TRUE,
-            inner = NULL, # show inside axis
-            max = NULL,
-            min = NULL,
-            padding = NULL,
-            inverted = NULL,
-            center = NULL,
-            label = NULL
+  y <- list(show = show,
+            inner = inner, # show inside axis
+            max = max,
+            min = min,
+            padding = padding,
+            inverted = inverted,
+            center = center,
+            label = label
   )
 
   y <- modifyList(y, list(...))
@@ -148,16 +168,25 @@ y2Axis <- function(x, ...){
 
 #' @rdname xAxis.c3
 #' @export
-y2Axis.c3 <- function(c3, ...){
+y2Axis.c3 <- function(c3,
+                      show = TRUE,
+                      inner = NULL,
+                      max = NULL,
+                      min = NULL,
+                      padding = NULL,
+                      inverted = NULL,
+                      center = NULL,
+                      label = NULL,
+                      ...){
 
-  y2 <- list(show = TRUE,
-            inner = NULL, # show inside axis
-            max = NULL,
-            min = NULL,
-            padding = NULL,
-            inverted = NULL,
-            center = NULL,
-            label = NULL
+  y2 <- list(show = show,
+             inner = inner, # show inside axis
+             max = max,
+             min = min,
+             padding = padding,
+             inverted = inverted,
+             center = center,
+             label = label
   )
 
   y2 <- modifyList(y2, list(...))
@@ -194,20 +223,30 @@ y2Axis.c3 <- function(c3, ...){
 #'   tickAxis('y', values = c(1,3))
 #'   }
 #'
-tickAxis <- function(c3, axis,  ...) {
+tickAxis <- function(c3,
+                     axis,
+                     centered = TRUE,
+                     format = NULL,
+                     culling = NULL,
+                     count = NULL,
+                     fit = TRUE,
+                     values = NULL,
+                     rotate = 0,
+                     outer = TRUE,
+                     ...) {
 
   stopifnot(!missing(axis),
             axis %in% c('x', 'y', 'y2'))
 
   tick = list(
-    centered = TRUE,
-    format = NULL, # y2 y
-    culling = NULL,
-    count = NULL, # y2 y
-    fit = TRUE,
-    values = NULL, # y2 y
-    rotate = 0,
-    outer = TRUE # y2 y
+    centered = centered,
+    format = format, # y2 y
+    culling = culling,
+    count = count, # y2 y
+    fit = fit,
+    values = values, # y2 y
+    rotate = rotate,
+    outer = outer # y2 y
   )
 
   tick <- modifyList(tick, list(...))
@@ -276,7 +315,6 @@ RColorBrewer.c3 <- function(c3, pal='Spectral') {
 #'
 #' @param c3 c3 htmlwidget object
 #' @param pal character palette options
-#' @param ... all variable passed using ...
 #'
 #' @importFrom jsonlite fromJSON
 #' @importFrom viridis viridis
@@ -291,7 +329,7 @@ RColorBrewer.c3 <- function(c3, pal='Spectral') {
 #'   c3_viridis()
 #'   }
 #'
-c3_viridis <- function(c3, pal='D', ...) {
+c3_viridis <- function(c3, pal='D') {
 
   n <- length(fromJSON(c3$x$data$keys)$value)
 
@@ -311,7 +349,6 @@ c3_viridis <- function(c3, pal='D', ...) {
 #'
 #' @param c3 c3 htmlwidget object
 #' @param colours character vector of colours
-#' @param ... all variable passed using ... all variable passed using ...
 #'
 #' @return c3
 #' @export
@@ -323,7 +360,7 @@ c3_viridis <- function(c3, pal='D', ...) {
 #'   c3_colour(c('red','black'))
 #'   }
 #'
-c3_colour <- function(c3, colours, ...) {
+c3_colour <- function(c3, colours) {
 
   c3$x$color$pattern <- colours
 
@@ -335,8 +372,7 @@ c3_colour <- function(c3, colours, ...) {
 #' @description Manually assign colors
 #'
 #' @param c3 c3 htmlwidget object
-#' @param colours character vector of colors
-#' @param ... all variable passed using ... all variable passed using ...
+#' @param colors character vector of colors
 #'
 #' @return c3
 #' @export
@@ -348,7 +384,7 @@ c3_colour <- function(c3, colours, ...) {
 #'   c3_color(c('red','black'))
 #'   }
 #'
-c3_color <- function(c3, colors, ...) {
+c3_color <- function(c3, colors) {
 
   c3$x$color$pattern <- colors
 
@@ -365,6 +401,7 @@ c3_color <- function(c3, colors, ...) {
 #' @param multiple boolean
 #' @param draggable boolean
 #' @param isselectable character js function, wrap character or character vector in JS()
+#' @param ... additional options passed to data selection object
 #'
 #' @importFrom htmlwidgets JS
 #'
@@ -380,15 +417,21 @@ c3_color <- function(c3, colors, ...) {
 #'                multiple = TRUE)
 #'   }
 #'
-c3_selection <- function(c3, ...) {
+c3_selection <- function(c3,
+                         enabled = FALSE,
+                         grouped = FALSE,
+                         multiple = FALSE,
+                         draggable = FALSE,
+                         isselectable = JS('function () { return true; }'),
+                         ...) {
 
   selection <- modifyList(
     list(
-      enabled = FALSE,
-      grouped = FALSE,
-      multiple = FALSE,
-      draggable = FALSE,
-      isselectable = JS('function () { return true; }') # takes a function to define selectable
+      enabled = enabled,
+      grouped = grouped,
+      multiple = multiple,
+      draggable = draggable,
+      isselectable = isselectable # takes a function to define selectable
     ),
     list(...)
   )
@@ -416,6 +459,7 @@ c3_selection <- function(c3, ...) {
 #' @param bottom integer padding pixels
 #' @param width integer pixels
 #' @param height integer pixels
+#' @param ... additional options passed to the padding and size objects
 #'
 #' @return c3
 #' @export
@@ -427,20 +471,27 @@ c3_selection <- function(c3, ...) {
 #'   c3_chart_size(width = 600, height = 200)
 #'   }
 #'
-c3_chart_size <- function(c3, ...) {
+c3_chart_size <- function(c3,
+                          left = NULL,
+                          right = NULL,
+                          top = NULL,
+                          bottom = NULL,
+                          width = NULL,
+                          height = NULL,
+                          ...) {
 
   padding <- modifyList(
     list(
-      left = NULL,
-      right = NULL,
-      top = NULL,
-      bottom = NULL),
+      left = left,
+      right = right,
+      top = top,
+      bottom = bottom),
     list(...)
     )
 
   size <- modifyList(
-    list(width = NULL,
-         height = NULL),
+    list(width = width,
+         height = height),
     list(...)
   )
 

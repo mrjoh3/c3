@@ -6,16 +6,20 @@
 \alias{y2Axis.c3}
 \title{C3 Axis}
 \usage{
-\method{xAxis}{c3}(c3, ...)
+\method{xAxis}{c3}(c3, show = TRUE, type = "indexed", localtime = NULL,
+  categories = NULL, max = NULL, min = NULL, padding = list(),
+  height = NULL, extent = NULL, label = NULL, ...)
 
-\method{yAxis}{c3}(c3, ...)
+\method{yAxis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
+  min = NULL, padding = NULL, inverted = NULL, center = NULL,
+  label = NULL, ...)
 
-\method{y2Axis}{c3}(c3, ...)
+\method{y2Axis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
+  min = NULL, padding = NULL, inverted = NULL, center = NULL,
+  label = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
-
-\item{...}{all variable passed using ... all variable passed via ...}
 
 \item{show}{boolean}
 
@@ -63,6 +67,8 @@ label position options for vertical axis are:
  \item{outer-middle}
  \item{outer-bottom}
 }}
+
+\item{...}{additional options passed to the axis object}
 }
 \value{
 c3

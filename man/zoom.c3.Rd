@@ -4,7 +4,8 @@
 \alias{zoom.c3}
 \title{Add C3 Zoom}
 \usage{
-\method{zoom}{c3}(c3, ...)
+\method{zoom}{c3}(c3, enabled = TRUE, rescale = NULL, extent = NULL,
+  onzoom = NULL, onzoomstart = NULL, onzoomend = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -20,6 +21,8 @@
 \item{onzoomstart}{character js function, wrap character or character vector in JS()}
 
 \item{onzoomend}{character js function, wrap character or character vector in JS()}
+
+\item{...}{additional options passed to the zoom object}
 }
 \value{
 c3

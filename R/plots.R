@@ -215,6 +215,7 @@ c3_scatter <- function(c3) {
 #' @param show boolean show labels
 #' @param threshold numeric proportion of segment to hide label
 #' @param format character label js function, wrap character or character vector in JS()
+#' @param ... additional values passed to the pie label object
 #'
 #' @return c3
 #' @export
@@ -226,15 +227,19 @@ c3_scatter <- function(c3) {
 #'   c3_pie()
 #'   }
 #'
-c3_pie <- function(c3, expand = TRUE, ...) {
+c3_pie <- function(c3,
+                   show = TRUE,
+                   threshold = NULL,
+                   format = NULL,
+                   expand = TRUE, ...) {
 
   c3$x$data$type <- 'pie'
 
   label = modifyList(
     list(
-      show = TRUE,
-      threshold = NULL,
-      format = NULL
+      show = show,
+      threshold = threshold,
+      format = format
     ),
     list(...), keep.null = FALSE
   )
@@ -264,6 +269,7 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 #' @param show boolean show labels
 #' @param threshold numeric proportion of segment to hide label
 #' @param format character label js function, wrap character or character vector in JS()
+#' @param ... additional values passed to the donut label object
 #'
 #' @return c3
 #' @export
@@ -275,15 +281,21 @@ c3_pie <- function(c3, expand = TRUE, ...) {
 #'   c3_donut(title = 'Colors')
 #'   }
 #'
-c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
+c3_donut <- function(c3,
+                     expand = TRUE,
+                     title = NULL,
+                     width = NULL,
+                     show = TRUE,
+                     threshold = NULL,
+                     format = NULL, ...) {
 
   c3$x$data$type <- 'donut'
 
   label = modifyList(
     list(
-      show = TRUE,
-      threshold = NULL,
-      format = NULL
+      show = show,
+      threshold = threshold,
+      format = format
     ),
     list(...), keep.null = FALSE
   )
@@ -330,7 +342,7 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 #'  \item{max}{: numeric}
 #'  \item{values}{: numeric vector of threhold values for color change}
 #' }
-#' @param ... all variable passed using ...
+#' @param ... additional values passed to the guage, color and size objects
 #'
 #' @return c3
 #' @export
@@ -342,32 +354,41 @@ c3_donut <- function(c3, expand = TRUE, title = NULL, width = NULL, ...) {
 #'   c3_gauge(title = 'Colors')
 #'   }
 #'
-c3_gauge <- function(c3, ...) {
+c3_gauge <- function(c3,
+                     label = NULL,
+                     min = 0,
+                     max = 100,
+                     units = NULL,
+                     width = NULL,
+                     pattern = c('#FF0000', '#F97600', '#F6C600', '#60B044'),
+                     threshold = list(
+                       unit = 'value',
+                       max = 100,
+                       values = c(30, 60, 90, 100)
+                     ),
+                     height = NULL,
+                     ...) {
 
   c3$x$data$type <- 'gauge'
 
   gauge <- modifyList(
-    list(label = NULL,
-         min = 0,
-         max = 100,
-         units = NULL,
-         width = NULL
+    list(label = label,
+         min = min,
+         max = max,
+         units = units,
+         width = width
          ), list(...))
 
   # color and size might move to separate functions
   color <- modifyList(
     list(
-      pattern = c('#FF0000', '#F97600', '#F6C600', '#60B044'),
-      threshold = list(
-        unit = 'value',
-        max = 100,
-        values = c(30, 60, 90, 100)
-      )
+      pattern = pattern,
+      threshold = threshold
     ), list(...))
 
   size = modifyList(
     list(
-      height = NULL
+      height = height
     ), list(...))
 
   c3$x$gauge <- gauge

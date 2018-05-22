@@ -4,7 +4,8 @@
 \alias{c3_donut}
 \title{Donut Charts}
 \usage{
-c3_donut(c3, expand = TRUE, title = NULL, width = NULL, ...)
+c3_donut(c3, expand = TRUE, title = NULL, width = NULL, show = TRUE,
+  threshold = NULL, format = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -20,6 +21,8 @@ c3_donut(c3, expand = TRUE, title = NULL, width = NULL, ...)
 \item{threshold}{numeric proportion of segment to hide label}
 
 \item{format}{character label js function, wrap character or character vector in JS()}
+
+\item{...}{additional values passed to the donut label object}
 }
 \value{
 c3

@@ -4,20 +4,23 @@
 \alias{c3_selection}
 \title{Data Select}
 \usage{
-c3_selection(c3, ...)
+c3_selection(c3, enabled = FALSE, grouped = FALSE, multiple = FALSE,
+  draggable = FALSE, isselectable = JS("function () { return true; }"), ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
 
 \item{enabled}{boolean}
 
-\item{groued}{boolean}
-
 \item{multiple}{boolean}
 
 \item{draggable}{boolean}
 
 \item{isselectable}{character js function, wrap character or character vector in JS()}
+
+\item{...}{additional options passed to data selection object}
+
+\item{groued}{boolean}
 }
 \value{
 c3

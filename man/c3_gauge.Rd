@@ -4,12 +4,13 @@
 \alias{c3_gauge}
 \title{Gauge Charts}
 \usage{
-c3_gauge(c3, ...)
+c3_gauge(c3, label = NULL, min = 0, max = 100, units = NULL,
+  width = NULL, pattern = c("#FF0000", "#F97600", "#F6C600", "#60B044"),
+  threshold = list(unit = "value", max = 100, values = c(30, 60, 90, 100)),
+  height = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
-
-\item{...}{all variable passed using ...}
 
 \item{label}{list with options:
 \itemize{
@@ -33,6 +34,8 @@ c3_gauge(c3, ...)
  \item{max}{: numeric}
  \item{values}{: numeric vector of threhold values for color change}
 }}
+
+\item{...}{additional values passed to the guage, color and size objects}
 }
 \value{
 c3

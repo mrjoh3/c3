@@ -24,6 +24,7 @@ tooltip <- function(x, ...){
 #' }
 #' @param position character js function, wrap character or character vector in JS()
 #' @param contents character js function, wrap character or character vector in JS()
+#' @param ... addition options passed to the tooltip object
 #'
 #' @family c3
 #' @family tooltip
@@ -43,13 +44,19 @@ tooltip <- function(x, ...){
 #'                         value = JS('function (value, ratio, id, index) { return ratio; }')))
 #' }
 #'
-tooltip.c3 <- function(c3, ...){
+tooltip.c3 <- function(c3,
+                       show = TRUE,
+                       grouped = TRUE,
+                       format = NULL,
+                       position = NULL,
+                       contents = NULL,
+                       ...){
 
-  tooltip <- list(show = TRUE,
-                   grouped = TRUE,
-                   format = NULL,
-                   position = NULL,
-                   contents = NULL
+  tooltip <- list(show = show,
+                   grouped = grouped,
+                   format = format,
+                   position = position,
+                   contents = contents
       )
 
   tooltip <- modifyList(tooltip, list(...))
