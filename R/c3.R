@@ -179,8 +179,7 @@ c3 <- function(data,
 
   } else {
 
-    print('error')
-    break
+    warning('please check your "x", "y" and "group" combination')
 
   }
 
