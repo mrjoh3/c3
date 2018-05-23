@@ -5,9 +5,6 @@ output:
     fig_caption: yes
     self_contained: yes
     toc: no
-  pdf_document:
-    toc: no
-output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Basic Use}
   %\VignetteEngine{knitr::rmarkdown}
