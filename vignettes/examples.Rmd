@@ -8,9 +8,9 @@ output:
   pdf_document:
     toc: no
 vignette: >
-  \VignetteIndexEntry{Basic usage of the c3 package}
-  \VignetteEngine{knitr::rmarkdown} 
-  \VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{Basic usage of the c3 package}
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, warning=FALSE, message=FALSE, echo=FALSE}
