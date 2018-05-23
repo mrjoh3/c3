@@ -27,5 +27,6 @@ Suggests: testthat,
     RColorBrewer,
     knitr,
     rmarkdown,
-    webshot
+    webshot,
+    purrr
 VignetteBuilder: knitr
