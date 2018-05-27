@@ -1,7 +1,10 @@
 Package: c3
 Type: Package
-Title: C3.js Chart Library via R
-Description: Create interactive charts with the `C3.js` <http://c3js.org/> charting library.
+Title: C3.js Chart Library
+Description: Create interactive charts with the 'C3.js' <http://c3js.org/> charting library. All plot 
+    types availavle in C3.js are available and include line, bar, scatter, and mixed geometry plots. Plot 
+    annotations, labels and axis are highly customisable. Interactive web based charts can be embedded 
+    in RMarkdown documents or Shiny web applications. 
 Version: 0.2.0
 Authors@R: c(
     person("Matt", "Johnson", email = "mrjoh3@gmail.com",

@@ -40,12 +40,10 @@ legend <- function(c3,
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' iris %>%
 #'  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>%
 #'  c3_scatter() %>%
 #'  legend(position = 'right')
-#' }
 #'
 legend.c3 <- function(c3,
                       hide = FALSE,
