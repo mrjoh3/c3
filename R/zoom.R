@@ -34,10 +34,12 @@ zoom <- function(c3,
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data.frame(a = abs(rnorm(20) * 10),
 #'            b = abs(rnorm(20) * 10)) %>%
 #'      c3() %>%
 #'      zoom()
+#' }
 #'
 zoom.c3 <- function(c3,
                     enabled = TRUE,

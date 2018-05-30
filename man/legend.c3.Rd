@@ -43,10 +43,12 @@ Modify plot elements that relate to the legend. The c3 legend is on by default, 
 legend to be removed, or other legend attributes to be set.
 }
 \examples{
+\dontrun{
 iris \%>\%
  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') \%>\%
  c3_scatter() \%>\%
  legend(position = 'right')
+}
 
 }
 \seealso{

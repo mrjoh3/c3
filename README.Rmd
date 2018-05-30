@@ -1,17 +1,11 @@
 ---
 title: "c3"
 output: 
-  rmarkdown::html_vignette:
-    fig_caption: yes
-    self_contained: yes
-    toc: no
-  pdf_document:
-    toc: no
-vignette: >
-  %\VignetteIndexEntry{Basic usage of the c3 package}
-  %\VignetteEngine{knitr::rmarkdown} 
-  %\VignetteEncoding{UTF-8}
+    rmarkdown::github_document
 ---
+[![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778)
+[![Build Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3)
+[![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3)
 
 ```{r setup, warning=FALSE, message=FALSE, echo=FALSE}
 
@@ -59,8 +53,8 @@ Where no options are supplied a simple line plot is produced by default. Where n
 library(c3)
 
 data <- data.frame(a = abs(rnorm(20) * 10),
-                  b = abs(rnorm(20) * 10),
-                  date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
+                   b = abs(rnorm(20) * 10),
+                   date = seq(as.Date("2014-01-01"), by = "month", length.out = 20))
 
 c3(data)
 
@@ -70,7 +64,7 @@ c3(data)
 
 ### Piping
 
-The package also imports the [migrittr](https://CRAN.R-project.org/package=magrittr) piping function (`%>%`) to simplify syntax.
+The package also imports the [migrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) piping function (`%>%`) to simplify syntax.
 
 ```{r pipe, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
@@ -186,7 +180,7 @@ iris %>%
 
 ## Pie Charts
 
-```{r pie, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r pie, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=4}
 
 data.frame(sugar = 20,
            fat = 45,
@@ -200,7 +194,7 @@ data.frame(sugar = 20,
 
 ## Donut Charts
 
-```{r donut, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r donut, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=4}
 
 data.frame(red = 82, green = 33, blue = 93) %>% 
   c3(colors = list(red = 'red',
@@ -214,7 +208,7 @@ data.frame(red = 82, green = 33, blue = 93) %>%
 
 ## Gauge Charts
 
-```{r gauge, warning=FALSE, message=FALSE, fig.align='center', fig.width=6, fig.height=3}
+```{r gauge, warning=FALSE, message=FALSE, fig.align='center', fig.width=10, fig.height=4}
 
 data.frame(data = 80) %>% 
   c3() %>% 
@@ -234,7 +228,7 @@ data %>%
   grid('x', 
        show = F, 
        lines = data.frame(value = c(3, 10), 
-                          text= c('Line 1','Line 2')))
+                          text = c('Line 1','Line 2')))
                 
 ```
 
@@ -275,7 +269,7 @@ data %>%
 Plot color palettes can be changed to either `RColorBrewer` or `viridis` palettes using either `RColorBrewer` (S3 method) or `c3_viridus`.
 
 
-```{r brewer, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r brewer, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=4}
 
 data.frame(sugar = 20, 
            fat = 45, 
@@ -291,7 +285,7 @@ data.frame(sugar = 20,
 
 
 
-```{r viridis, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=3}
+```{r viridis, warning=FALSE, message=FALSE, fig.align='center', fig.width=4, fig.height=4}
 
 data.frame(sugar = 20, 
            fat = 45, 

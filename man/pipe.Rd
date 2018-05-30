@@ -15,6 +15,8 @@ lhs \%>\% rhs
 Imports the pipe operator from magrittr.
 }
 \examples{
+\dontrun{
 data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
   c3()
+  }
 }

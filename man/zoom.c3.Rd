@@ -35,10 +35,12 @@ c3
 Enable chart Zoom.
 }
 \examples{
+\dontrun{
 data.frame(a = abs(rnorm(20) * 10),
            b = abs(rnorm(20) * 10)) \%>\%
      c3() \%>\%
      zoom()
+}
 
 }
 \seealso{

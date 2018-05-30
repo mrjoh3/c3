@@ -36,17 +36,17 @@ tooltip <- function(c3,
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' data <- data.frame(a = abs(rnorm(20) *10),
-#'                    b = abs(rnorm(20) *10),
+#'                    b = abs(rnorm(20) *10)
 #'                    c = abs(rnorm(20) *10),
 #'                    d = abs(rnorm(20) *10))
 #' data %>%
 #'   c3() %>%
-#'   tooltip(format = list(title = htmlwidgets::JS("function (x) { return 'Data ' + x; }"),
-#'                         name = htmlwidgets::JS('function (name, ratio, id, index)',
-#'                                                ' { return name; }'),
-#'                         value = htmlwidgets::JS('function (value, ratio, id, index)',
-#'                                                 ' { return ratio; }')))
+#'   tooltip(format = list(title = JS('function (x) { return 'Data ' + x; }'),
+#'                         name = JS('function (name, ratio, id, index) { return name; }'),
+#'                         value = JS('function (value, ratio, id, index) { return ratio; }')))
+#' }
 #'
 tooltip.c3 <- function(c3,
                        show = TRUE,
