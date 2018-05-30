@@ -5,12 +5,10 @@ output:
     fig_caption: yes
     self_contained: yes
     toc: no
-  pdf_document:
-    toc: no
 vignette: >
-  %\VignetteIndexEntry{Basic usage of the c3 package}
-  %\VignetteEngine{knitr::rmarkdown} 
-  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{Basic Use}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, warning=FALSE, message=FALSE, echo=FALSE}
