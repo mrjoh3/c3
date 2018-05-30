@@ -68,7 +68,7 @@ c3(data)
 
 ### Piping
 
-The package also imports the [migrittr](https://CRAN.R-project.org/package=magrittr) piping function (`%>%`) to simplify syntax.
+The package also imports the [magrittr](https://CRAN.R-project.org/package=magrittr) piping function (`%>%`) to simplify syntax.
 
 ```{r pipe, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
