@@ -103,7 +103,7 @@ c3 <- function(data,
                      grep('numeric|integer', sapply(data, class)))]
 
     # define x axis type
-    dtype <- switch(class(data[,x]),
+    dtype <- switch(class(data[[x]]),
                    'Date' = 'timeseries',
                    'character' = 'category',
                    'numeric' = 'indexed')
@@ -122,7 +122,7 @@ c3 <- function(data,
     data <- data[, c(x,y)]
 
     # define x axis type
-    dtype <- switch(class(data[,x]),
+    dtype <- switch(class(data[[x]]),
                    'Date' = 'timeseries',
                    'character' = 'category',
                    'numeric' = 'indexed')
