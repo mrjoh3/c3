@@ -540,21 +540,21 @@ point_options <- function(c3,
                           select.r = 4) {
     # add option for where r is a vector
     if (length(r) > 1) {
-      
+
         #stopifnot(length(r) == length(fromJSON(c3$x$data$json)))
-        
+
         js_func <- 'function(d) {
                       var size = [%s]
                       return (size[d.index]) * %s;
                       }'
 
         r <- JS(sprintf(js_func, paste(r, collapse = ','), 1)) # need better way to scale size
-        
+
         point <- list(
             show = show,
             r = r
         )
-        
+
     } else {
         point <- list(
             show = show,
@@ -562,16 +562,16 @@ point_options <- function(c3,
             focus = list(
                 expand = list(
                     enabled = expand,
-                    r = expand.r
+                    r = r * expand.r
                 )
             ),
             select = list(
-                r = select.r
+                r = r * select.r
             )
         )
     }
-    
+
     c3$x$point <- point
-    
+
     return(c3)
 }

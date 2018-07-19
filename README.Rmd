@@ -21,7 +21,7 @@ The `C3` library is very versatile and includes a lot of options. Currently this
 
 ## Warning
 
-This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
+This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document. 
 
 Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
 
@@ -31,6 +31,10 @@ Any suggestions, advice or requests are welcome. For any bugs (there will be bug
 You probably already guessed this bit.
 
 ```{r install, eval=FALSE}
+
+install.packages('c3')
+
+# OR
 
 devtools::install_github("mrjoh3/c3")
 
@@ -301,19 +305,6 @@ data.frame(sugar = 20,
 
 
 
-## Point Size
-
-
-```{r point, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
-
-data %>%
-  c3(x = 'date') %>%
-  point_options(r = 6, 
-                expand.r = 2)
-
-```
-
-
 
 ## On Click
 
@@ -345,5 +336,30 @@ data %>%
 ```
 
 
+## Point Size
 
 
+```{r point, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
+
+data %>%
+  c3(x = 'date') %>%
+  point_options(r = 6, 
+                expand.r = 2)
+
+```
+
+
+## Bubble Plots
+
+This is currently experimental and only works with numeric data in conjuction with `c3_scatter`.
+
+```{r bubble, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
+
+data$c <- as.character(cut(data$a, c(0, quantile(data$a)), labels = c('a','b','c','d','e')))
+
+data %>%
+  c3(x = 'a', y = 'b', group = 'c') %>%
+  c3_scatter() %>%
+  point_options(r = data$a)
+
+```

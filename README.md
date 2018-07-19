@@ -1,7 +1,7 @@
 c3
 ================
 
-[![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778) [![Build Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3) [![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/c3)](http://cran.r-project.org/package=c3/) [![](http://cranlogs.r-pkg.org/badges/c3)](http://cran.r-project.org/package=c3)![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/c3)
+[![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778) [![Build Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3) [![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/c3)](http://cran.r-project.org/package=c3/) [![](http://cranlogs.r-pkg.org/badges/c3)](http://cran.r-project.org/package=c3)
 
 The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.
 
@@ -10,7 +10,7 @@ The `C3` library is very versatile and includes a lot of options. Currently this
 Warning
 -------
 
-This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress.
+This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document.
 
 Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
 
@@ -20,6 +20,10 @@ Installation
 You probably already guessed this bit.
 
 ``` r
+install.packages('c3')
+
+# OR
+
 devtools::install_github("mrjoh3/c3")
 ```
 
@@ -260,18 +264,6 @@ data.frame(sugar = 20,
 
 <img src="README_files/figure-markdown_github/viridis-1.png" style="display: block; margin: auto;" />
 
-Point Size
-----------
-
-``` r
-data %>%
-  c3(x = 'date') %>%
-  point_options(r = 6, 
-                expand.r = 2)
-```
-
-<img src="README_files/figure-markdown_github/point-1.png" style="display: block; margin: auto;" />
-
 On Click
 --------
 
@@ -298,3 +290,31 @@ data %>%
 ```
 
 <img src="README_files/figure-markdown_github/tooltip-1.png" style="display: block; margin: auto;" />
+
+Point Size
+----------
+
+``` r
+data %>%
+  c3(x = 'date') %>%
+  point_options(r = 6, 
+                expand.r = 2)
+```
+
+<img src="README_files/figure-markdown_github/point-1.png" style="display: block; margin: auto;" />
+
+Bubble Plots
+------------
+
+This is currently experimental and only works with numeric data in conjuction with `c3_scatter`.
+
+``` r
+data$c <- as.character(cut(data$a, c(0, quantile(data$a)), labels = c('a','b','c','d','e')))
+
+data %>%
+  c3(x = 'a', y = 'b', group = 'c') %>%
+  c3_scatter() %>%
+  point_options(r = data$a)
+```
+
+<img src="README_files/figure-markdown_github/bubble-1.png" style="display: block; margin: auto;" />
