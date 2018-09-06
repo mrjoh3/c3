@@ -4,8 +4,8 @@
 \alias{c3_chart_size}
 \title{Chart Size}
 \usage{
-c3_chart_size(c3, left = NULL, right = NULL, top = NULL, bottom = NULL,
-  width = NULL, height = NULL, ...)
+c3_chart_size(c3, left = NULL, right = NULL, top = NULL,
+  bottom = NULL, width = NULL, height = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

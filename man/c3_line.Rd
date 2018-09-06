@@ -4,7 +4,8 @@
 \alias{c3_line}
 \title{Line Plot}
 \usage{
-c3_line(c3, type, stacked = FALSE, connectNull = FALSE, step_type = NULL)
+c3_line(c3, type, stacked = FALSE, connectNull = FALSE,
+  step_type = NULL)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

@@ -7,7 +7,8 @@
 \usage{
 grid(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
 
-\method{grid}{c3}(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
+\method{grid}{c3}(c3, axis, show = TRUE, lines = NULL, ticks = NULL,
+  ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -49,3 +50,5 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
   \code{\link{subchart}}, \code{\link{tooltip}},
   \code{\link{xAxis}}, \code{\link{zoom}}
 }
+\concept{c3}
+\concept{grid}

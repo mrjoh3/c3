@@ -63,3 +63,4 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{grid}},
   \code{\link{subchart}}, \code{\link{tooltip}},
   \code{\link{xAxis}}, \code{\link{zoom}}
 }
+\concept{c3}

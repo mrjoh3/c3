@@ -5,8 +5,8 @@
 \alias{legend.c3}
 \title{C3 Legend Options}
 \usage{
-legend(c3, hide = FALSE, position = NULL, inset = NULL, item = NULL,
-  ...)
+legend(c3, hide = FALSE, position = NULL, inset = NULL,
+  item = NULL, ...)
 
 \method{legend}{c3}(c3, hide = FALSE, position = NULL, inset = NULL,
   item = NULL, ...)
@@ -43,12 +43,10 @@ Modify plot elements that relate to the legend. The c3 legend is on by default, 
 legend to be removed, or other legend attributes to be set.
 }
 \examples{
-\dontrun{
 iris \%>\%
  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') \%>\%
  c3_scatter() \%>\%
  legend(position = 'right')
-}
 
 }
 \seealso{
@@ -57,3 +55,5 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
   \code{\link{subchart}}, \code{\link{tooltip}},
   \code{\link{xAxis}}, \code{\link{zoom}}
 }
+\concept{c3}
+\concept{legend}

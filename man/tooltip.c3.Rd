@@ -5,8 +5,8 @@
 \alias{tooltip.c3}
 \title{C3 Tooltips}
 \usage{
-tooltip(c3, show = TRUE, grouped = TRUE, format = NULL, position = NULL,
-  contents = NULL, ...)
+tooltip(c3, show = TRUE, grouped = TRUE, format = NULL,
+  position = NULL, contents = NULL, ...)
 
 \method{tooltip}{c3}(c3, show = TRUE, grouped = TRUE, format = NULL,
   position = NULL, contents = NULL, ...)
@@ -38,17 +38,17 @@ c3
 Modify plot elements that relate to tooltips. C3.js documentation contains an \href{http://c3js.org/samples/tooltip_format.html}{extended example}.
 }
 \examples{
-\dontrun{
 data <- data.frame(a = abs(rnorm(20) *10),
-                   b = abs(rnorm(20) *10)
+                   b = abs(rnorm(20) *10),
                    c = abs(rnorm(20) *10),
                    d = abs(rnorm(20) *10))
 data \%>\%
   c3() \%>\%
-  tooltip(format = list(title = JS('function (x) { return 'Data ' + x; }'),
-                        name = JS('function (name, ratio, id, index) { return name; }'),
-                        value = JS('function (value, ratio, id, index) { return ratio; }')))
-}
+  tooltip(format = list(title = htmlwidgets::JS("function (x) { return 'Data ' + x; }"),
+                        name = htmlwidgets::JS('function (name, ratio, id, index)',
+                                               ' { return name; }'),
+                        value = htmlwidgets::JS('function (value, ratio, id, index)',
+                                                ' { return ratio; }')))
 
 }
 \seealso{
@@ -57,3 +57,5 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
   \code{\link{region}}, \code{\link{subchart}},
   \code{\link{xAxis}}, \code{\link{zoom}}
 }
+\concept{c3}
+\concept{tooltip}

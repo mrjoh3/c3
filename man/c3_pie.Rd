@@ -4,8 +4,8 @@
 \alias{c3_pie}
 \title{Pie Charts}
 \usage{
-c3_pie(c3, show = TRUE, threshold = NULL, format = NULL, expand = TRUE,
-  ...)
+c3_pie(c3, show = TRUE, threshold = NULL, format = NULL,
+  expand = TRUE, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

@@ -32,3 +32,5 @@ Other c3: \code{\link{c3}}, \code{\link{grid}},
   \code{\link{subchart}}, \code{\link{tooltip}},
   \code{\link{xAxis}}, \code{\link{zoom}}
 }
+\concept{RColorBrewer}
+\concept{c3}

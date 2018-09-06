@@ -5,8 +5,8 @@
 \alias{zoom.c3}
 \title{Add C3 Zoom}
 \usage{
-zoom(c3, enabled = TRUE, rescale = NULL, extent = NULL, onzoom = NULL,
-  onzoomstart = NULL, onzoomend = NULL, ...)
+zoom(c3, enabled = TRUE, rescale = NULL, extent = NULL,
+  onzoom = NULL, onzoomstart = NULL, onzoomend = NULL, ...)
 
 \method{zoom}{c3}(c3, enabled = TRUE, rescale = NULL, extent = NULL,
   onzoom = NULL, onzoomstart = NULL, onzoomend = NULL, ...)
@@ -35,12 +35,10 @@ c3
 Enable chart Zoom.
 }
 \examples{
-\dontrun{
 data.frame(a = abs(rnorm(20) * 10),
            b = abs(rnorm(20) * 10)) \%>\%
      c3() \%>\%
      zoom()
-}
 
 }
 \seealso{
@@ -49,3 +47,5 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
   \code{\link{region}}, \code{\link{subchart}},
   \code{\link{tooltip}}, \code{\link{xAxis}}
 }
+\concept{c3}
+\concept{zoom}

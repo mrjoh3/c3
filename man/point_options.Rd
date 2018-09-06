@@ -4,8 +4,8 @@
 \alias{point_options}
 \title{Point Options}
 \usage{
-point_options(c3, show = TRUE, r = 2.5, expand = TRUE, expand.r = 1.75,
-  select.r = 4)
+point_options(c3, show = TRUE, r = 2.5, expand = TRUE,
+  expand.r = 1.75, select.r = 4)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

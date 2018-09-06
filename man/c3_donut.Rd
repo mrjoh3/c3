@@ -4,8 +4,8 @@
 \alias{c3_donut}
 \title{Donut Charts}
 \usage{
-c3_donut(c3, expand = TRUE, title = NULL, width = NULL, show = TRUE,
-  threshold = NULL, format = NULL, ...)
+c3_donut(c3, expand = TRUE, title = NULL, width = NULL,
+  show = TRUE, threshold = NULL, format = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

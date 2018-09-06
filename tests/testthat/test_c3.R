@@ -221,3 +221,17 @@ test_that('zoom settings work', {
   expect_is(zm, "htmlwidget")
 
 })
+
+
+context('Tibble Compatibility')
+
+test_that('Tibble x axis can be defined', {
+
+  d <- dplyr::as_tibble(d)
+
+  cp <- c3(d, x = 'date')
+
+  expect_is(cp, "c3")
+  expect_is(cp, "htmlwidget")
+
+})

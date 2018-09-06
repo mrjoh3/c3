@@ -5,7 +5,8 @@
 \title{Data Select}
 \usage{
 c3_selection(c3, enabled = FALSE, grouped = FALSE, multiple = FALSE,
-  draggable = FALSE, isselectable = JS("function () { return true; }"), ...)
+  draggable = FALSE, isselectable = JS("function () { return true; }"),
+  ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

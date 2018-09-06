@@ -13,19 +13,22 @@ xAxis(c3, show = TRUE, type = "indexed", localtime = NULL,
   categories = NULL, max = NULL, min = NULL, padding = list(),
   height = NULL, extent = NULL, label = NULL, ...)
 
-\method{xAxis}{c3}(c3, show = TRUE, type = "indexed", localtime = NULL,
-  categories = NULL, max = NULL, min = NULL, padding = list(),
-  height = NULL, extent = NULL, label = NULL, ...)
+\method{xAxis}{c3}(c3, show = TRUE, type = "indexed",
+  localtime = NULL, categories = NULL, max = NULL, min = NULL,
+  padding = list(), height = NULL, extent = NULL, label = NULL,
+  ...)
 
 yAxis(c3, show = TRUE, inner = NULL, max = NULL, min = NULL,
-  padding = NULL, inverted = NULL, center = NULL, label = NULL, ...)
+  padding = NULL, inverted = NULL, center = NULL, label = NULL,
+  ...)
 
 \method{yAxis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
   min = NULL, padding = NULL, inverted = NULL, center = NULL,
   label = NULL, ...)
 
 y2Axis(c3, show = TRUE, inner = NULL, max = NULL, min = NULL,
-  padding = NULL, inverted = NULL, center = NULL, label = NULL, ...)
+  padding = NULL, inverted = NULL, center = NULL, label = NULL,
+  ...)
 
 \method{y2Axis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
   min = NULL, padding = NULL, inverted = NULL, center = NULL,
@@ -110,3 +113,7 @@ Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
   \code{\link{region}}, \code{\link{subchart}},
   \code{\link{tooltip}}, \code{\link{zoom}}
 }
+\concept{c3}
+\concept{xAxis}
+\concept{y2Axis}
+\concept{yAxis}
