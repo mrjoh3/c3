@@ -149,7 +149,7 @@ c3 <- function(data,
     # remove columns not in x,y,group
     data <- data[, c(x, y, group)]
 
-    groups <- as.character(unique(data[,group]))
+    groups <- as.character(unique(data[[group]]))
 
     #flt_group <- interp(~(!is.na(var)), var = as.name(group))
 
