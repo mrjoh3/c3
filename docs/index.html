@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">c3</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -57,7 +57,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/examples.html">c3</a>
+      <a href="articles/examples.html">c3 Basics</a>
     </li>
   </ul>
 </li>
@@ -85,251 +85,38 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#c3" class="anchor"></a>c3</h1></div>
 
-<p>The <code>c3</code> package is a wrapper, or <a href="http://www.htmlwidgets.org/">htmlwidget</a>, for the <a href="http://c3js.org/">C3</a> javascript charting library by <a href="https://github.com/masayuki0812">Masayuki Tanaka</a>. You will find this package useful if you are wanting create a chart using <a href="https://www.r-project.org/">R</a> for embedding in a Rmarkdown document or Shiny App.</p>
-<p>The <code>C3</code> library is very versatile and includes a lot of options. Currently this package wraps most of the <code>C3</code> <a href="http://c3js.org/reference.html">options object</a>. Even with this current limitation a wide range of options are available.</p>
-<div id="warning" class="section level2">
-<h2 class="hasAnchor">
-<a href="#warning" class="anchor"></a>Warning</h2>
-<p>This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document.</p>
-<p>Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an <a href="https://github.com/mrjoh3/c3/issues">issue</a>.</p>
-</div>
+<p>The <code>c3</code> package is a wrapper, or <a href="http://www.htmlwidgets.org/">htmlwidget</a>, for the <a href="http://c3js.org/">C3</a> javascript charting library by <a href="https://github.com/masayuki0812">Masayuki Tanaka</a>. You will find this package useful if you are wanting to create a chart using <a href="https://www.r-project.org/">R</a> and embedding it in a Rmarkdown document or Shiny App.</p>
+<p>The <code>C3</code> library is very versatile and includes a lot of options. Currently this package wraps most of the <code>C3</code> <a href="http://c3js.org/reference.html">options object</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You probably already guessed this bit.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'c3'</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co"># OR</span></a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"mrjoh3/c3"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'c3'</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># OR</span></a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"mrjoh3/c3"</span>)</a></code></pre></div>
 </div>
-<div id="usage" class="section level2">
+<div id="basic-usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>Please note that this package is under active development and may change at any time. The plots that currently work are line (and varieties), bar and scatter plots. Where possible the package tries to emulate the <a href="https://books.google.com.au/books?id=ZiwLCAAAQBAJ&amp;lpg=PR3&amp;dq=inauthor%3A%22Leland%20Wilkinson%22&amp;pg=PR3#v=onepage&amp;q&amp;f=false">Grammer of Graphics</a> used in Hadley Wickham’s <a href="http://ggplot2.org/">ggplot2</a>.</p>
-<p>The <code>c3</code> package is intended to be as simple and lightweight as possible. As a starting point the data input must be a <code>data.frame</code> with several options.</p>
-<ul>
-<li>If a <code>data.frame</code> without any options is passed all of the numeric columns will be plotted. This can be used in line and bar plots. Each column is a line or bar.</li>
-<li>For more complex plots only 3 columns are used, those defined as <code>x</code>, <code>y</code> and <code>group</code>. This requires a <code>data.frame</code> with a vertical structure.</li>
-</ul>
-<div id="the-basics" class="section level3">
-<h3 class="hasAnchor">
-<a href="#the-basics" class="anchor"></a>The Basics</h3>
+<a href="#basic-usage" class="anchor"></a>Basic Usage</h2>
+<p>The <code>c3</code> package is intended to be as simple and lightweight as possible. As a starting point the data input must be a <code>data.frame</code> or <code>tibble</code> with several options.</p>
 <p>Where no options are supplied a simple line plot is produced by default. Where no x-axis is defined the plots are sequential. <code>Date</code> x-axis can be parsed with not additional setting if in the format <code>%Y-%m-%d</code> (ie ‘2014-01-01’)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(c3)</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb2-4" title="4">                   <span class="dt">b =</span> <span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb2-5" title="5">                   <span class="dt">date =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2014-01-01"</span>), <span class="dt">by =</span> <span class="st">"month"</span>, <span class="dt">length.out =</span> <span class="dv">20</span>))</a>
-<a class="sourceLine" id="cb2-6" title="6"></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="kw"><a href="reference/c3.html">c3</a></span>(data)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/data-1.png" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(c3)</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4">data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb2-5" title="5">                   <span class="dt">b =</span> <span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="st"> </span><span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb2-6" title="6">                   <span class="dt">date =</span> <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2014-01-01"</span>), <span class="dt">by =</span> <span class="st">"month"</span>, <span class="dt">length.out =</span> <span class="dv">20</span>))</a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw"><a href="reference/c3.html">c3</a></span>(data)</a></code></pre></div>
+<p><img src="reference/figures/simple_fig.png"></p>
 </div>
-<div id="piping" class="section level3">
-<h3 class="hasAnchor">
-<a href="#piping" class="anchor"></a>Piping</h3>
-<p>The package also imports the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a> piping function (<code><a href="reference/pipe.html">%&gt;%</a></code>) to simplify syntax.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/c3.html">c3</a></span>() </a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/pipe-1.png" style="display: block; margin: auto;"></p>
-</div>
-</div>
-<div id="other-line-plots" class="section level2">
+<div id="documentation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-line-plots" class="anchor"></a>Other Line Plots</h2>
-<p>There are 5 different line plots available:</p>
-<ul>
-<li>line</li>
-<li>spline</li>
-<li>step</li>
-<li>area</li>
-<li>area-step</li>
-</ul>
-<div id="spline" class="section level4">
-<h4 class="hasAnchor">
-<a href="#spline" class="anchor"></a>Spline</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/c3_line.html">c3_line</a></span>(<span class="st">'spline'</span>)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/spline-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="step" class="section level4">
-<h4 class="hasAnchor">
-<a href="#step" class="anchor"></a>Step</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'date'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/c3_line.html">c3_line</a></span>(<span class="st">'area-step'</span>)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/step-1.png" style="display: block; margin: auto;"></p>
-</div>
-</div>
-<div id="bar-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bar-plots" class="anchor"></a>Bar Plots</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">data[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/c3_bar.html">c3_bar</a></span>(<span class="dt">stacked =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb6-4" title="4">         <span class="dt">rotate =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/bar-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="mixed-geometry-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mixed-geometry-plots" class="anchor"></a>Mixed Geometry Plots</h2>
-<p>Mixed geometry currently only works with a horizontal <code>data.frame</code> where each numeric column is plotted.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">data<span class="op">$</span>c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb7-2" title="2">data<span class="op">$</span>d &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">20</span>) <span class="op">*</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/c3_mixedGeom.html">c3_mixedGeom</a></span>(<span class="dt">type =</span> <span class="st">'bar'</span>, </a>
-<a class="sourceLine" id="cb7-7" title="7">               <span class="dt">stacked =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'b'</span>,<span class="st">'d'</span>),</a>
-<a class="sourceLine" id="cb7-8" title="8">               <span class="dt">types =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a=</span><span class="st">'area'</span>,</a>
-<a class="sourceLine" id="cb7-9" title="9">                            <span class="dt">c=</span><span class="st">'spline'</span>)</a>
-<a class="sourceLine" id="cb7-10" title="10">               )</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/mixed-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="secondary-y-axis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#secondary-y-axis" class="anchor"></a>Secondary Y Axis</h2>
-<p>To use a secondary Y axis columns must first be matched to an axis and then the secondary axis made visible.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">select</span>(date, a, b) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'date'</span>,</a>
-<a class="sourceLine" id="cb8-4" title="4">     <span class="dt">axes =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> <span class="st">'y'</span>,</a>
-<a class="sourceLine" id="cb8-5" title="5">                 <span class="dt">b =</span> <span class="st">'y2'</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/c3_mixedGeom.html">c3_mixedGeom</a></span>(<span class="dt">types =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> <span class="st">'line'</span>,</a>
-<a class="sourceLine" id="cb8-7" title="7">                            <span class="dt">b =</span> <span class="st">'area'</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="st">  </span><span class="kw"><a href="reference/xAxis.c3.html">y2Axis</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/y2-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="scatter-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#scatter-plot" class="anchor"></a>Scatter Plot</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">iris <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'Sepal_Length'</span>, </a>
-<a class="sourceLine" id="cb9-3" title="3">     <span class="dt">y =</span> <span class="st">'Sepal_Width'</span>, </a>
-<a class="sourceLine" id="cb9-4" title="4">     <span class="dt">group =</span> <span class="st">'Species'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3_scatter.html">c3_scatter</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/scatter-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="pie-charts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#pie-charts" class="anchor"></a>Pie Charts</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">sugar =</span> <span class="dv">20</span>,</a>
-<a class="sourceLine" id="cb10-2" title="2">           <span class="dt">fat =</span> <span class="dv">45</span>,</a>
-<a class="sourceLine" id="cb10-3" title="3">           <span class="dt">salt =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3_pie.html">c3_pie</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/pie-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="donut-charts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#donut-charts" class="anchor"></a>Donut Charts</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">red =</span> <span class="dv">82</span>, <span class="dt">green =</span> <span class="dv">33</span>, <span class="dt">blue =</span> <span class="dv">93</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">colors =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">red =</span> <span class="st">'red'</span>,</a>
-<a class="sourceLine" id="cb11-3" title="3">                   <span class="dt">green =</span> <span class="st">'green'</span>,</a>
-<a class="sourceLine" id="cb11-4" title="4">                   <span class="dt">blue =</span> <span class="st">'blue'</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3_donut.html">c3_donut</a></span>(<span class="dt">title =</span> <span class="st">'#d053ee'</span>)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/donut-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="gauge-charts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#gauge-charts" class="anchor"></a>Gauge Charts</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">data =</span> <span class="dv">80</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/c3_gauge.html">c3_gauge</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/gauge-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="grid-lines--annotation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#grid-lines--annotation" class="anchor"></a>Grid Lines &amp; Annotation</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/grid.c3.html">grid</a></span>(<span class="st">'y'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/grid.c3.html">grid</a></span>(<span class="st">'x'</span>, </a>
-<a class="sourceLine" id="cb13-5" title="5">       <span class="dt">show =</span> F, </a>
-<a class="sourceLine" id="cb13-6" title="6">       <span class="dt">lines =</span> <span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">value =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb13-7" title="7">                          <span class="dt">text =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'Line 1'</span>,<span class="st">'Line 2'</span>)))</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/grid-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="region-highlighting" class="section level2">
-<h2 class="hasAnchor">
-<a href="#region-highlighting" class="anchor"></a>Region Highlighting</h2>
-<p>To highlight regions pass a single <code>data.frame</code> with columns <code>axis</code>, <code>start</code>, <code>end</code> and <code>class</code>. Multiple regions can be defined within the one <code>data.frame</code> for any axis (<code>x</code>, <code>y</code>, <code>y2</code>). Each row in the <code>data.frame</code> defines a separate region to be highlighted</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/region.c3.html">region</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">axis =</span> <span class="st">'x'</span>,</a>
-<a class="sourceLine" id="cb14-4" title="4">                    <span class="dt">start =</span> <span class="dv">5</span>,</a>
-<a class="sourceLine" id="cb14-5" title="5">                    <span class="dt">end =</span> <span class="dv">6</span>))</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/region-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="sub-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sub-chart" class="anchor"></a>Sub-chart</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'date'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/subchart.c3.html">subchart</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/subchart-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="color-palette" class="section level2">
-<h2 class="hasAnchor">
-<a href="#color-palette" class="anchor"></a>Color Palette</h2>
-<p>Plot color palettes can be changed to either <code>RColorBrewer</code> or <code>viridis</code> palettes using either <code>RColorBrewer</code> (S3 method) or <code>c3_viridus</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">sugar =</span> <span class="dv">20</span>, </a>
-<a class="sourceLine" id="cb16-2" title="2">           <span class="dt">fat =</span> <span class="dv">45</span>, </a>
-<a class="sourceLine" id="cb16-3" title="3">           <span class="dt">salt =</span> <span class="dv">10</span>, </a>
-<a class="sourceLine" id="cb16-4" title="4">           <span class="dt">vegetables =</span> <span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/c3_pie.html">c3_pie</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-7" title="7"><span class="st">  </span><span class="kw"><a href="reference/RColorBrewer.c3.html">RColorBrewer</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/brewer-1.png" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">sugar =</span> <span class="dv">20</span>, </a>
-<a class="sourceLine" id="cb17-2" title="2">           <span class="dt">fat =</span> <span class="dv">45</span>, </a>
-<a class="sourceLine" id="cb17-3" title="3">           <span class="dt">salt =</span> <span class="dv">10</span>, </a>
-<a class="sourceLine" id="cb17-4" title="4">           <span class="dt">vegetables =</span> <span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb17-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/c3_pie.html">c3_pie</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-7" title="7"><span class="st">  </span><span class="kw"><a href="reference/c3_viridis.html">c3_viridis</a></span>()</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/viridis-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="on-click" class="section level2">
-<h2 class="hasAnchor">
-<a href="#on-click" class="anchor"></a>On Click</h2>
-<p>Onclick, onmouseover and onmouseout are all available via the <code>c3</code> function. To use wrap a js function as a character string to <code><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">htmlwidgets::JS()</a></code>. Please see the <a href="http://c3js.org/reference.html#data-onclick">C3.js documentation</a> and <a href="http://c3js.org/samples/chart_pie.html">examples</a>. The example below should be enough to get you started.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">    </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">onclick =</span> htmlwidgets<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">'function(d, element){console.log(d)}'</span>))</a></code></pre></div>
-</div>
-<div id="tooltips" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tooltips" class="anchor"></a>Tooltips</h2>
-<p><code>C3</code> tooltips are readily modified with the use of javascript functions. For further detail see the <code>C3.js</code> <a href="http://c3js.org/reference.html#tooltip-format-title">documentation</a>. Or for more advanced usage see the <code>C3.js</code> <a href="http://c3js.org/samples/tooltip_format.html">examples</a> page.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(htmlwidgets)</a>
-<a class="sourceLine" id="cb19-2" title="2"></a>
-<a class="sourceLine" id="cb19-3" title="3">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/tooltip.c3.html">tooltip</a></span>(<span class="dt">format =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">title =</span> <span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">"function (x) { return 'Data ' + x; }"</span>),</a>
-<a class="sourceLine" id="cb19-6" title="6">                        <span class="dt">name =</span> <span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">'function (name, ratio, id, index) { return name; }'</span>),</a>
-<a class="sourceLine" id="cb19-7" title="7">                        <span class="dt">value =</span> <span class="kw"><a href="https://rdrr.io/pkg/htmlwidgets/man/JS.html">JS</a></span>(<span class="st">'function (value, ratio, id, index) { return ratio; }'</span>)))</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/tooltip-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="point-size" class="section level2">
-<h2 class="hasAnchor">
-<a href="#point-size" class="anchor"></a>Point Size</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'date'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="st">  </span><span class="kw"><a href="reference/point_options.html">point_options</a></span>(<span class="dt">r =</span> <span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb20-4" title="4">                <span class="dt">expand.r =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/point-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div id="bubble-plots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bubble-plots" class="anchor"></a>Bubble Plots</h2>
-<p>This is currently experimental and only works with numeric data in conjuction with <code>c3_scatter</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">data<span class="op">$</span>c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(data<span class="op">$</span>a, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="kw"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(data<span class="op">$</span>a)), <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>,<span class="st">'d'</span>,<span class="st">'e'</span>)))</a>
-<a class="sourceLine" id="cb21-2" title="2"></a>
-<a class="sourceLine" id="cb21-3" title="3">data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/c3.html">c3</a></span>(<span class="dt">x =</span> <span class="st">'a'</span>, <span class="dt">y =</span> <span class="st">'b'</span>, <span class="dt">group =</span> <span class="st">'c'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-5" title="5"><span class="st">  </span><span class="kw"><a href="reference/c3_scatter.html">c3_scatter</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="st">  </span><span class="kw"><a href="reference/point_options.html">point_options</a></span>(<span class="dt">r =</span> data<span class="op">$</span>a)</a></code></pre></div>
-<p><img src="README_files/figure-markdown_github/bubble-1.png" style="display: block; margin: auto;"></p>
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p>For more detailed documentation and methods see <a href="http://mrjoh3.github.io/c3/" class="uri">http://mrjoh3.github.io/c3/</a>.</p>
 </div>
 </div>
   </div>
@@ -367,6 +154,7 @@
 <li><a href="https://codecov.io/gh/mrjoh3/c3"><img src="https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="http://cran.r-project.org/package=c3/"><img src="http://www.r-pkg.org/badges/version/c3" alt="CRAN_Status_Badge"></a></li>
 <li><a href="http://cran.r-project.org/package=c3"><img src="http://cranlogs.r-pkg.org/badges/c3"></a></li>
+<li><a href="http://www.rdocumentation.org/packages/c3"><img src="http://www.rdocumentation.org/badges/version/c3" alt="Rdoc"></a></li>
 </ul>
 </div>
 </div>

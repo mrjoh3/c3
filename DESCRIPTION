@@ -5,7 +5,7 @@ Description: Create interactive charts with the 'C3.js' <http://c3js.org/> chart
     types in 'C3.js' are available and include line, bar, scatter, and mixed geometry plots. Plot 
     annotations, labels and axis are highly adjustable. Interactive web based charts can be embedded 
     in R Markdown documents or Shiny web applications. 
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
     person("Matt", "Johnson", email = "mrjoh3@gmail.com",
     role = c("aut", "cre"))

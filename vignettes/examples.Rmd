@@ -1,5 +1,5 @@
 ---
-title: "c3"
+title: "c3 Basics"
 output: 
   rmarkdown::html_vignette:
     fig_caption: yes
@@ -17,15 +17,10 @@ library(dplyr)
 
 ```
 
-The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting create a chart using [R](https://www.r-project.org/) for embedding in a Rmarkdown document or Shiny App.  
+The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting to create a chart using [R](https://www.r-project.org/) and embedding it in a Rmarkdown document or Shiny App.  
 
 The `C3` library is very versatile and includes a lot of options. Currently this package wraps most of the `C3` [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
 
-## Warning
-
-This package is under active development and will definitely change. All attempts will be made to maintain the functionality and methods demonstrated in this document. Documentation is currently a work in progress. 
-
-Any suggestions, advice or requests are welcome. For any bugs (there will be bugs) please submit an [issue](https://github.com/mrjoh3/c3/issues).
 
 
 ## Installation
@@ -34,6 +29,10 @@ You probably already guessed this bit.
 
 ```{r install, eval=FALSE}
 
+install.packages('c3')
+
+# OR
+
 devtools::install_github("mrjoh3/c3")
 
 ```
@@ -41,9 +40,7 @@ devtools::install_github("mrjoh3/c3")
 
 ## Usage
 
-Please note that this package is under active development and may change at any time. The plots that currently work are line (and varieties), bar and scatter plots. Where possible the package tries to emulate the [Grammer of Graphics](https://books.google.com.au/books?id=ZiwLCAAAQBAJ&lpg=PR3&dq=inauthor%3A%22Leland%20Wilkinson%22&pg=PR3#v=onepage&q&f=false) used in Hadley Wickham's [ggplot2](http://ggplot2.org/).
-
-The `c3` package is intended to be as simple and lightweight as possible. As a starting point the data input must be a `data.frame` with several options. 
+The `c3` package is intended to be as simple and lightweight as possible. As a starting point the data input must be a `data.frame` or `tibble` with several options. 
 
   * If a `data.frame` without any options is passed all of the numeric columns will be plotted. This can be used in line and bar plots. Each column is a line or bar.
   * For more complex plots only 3 columns are used, those defined as `x`, `y` and `group`. This requires a `data.frame` with a vertical structure.
