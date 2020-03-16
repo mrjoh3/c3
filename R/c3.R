@@ -7,11 +7,11 @@
 #' @param group character column name
 #' @param width integer htmlwidget width (separate from plot width)
 #' @param height integer htmlwidget height (separate from plot height)
-#' @param labels character or list with otpions:
+#' @param labels character or list with options:
 #'  \itemize{
 #'  \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
 #' }
-#' @param hide booleen or character vector of parameters to hide
+#' @param hide boolean or character vector of parameters to hide
 #' @param onclick character js function, wrap character or character vector in JS()
 #' @param onmouseover character js function, wrap character or character vector in JS()
 #' @param onmouseout character js function, wrap character or character vector in JS()

@@ -167,7 +167,7 @@ c3_mixedGeom <- function(c3, types, type = 'line', stacked = NULL) {
 
 
 #' @title Scatter Plots
-#' @description For scatter plots options are defined in the `c3` function. OPtions are limited to x, y and groups
+#' @description For scatter plots options are defined in the `c3` function. Options are limited to x, y and groups
 #'
 #' @param c3 c3 htmlwidget object
 #'
@@ -313,7 +313,7 @@ c3_donut <- function(c3,
 
 
 #' @title Gauge Charts
-#' @description Create simple Guage Charts
+#' @description Create simple Gauge Charts
 #' @param c3 c3 htmlwidget object
 #' @param label list with options:
 #' \itemize{
@@ -323,17 +323,17 @@ c3_donut <- function(c3,
 #' @param min numeric
 #' @param max numeric
 #' @param units character appended to numeric value
-#' @param height integer pixel height of the chart. Proprtion of guage
+#' @param height integer pixel height of the chart. Proportion of gauge
 #' never changes so height scales with width despite this setting.
 #' @param width integer pixel width of the arc
-#' @param pattern character vector or pallete of colors
+#' @param pattern character vector or palette of colors
 #' @param threshold list with options:
 #' \itemize{
 #'  \item{unit}{: character one of 'percent', 'value'}
 #'  \item{max}{: numeric}
-#'  \item{values}{: numeric vector of threhold values for color change}
+#'  \item{values}{: numeric vector of threshold values for color change}
 #' }
-#' @param ... additional values passed to the guage, color and size objects
+#' @param ... additional values passed to the gauge, color and size objects
 #'
 #' @return c3
 #' @export

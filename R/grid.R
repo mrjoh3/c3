@@ -19,7 +19,7 @@ grid <- function(c3,
 #' @param c3 c3 htmlwidget object
 #' @param axis character 'x' or 'y'
 #' @param show boolean
-#' @param ticks boolean placeholder. Not yet implimented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}
+#' @param ticks boolean placeholder. Not yet implemented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}
 #' @param lines dataframe with options:
 #' \itemize{
 #'  \item{value}{: numeric, character or date depending on axis}
