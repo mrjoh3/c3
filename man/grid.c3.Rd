@@ -25,7 +25,7 @@ grid(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
  \item{position}{: character one of 'start', 'middle', 'end' (optional)}
 }}
 
-\item{ticks}{boolean placeholder. Not yet implimented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}}
+\item{ticks}{boolean placeholder. Not yet implemented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}}
 
 \item{...}{additional options passed to the grid object}
 }

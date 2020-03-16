@@ -26,25 +26,25 @@ c3_gauge(c3, label = NULL, min = 0, max = 100, units = NULL,
 
 \item{width}{integer pixel width of the arc}
 
-\item{pattern}{character vector or pallete of colors}
+\item{pattern}{character vector or palette of colors}
 
 \item{threshold}{list with options:
 \itemize{
  \item{unit}{: character one of 'percent', 'value'}
  \item{max}{: numeric}
- \item{values}{: numeric vector of threhold values for color change}
+ \item{values}{: numeric vector of threshold values for color change}
 }}
 
-\item{height}{integer pixel height of the chart. Proprtion of guage
+\item{height}{integer pixel height of the chart. Proportion of gauge
 never changes so height scales with width despite this setting.}
 
-\item{...}{additional values passed to the guage, color and size objects}
+\item{...}{additional values passed to the gauge, color and size objects}
 }
 \value{
 c3
 }
 \description{
-Create simple Guage Charts
+Create simple Gauge Charts
 }
 \examples{
 data.frame(data=10) \%>\%

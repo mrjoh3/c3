@@ -65,7 +65,7 @@ already defined in data}
  \item{text}{: character}
  \item{position}{: character}
 }
-label position options for horixontal axis are:
+label position options for horizontal axis are:
 \itemize{
  \item{inner-right}
  \item{inner-center}

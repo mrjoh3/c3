@@ -13,7 +13,7 @@ c3_scatter(c3)
 c3
 }
 \description{
-For scatter plots options are defined in the `c3` function. OPtions are limited to x, y and groups
+For scatter plots options are defined in the `c3` function. Options are limited to x, y and groups
 }
 \examples{
   iris \%>\%
