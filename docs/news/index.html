@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Viridis Palette — c3_viridis • c3</title>
+<title>Changelog • c3</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,10 +32,7 @@
 
 
 
-<meta property="og:title" content="Viridis Palette — c3_viridis" />
-
-<meta property="og:description" content="Use Viridis palette options" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -53,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -118,53 +115,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Viridis Palette</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mrjoh3/c3/blob/master/R/options.R'><code>R/options.R</code></a></small>
-    <div class="hidden name"><code>c3_viridis.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/mrjoh3/c3/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    
-    <p>Use Viridis palette options</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>c3_viridis</span>(<span class='no'>c3</span>, <span class='kw'>pal</span> <span class='kw'>=</span> <span class='st'>"D"</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>c3</th>
-      <td><p>c3 htmlwidget object</p></td>
-    </tr>
-    <tr>
-      <th>pal</th>
-      <td><p>character palette options</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>c3</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>2</span>), <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>1</span>,<span class='fl'>5</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='c3.html'>c3</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>c3_viridis</span>()</div></pre>
+    <div id="c3-030" class="section level1">
+<h1 class="page-header">
+<a href="#c3-030" class="anchor"></a>c3 0.3.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Updated cs.js to 0.7.15</li>
+<li>Updated d3.js to 5.15.0</li>
+<li>All data.frame calls now use strinsAsFactors = TRUE in preparation for R version 4</li>
+<li>migrated documentation to pkgdown</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#c3-030">0.3.0</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
 
