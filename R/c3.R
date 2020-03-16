@@ -18,7 +18,7 @@
 #' @param axes list, use to assign plot elements to secondary y axis
 #' @param ... addition options passed to the data object
 #' @importFrom utils modifyList
-#' @importFrom dplyr mutate select n group_by_
+#' @importFrom dplyr mutate select n group_by_at
 #' @importFrom data.table dcast setDT
 #' @importFrom stats formula
 #' @importFrom lazyeval interp
@@ -151,9 +151,7 @@ c3 <- function(data,
 
     groups <- as.character(unique(data[[group]]))
 
-    #flt_group <- interp(~(!is.na(var)), var = as.name(group))
-
-    tmp.df <- group_by_(data, interp(~var, var = as.name(group))) %>%
+    tmp.df <- group_by_at(data, group) %>%
       mutate(id = 1:n())
 
     # need to change columns to group, group_x in xs and in data dataframe
