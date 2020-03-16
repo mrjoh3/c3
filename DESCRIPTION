@@ -26,10 +26,10 @@ License: GPL (>= 3)
 LazyData: TRUE
 Encoding: UTF-8
 RoxygenNote: 6.1.1
-Suggests: testthat,
+Suggests: 
+    testthat,
     RColorBrewer,
     knitr,
     rmarkdown,
-    webshot,
     purrr
 VignetteBuilder: knitr
