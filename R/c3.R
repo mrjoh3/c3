@@ -52,6 +52,7 @@ c3 <- function(data,
                onclick = NULL,
                onmouseover = NULL,
                onmouseout = NULL,
+               fixString = FALSE,
                ...) {
 
   # create data object
@@ -166,8 +167,8 @@ c3 <- function(data,
     for (g in groups) {
       xs[[g]] <- paste(g, 'x', sep = '_')
 
-      colnames(data) <- sub(paste(y, g, sep = '_'), g, colnames(data))
-      colnames(data) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data))
+      colnames(data) <- sub(paste(y, g, sep = '_'), g, colnames(data), fixed=fixString)
+      colnames(data) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data), fixed=fixString)
 
     }
 
