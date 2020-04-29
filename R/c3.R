@@ -186,12 +186,16 @@ c3 <- function(data,
     #   new_cols[i] <- nc
     # }
     
+    #replace first half by dropping "yvar_"
+    
     new_cols1 <- sub(
       paste0(y, "_"),
       "", 
       colnames(data2)[1:(ncol(data2)/2)],
       fixed = fixString
     )
+    
+    #replace second half by dropping "xvar_" and appending "_x"
     
     new_cols2 <- paste0(
       sub(
