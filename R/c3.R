@@ -148,50 +148,34 @@ c3 <- function(data,
     #this option is currently only for grouped scatter plots
 
     # remove columns not in x,y,group
-    data2 <- data[, c(x, y, group)]
+    data <- data[, c(x, y, group)]
 
-    groups <- as.character(unique(data2[[group]]))
+    groups <- as.character(unique(data[[group]]))
 
-    tmp.df <- group_by_at(data2, group) %>%
+    tmp.df <- group_by_at(data, group) %>%
       mutate(id = 1:n())
 
     # need to change columns to group, group_x in xs and in data dataframe
-    data2 <- data.table::dcast(setDT(tmp.df),
+    data <- data.table::dcast(setDT(tmp.df),
                               formula(sprintf('id ~ %s', group)),
                               value.var = c(y,x))
-    data2 <- as.data.frame(data2[, -1]) # need to remove id column (always in pos 1)
+    data <- as.data.frame(data[, -1]) # need to remove id column (always in pos 1)
 
     xs <- list()
 
     # need to change columns to group, group_x in xs and in data dataframe
     for (g in groups) {
       xs[[g]] <- paste(g, 'x', sep = '_')
-      # colnames(data2) <- sub(paste(y, g, sep = '_'), g, colnames(data2), fixed=fixString)
-      # colnames(data2) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data2), fixed=fixString)
     }
     
-    # #loop method, works but replaced with vecotrized implementation below
     
-    # new_cols <- c()
-    # 
-    # for(i in 1:length(colnames(data2))){
-    #   
-    #   col <- colnames(data2)[i]
-    #   if(i <= length(groups)){
-    #     nc <- sub(paste0(y, "_"), "", col, fixed = fixString)
-    #   } else {
-    #     nc <- paste0(sub(paste0(x, "_"), "", col, fixed = fixString), "_x")
-    #   }
-    #   
-    #   new_cols[i] <- nc
-    # }
     
     #replace first half by dropping "yvar_"
     
     new_cols1 <- sub(
       paste0(y, "_"),
       "", 
-      colnames(data2)[1:(ncol(data2)/2)],
+      colnames(data)[1:(ncol(data)/2)],
       fixed = fixString
     )
     
@@ -201,13 +185,13 @@ c3 <- function(data,
       sub(
         paste0(x, "_"),
         "", 
-        colnames(data2)[((ncol(data2)/2)+1):ncol(data2)],
+        colnames(data)[((ncol(data)/2)+1):ncol(data)],
         fixed = fixString
       ),
       "_x"
     )
     
-    colnames(data2) <- c(new_cols1, new_cols2)
+    colnames(data) <- c(new_cols1, new_cols2)
 
     axis <- list(x = list(label = x),
                 y = list(label = y))
@@ -220,8 +204,8 @@ c3 <- function(data,
   }
 
   # append data to data.object
-  data.object$json <- jsonlite::toJSON(data2, dataframe = 'rows')
-  data.object$keys <- jsonlite::toJSON(list(value = colnames(data2)))
+  data.object$json <- jsonlite::toJSON(data, dataframe = 'rows')
+  data.object$keys <- jsonlite::toJSON(list(value = colnames(data)))
 
   data.object <- Filter(Negate(function(x) is.null(unlist(x))), data.object)
 
