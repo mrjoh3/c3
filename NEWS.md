@@ -1,5 +1,9 @@
 # c3 0.3.1
 
+* remove use of `iris` dataset in examples and documentation
+* option to parse group variables containing wildcard characters such as `()`
+
+
 # c3 0.3.0
 
 * Updated cs.js to 0.7.15
