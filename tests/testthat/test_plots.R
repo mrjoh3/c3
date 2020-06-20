@@ -93,10 +93,10 @@ context('c3_scatter()')
 
 test_that('scatter plots work', {
 
-  sp <- c3(iris,
-           x = 'Sepal_Length',
-           y = 'Sepal_Width',
-           group = 'Species')
+  sp <- c3(mtcars,
+           x = 'mpg',
+           y = 'wt',
+           group = 'cyl')
 
   sc <- c3_scatter(sp)
 

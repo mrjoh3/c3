@@ -16,6 +16,7 @@
 #' @param onmouseover character js function, wrap character or character vector in JS()
 #' @param onmouseout character js function, wrap character or character vector in JS()
 #' @param axes list, use to assign plot elements to secondary y axis
+#' @param fixString boolean option to parse grouping variables that contain wildcard characters such as `(`
 #' @param ... addition options passed to the data object
 #' @importFrom utils modifyList
 #' @importFrom dplyr mutate select n group_by_at
@@ -167,30 +168,30 @@ c3 <- function(data,
     for (g in groups) {
       xs[[g]] <- paste(g, 'x', sep = '_')
     }
-    
-    
-    
+
+
+
     #replace first half by dropping "yvar_"
-    
+
     new_cols1 <- sub(
       paste0(y, "_"),
-      "", 
+      "",
       colnames(data)[1:(ncol(data)/2)],
       fixed = fixString
     )
-    
+
     #replace second half by dropping "xvar_" and appending "_x"
-    
+
     new_cols2 <- paste0(
       sub(
         paste0(x, "_"),
-        "", 
+        "",
         colnames(data)[((ncol(data)/2)+1):ncol(data)],
         fixed = fixString
       ),
       "_x"
     )
-    
+
     colnames(data) <- c(new_cols1, new_cols2)
 
     axis <- list(x = list(label = x),

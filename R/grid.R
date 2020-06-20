@@ -35,12 +35,12 @@ grid <- function(c3,
 #' @export
 #'
 #' @examples
-#' iris %>%
-#'  c3(x = 'Sepal_Length', y = 'Sepal_Width', group = 'Species') %>%
-#'  c3_scatter() %>%
-#'  grid('y') %>%
-#'  grid('x', show = FALSE, lines = data.frame(value=c(5, 6),
-#'                                             text= c('Line 1', 'Line 2')))
+#'  mtcars %>%
+#'    c3(x = 'mpg', y = 'wt', group = 'cyl') %>%
+#'    c3_scatter() %>%
+#'    grid('y') %>%
+#'    grid('x', show = FALSE, lines = data.frame(value=c(17, 21),
+#'                                               text= c('Line 1', 'Line 2')))
 #'
 grid.c3 <- function(c3,
                     axis,

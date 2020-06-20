@@ -6,7 +6,8 @@
 \usage{
 c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
   height = NULL, axes = NULL, labels = NULL, hide = NULL,
-  onclick = NULL, onmouseover = NULL, onmouseout = NULL, ...)
+  onclick = NULL, onmouseover = NULL, onmouseout = NULL,
+  fixString = FALSE, ...)
 }
 \arguments{
 \item{data}{data.frame or tibble}
@@ -35,6 +36,8 @@ c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
 \item{onmouseover}{character js function, wrap character or character vector in JS()}
 
 \item{onmouseout}{character js function, wrap character or character vector in JS()}
+
+\item{fixString}{boolean option to parse grouping variables that contain wildcard characters such as `(`}
 
 \item{...}{addition options passed to the data object}
 }

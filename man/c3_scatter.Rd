@@ -16,10 +16,10 @@ c3
 For scatter plots options are defined in the `c3` function. Options are limited to x, y and groups
 }
 \examples{
-  iris \%>\%
-    c3(x = 'Sepal_Length',
-       y = 'Sepal_Width',
-       group = 'Species') \%>\%
+  mtcars \%>\%
+    c3(x = 'mpg',
+       y = 'wt',
+       group = 'cyl') \%>\%
     c3_scatter()
 
 }

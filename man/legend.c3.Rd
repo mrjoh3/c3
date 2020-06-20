@@ -43,8 +43,8 @@ Modify plot elements that relate to the legend. The c3 legend is on by default, 
 legend to be removed, or other legend attributes to be set.
 }
 \examples{
-iris \%>\%
- c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') \%>\%
+mtcars \%>\%
+ c3(x = 'mpg', y = 'wt', group = 'cyl') \%>\%
  c3_scatter() \%>\%
  legend(position = 'right')
 

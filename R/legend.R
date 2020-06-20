@@ -40,8 +40,8 @@ legend <- function(c3,
 #' @export
 #'
 #' @examples
-#' iris %>%
-#'  c3(x='Sepal_Length', y='Sepal_Width', group = 'Species') %>%
+#' mtcars %>%
+#'  c3(x = 'mpg', y = 'wt', group = 'cyl') %>%
 #'  c3_scatter() %>%
 #'  legend(position = 'right')
 #'

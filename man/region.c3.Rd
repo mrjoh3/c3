@@ -27,12 +27,12 @@ c3
 Regions are defined in multiple axis by passing a single `data.frame`
 }
 \examples{
-iris \%>\%
- c3(x = 'Sepal_Length', y = 'Sepal_Width', group = 'Species') \%>\%
- c3_scatter() \%>\%
- region(data.frame(axis = 'x',
-                   start = 5,
-                   end = 6))
+ mtcars \%>\%
+   c3(x = 'mpg', y = 'wt', group = 'cyl') \%>\%
+   c3_scatter() \%>\%
+   region(data.frame(axis = 'x',
+                     start = 17,
+                     end = 21))
 
 }
 \seealso{
