@@ -52,6 +52,7 @@ c3 <- function(data,
                onclick = NULL,
                onmouseover = NULL,
                onmouseout = NULL,
+               fixString = FALSE,
                ...) {
 
   # create data object
@@ -165,11 +166,32 @@ c3 <- function(data,
     # need to change columns to group, group_x in xs and in data dataframe
     for (g in groups) {
       xs[[g]] <- paste(g, 'x', sep = '_')
-
-      colnames(data) <- sub(paste(y, g, sep = '_'), g, colnames(data))
-      colnames(data) <- sub(paste(x, g, sep = '_'), paste(g, 'x', sep='_'), colnames(data))
-
     }
+    
+    
+    
+    #replace first half by dropping "yvar_"
+    
+    new_cols1 <- sub(
+      paste0(y, "_"),
+      "", 
+      colnames(data)[1:(ncol(data)/2)],
+      fixed = fixString
+    )
+    
+    #replace second half by dropping "xvar_" and appending "_x"
+    
+    new_cols2 <- paste0(
+      sub(
+        paste0(x, "_"),
+        "", 
+        colnames(data)[((ncol(data)/2)+1):ncol(data)],
+        fixed = fixString
+      ),
+      "_x"
+    )
+    
+    colnames(data) <- c(new_cols1, new_cols2)
 
     axis <- list(x = list(label = x),
                 y = list(label = y))
