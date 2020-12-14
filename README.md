@@ -2,8 +2,7 @@ c3
 ================
 
 [![DOI](https://zenodo.org/badge/60614778.svg)](https://zenodo.org/badge/latestdoi/60614778)
-[![Build
-Status](https://travis-ci.org/mrjoh3/c3.svg?branch=master)](https://travis-ci.org/mrjoh3/c3)
+[![R-CMD-check](https://github.com/mrjoh3/c3/workflows/R-CMD-check/badge.svg)](https://github.com/mrjoh3/c3/actions)
 [![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/c3)](http://cran.r-project.org/package=c3/)
 [![](http://cranlogs.r-pkg.org/badges/c3)](http://cran.r-project.org/package=c3)

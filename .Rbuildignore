@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
 ^README\.md$
 ^README\.Rmd$
 README_files/
@@ -8,3 +7,4 @@ README_files/
 ^docs$
 ^pkgdown$
 ^cran-comments\.md$
+^\.github$
