@@ -6,7 +6,7 @@ c3
 [![codecov](https://codecov.io/gh/mrjoh3/c3/branch/master/graph/badge.svg)](https://codecov.io/gh/mrjoh3/c3)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/c3)](http://cran.r-project.org/package=c3/)
 [![](http://cranlogs.r-pkg.org/badges/c3)](http://cran.r-project.org/package=c3)
-[![Rdoc](http://www.rdocumentation.org/badges/version/c3)](http://www.rdocumentation.org/packages/c3)
+
 
 The `c3` package is a wrapper, or
 [htmlwidget](http://www.htmlwidgets.org/), for the
