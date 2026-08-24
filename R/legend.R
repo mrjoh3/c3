@@ -20,17 +20,17 @@ legend <- function(c3,
 #' @param hide boolean or character of parameters to hide
 #' @param position character one of 'bottom', 'right', 'inset'
 #' @param inset list with options:
-#' \itemize{
-#'  \item{anchor}{: character one of 'top-left', 'top-right', 'bottom-left', 'bottom-right'}
-#'  \item{x}{: integer pixels}
-#'  \item{y}{: integer pixels}
-#'  \item{step}{: numeric}
+#' \describe{
+#'  \item{anchor}{character one of 'top-left', 'top-right', 'bottom-left', 'bottom-right'}
+#'  \item{x}{integer pixels}
+#'  \item{y}{integer pixels}
+#'  \item{step}{numeric}
 #' }
 #' @param item list with options:
-#' \itemize{
-#'  \item{onclick}{: character js function, wrap character or character vector in JS()}
-#'  \item{onmouseover}{: character js function, wrap character or character vector in JS()}
-#'  \item{onmouseout}{: character js function, wrap character or character vector in JS()}
+#' \describe{
+#'  \item{onclick}{character js function, wrap character or character vector in JS()}
+#'  \item{onmouseover}{character js function, wrap character or character vector in JS()}
+#'  \item{onmouseout}{character js function, wrap character or character vector in JS()}
 #' }
 #' @param ... additional options passed to the legend object
 #'

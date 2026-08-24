@@ -21,10 +21,10 @@ tooltip <- function(c3,
 #' @param show boolean show or hide tooltips
 #' @param grouped boolean
 #' @param format list with options:
-#' \itemize{
-#'  \item{title}{: character js function, wrap character or character vector in JS()}
-#'  \item{name}{: character js function, wrap character or character vector in JS()}
-#'  \item{value}{: character js function, wrap character or character vector in JS()}
+#' \describe{
+#'  \item{title}{character js function, wrap character or character vector in JS()}
+#'  \item{name}{character js function, wrap character or character vector in JS()}
+#'  \item{value}{character js function, wrap character or character vector in JS()}
 #' }
 #' @param position character js function, wrap character or character vector in JS()
 #' @param contents character js function, wrap character or character vector in JS()

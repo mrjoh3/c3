@@ -34,16 +34,16 @@ xAxis <- function(c3,
 #' @param max numeric set value of axis range
 #' @param min numeric set value of axis range
 #' @param padding list with options:
-#' \itemize{
-#'  \item{left}{: numeric pixels}
-#'  \item{right}{: numeric pixels}
+#' \describe{
+#'  \item{left}{numeric pixels}
+#'  \item{right}{numeric pixels}
 #' }
 #' @param height integer pixels to set height of axis
 #' @param extent vector or character function (wrapped in JS()) that returns a vector of values
 #' @param label can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
-#' \itemize{
-#'  \item{text}{: character}
-#'  \item{position}{: character}
+#' \describe{
+#'  \item{text}{character}
+#'  \item{position}{character}
 #' }
 #' label position options for horizontal axis are:
 #' \itemize{
