@@ -1,3 +1,7 @@
+# c3 0.3.2
+
+* update documentation, where required, to use `describe` instead of `itemize`
+
 # c3 0.3.1
 
 * remove use of `iris` dataset in examples and documentation
