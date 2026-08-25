@@ -5,11 +5,9 @@
 \alias{legend.c3}
 \title{C3 Legend Options}
 \usage{
-legend(c3, hide = FALSE, position = NULL, inset = NULL,
-  item = NULL, ...)
+legend(c3, hide = FALSE, position = NULL, inset = NULL, item = NULL, ...)
 
-\method{legend}{c3}(c3, hide = FALSE, position = NULL, inset = NULL,
-  item = NULL, ...)
+\method{legend}{c3}(c3, hide = FALSE, position = NULL, inset = NULL, item = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -19,18 +17,18 @@ legend(c3, hide = FALSE, position = NULL, inset = NULL,
 \item{position}{character one of 'bottom', 'right', 'inset'}
 
 \item{inset}{list with options:
-\itemize{
- \item{anchor}{: character one of 'top-left', 'top-right', 'bottom-left', 'bottom-right'}
- \item{x}{: integer pixels}
- \item{y}{: integer pixels}
- \item{step}{: numeric}
+\describe{
+ \item{anchor}{character one of 'top-left', 'top-right', 'bottom-left', 'bottom-right'}
+ \item{x}{integer pixels}
+ \item{y}{integer pixels}
+ \item{step}{numeric}
 }}
 
 \item{item}{list with options:
-\itemize{
- \item{onclick}{: character js function, wrap character or character vector in JS()}
- \item{onmouseover}{: character js function, wrap character or character vector in JS()}
- \item{onmouseout}{: character js function, wrap character or character vector in JS()}
+\describe{
+ \item{onclick}{character js function, wrap character or character vector in JS()}
+ \item{onmouseover}{character js function, wrap character or character vector in JS()}
+ \item{onmouseout}{character js function, wrap character or character vector in JS()}
 }}
 
 \item{...}{additional options passed to the legend object}
@@ -50,10 +48,15 @@ mtcars \%>\%
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{region}},
-  \code{\link{subchart}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{legend}

@@ -9,30 +9,87 @@
 \alias{y2Axis.c3}
 \title{C3 Axis}
 \usage{
-xAxis(c3, show = TRUE, type = "indexed", localtime = NULL,
-  categories = NULL, max = NULL, min = NULL, padding = list(),
-  height = NULL, extent = NULL, label = NULL, ...)
+xAxis(
+  c3,
+  show = TRUE,
+  type = "indexed",
+  localtime = NULL,
+  categories = NULL,
+  max = NULL,
+  min = NULL,
+  padding = list(),
+  height = NULL,
+  extent = NULL,
+  label = NULL,
+  ...
+)
 
-\method{xAxis}{c3}(c3, show = TRUE, type = "indexed",
-  localtime = NULL, categories = NULL, max = NULL, min = NULL,
-  padding = list(), height = NULL, extent = NULL, label = NULL,
-  ...)
+\method{xAxis}{c3}(
+  c3,
+  show = TRUE,
+  type = "indexed",
+  localtime = NULL,
+  categories = NULL,
+  max = NULL,
+  min = NULL,
+  padding = list(),
+  height = NULL,
+  extent = NULL,
+  label = NULL,
+  ...
+)
 
-yAxis(c3, show = TRUE, inner = NULL, max = NULL, min = NULL,
-  padding = NULL, inverted = NULL, center = NULL, label = NULL,
-  ...)
+yAxis(
+  c3,
+  show = TRUE,
+  inner = NULL,
+  max = NULL,
+  min = NULL,
+  padding = NULL,
+  inverted = NULL,
+  center = NULL,
+  label = NULL,
+  ...
+)
 
-\method{yAxis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
-  min = NULL, padding = NULL, inverted = NULL, center = NULL,
-  label = NULL, ...)
+\method{yAxis}{c3}(
+  c3,
+  show = TRUE,
+  inner = NULL,
+  max = NULL,
+  min = NULL,
+  padding = NULL,
+  inverted = NULL,
+  center = NULL,
+  label = NULL,
+  ...
+)
 
-y2Axis(c3, show = TRUE, inner = NULL, max = NULL, min = NULL,
-  padding = NULL, inverted = NULL, center = NULL, label = NULL,
-  ...)
+y2Axis(
+  c3,
+  show = TRUE,
+  inner = NULL,
+  max = NULL,
+  min = NULL,
+  padding = NULL,
+  inverted = NULL,
+  center = NULL,
+  label = NULL,
+  ...
+)
 
-\method{y2Axis}{c3}(c3, show = TRUE, inner = NULL, max = NULL,
-  min = NULL, padding = NULL, inverted = NULL, center = NULL,
-  label = NULL, ...)
+\method{y2Axis}{c3}(
+  c3,
+  show = TRUE,
+  inner = NULL,
+  max = NULL,
+  min = NULL,
+  padding = NULL,
+  inverted = NULL,
+  center = NULL,
+  label = NULL,
+  ...
+)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -51,19 +108,19 @@ already defined in data}
 \item{min}{numeric set value of axis range}
 
 \item{padding}{list with options:
-\itemize{
- \item{left}{: numeric pixels}
- \item{right}{: numeric pixels}
+\describe{
+ \item{left}{numeric pixels}
+ \item{right}{numeric pixels}
 }}
 
 \item{height}{integer pixels to set height of axis}
 
 \item{extent}{vector or character function (wrapped in JS()) that returns a vector of values}
 
-\item{label}{can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
-\itemize{
- \item{text}{: character}
- \item{position}{: character}
+\item{label}{can be character or list with options (see \href{https://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
+\describe{
+ \item{text}{character}
+ \item{position}{character}
 }
 label position options for horizontal axis are:
 \itemize{
@@ -108,10 +165,15 @@ data.frame(a=c(1,2,3,2),b=c(2,3,1,5)) \%>\%
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{legend}},
-  \code{\link{region}}, \code{\link{subchart}},
-  \code{\link{tooltip}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{xAxis}

@@ -27,10 +27,15 @@ data.frame(a = c(1,2,3,2), b = c(2,4,1,5), c = c(5,3,4,1)) \%>\%
 
 }
 \seealso{
-Other c3: \code{\link{c3}}, \code{\link{grid}},
-  \code{\link{legend}}, \code{\link{region}},
-  \code{\link{subchart}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{RColorBrewer}
 \concept{c3}
