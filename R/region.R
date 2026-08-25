@@ -13,11 +13,11 @@ region <- function(c3, regions){
 #' @description Regions are defined in multiple axis by passing a single `data.frame`
 #' @param c3 c3 htmlwidget object
 #' @param regions data.frame with columns listed below. Any columns can be missing but results may be unexpected.
-#' \itemize{
-#'  \item{axis}{: character one of 'x', 'y', 'y2'}
-#'  \item{start}{: numeric but must match defined axis type}
-#'  \item{end}{: numeric but must match defined axis type}
-#'  \item{class}{: character css class}
+#' \describe{
+#'  \item{axis}{character one of 'x', 'y', 'y2'}
+#'  \item{start}{numeric but must match defined axis type}
+#'  \item{end}{numeric but must match defined axis type}
+#'  \item{class}{character css class}
 #' }
 #' @family c3
 #' @family region

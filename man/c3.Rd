@@ -4,10 +4,22 @@
 \alias{c3}
 \title{C3}
 \usage{
-c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
-  height = NULL, axes = NULL, labels = NULL, hide = NULL,
-  onclick = NULL, onmouseover = NULL, onmouseout = NULL,
-  fixString = FALSE, ...)
+c3(
+  data,
+  x = NULL,
+  y = NULL,
+  group = NULL,
+  width = NULL,
+  height = NULL,
+  axes = NULL,
+  labels = NULL,
+  hide = NULL,
+  onclick = NULL,
+  onmouseover = NULL,
+  onmouseout = NULL,
+  fixString = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{data.frame or tibble}
@@ -25,8 +37,8 @@ c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
 \item{axes}{list, use to assign plot elements to secondary y axis}
 
 \item{labels}{character or list with options:
- \itemize{
- \item{format}{: list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
+ \describe{
+ \item{format}{list format functions for each parameter label (see \href{https://c3js.org/reference.html#data-labels}{c3 data-labels})}
 }}
 
 \item{hide}{boolean or character vector of parameters to hide}
@@ -42,7 +54,7 @@ c3(data, x = NULL, y = NULL, group = NULL, width = NULL,
 \item{...}{addition options passed to the data object}
 }
 \description{
-An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
+An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{https://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
 }
 \examples{
 data <- data.frame(a = c(1,2,3,2), b = c(2,3,1,5))
@@ -61,9 +73,14 @@ data.frame(sugar = 20, fat = 45, salt = 10) \%>\%
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{grid}},
-  \code{\link{legend}}, \code{\link{region}},
-  \code{\link{subchart}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}

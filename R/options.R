@@ -34,16 +34,16 @@ xAxis <- function(c3,
 #' @param max numeric set value of axis range
 #' @param min numeric set value of axis range
 #' @param padding list with options:
-#' \itemize{
-#'  \item{left}{: numeric pixels}
-#'  \item{right}{: numeric pixels}
+#' \describe{
+#'  \item{left}{numeric pixels}
+#'  \item{right}{numeric pixels}
 #' }
 #' @param height integer pixels to set height of axis
 #' @param extent vector or character function (wrapped in JS()) that returns a vector of values
-#' @param label can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
-#' \itemize{
-#'  \item{text}{: character}
-#'  \item{position}{: character}
+#' @param label can be character or list with options (see \href{https://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
+#' \describe{
+#'  \item{text}{character}
+#'  \item{position}{character}
 #' }
 #' label position options for horizontal axis are:
 #' \itemize{
@@ -420,6 +420,7 @@ c3_color <- function(c3, colors) {
 #' @param ... additional options passed to data selection object
 #'
 #' @importFrom htmlwidgets JS
+#' @importFrom methods is
 #'
 #' @return c3
 #' @export
@@ -449,7 +450,7 @@ c3_selection <- function(c3,
     list(...)
   )
 
-  if (class(selection$isselectable) != "JS_EVAL") {
+  if (!is(selection$isselectable, "JS_EVAL")) {
     selection$isselectable <- JS(selection$isselectable)
   }
 

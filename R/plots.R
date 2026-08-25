@@ -316,9 +316,9 @@ c3_donut <- function(c3,
 #' @description Create simple Gauge Charts
 #' @param c3 c3 htmlwidget object
 #' @param label list with options:
-#' \itemize{
-#'  \item{show}{: boolean}
-#'  \item{format}{: function, wrap in JS() }
+#' \describe{
+#'  \item{show}{boolean}
+#'  \item{format}{function, wrap in JS() }
 #' }
 #' @param min numeric
 #' @param max numeric
@@ -328,10 +328,10 @@ c3_donut <- function(c3,
 #' @param width integer pixel width of the arc
 #' @param pattern character vector or palette of colors
 #' @param threshold list with options:
-#' \itemize{
-#'  \item{unit}{: character one of 'percent', 'value'}
-#'  \item{max}{: numeric}
-#'  \item{values}{: numeric vector of threshold values for color change}
+#' \describe{
+#'  \item{unit}{character one of 'percent', 'value'}
+#'  \item{max}{numeric}
+#'  \item{values}{numeric vector of threshold values for color change}
 #' }
 #' @param ... additional values passed to the gauge, color and size objects
 #'

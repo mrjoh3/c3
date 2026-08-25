@@ -10,7 +10,7 @@ c3
 
 The `c3` package is a wrapper, or
 [htmlwidget](http://www.htmlwidgets.org/), for the
-[C3](http://c3js.org/) javascript charting library by [Masayuki
+[C3](https://c3js.org/) javascript charting library by [Masayuki
 Tanaka](https://github.com/masayuki0812). You will find this package
 useful if you are wanting to create a chart using
 [R](https://www.r-project.org/) and embedding it in a Rmarkdown document
@@ -18,7 +18,7 @@ or Shiny App.
 
 The `C3` library is very versatile and includes a lot of options.
 Currently this package wraps most of the `C3` [options
-object](http://c3js.org/reference.html).
+object](https://c3js.org/reference.html).
 
 ## Installation
 
@@ -60,4 +60,4 @@ c3(data)
 ## Documentation
 
 For more detailed documentation and methods see
-<http://mrjoh3.github.io/c3/>.
+<https://mrjoh3.github.io/c3/>.
