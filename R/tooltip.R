@@ -15,7 +15,7 @@ tooltip <- function(c3,
 }
 
 #' @title C3 Tooltips
-#' @description Modify plot elements that relate to tooltips. C3.js documentation contains an \href{http://c3js.org/samples/tooltip_format.html}{extended example}.
+#' @description Modify plot elements that relate to tooltips. C3.js documentation contains an \href{https://c3js.org/samples/tooltip_format.html}{extended example}.
 #'
 #' @param c3 c3 htmlwidget object
 #' @param show boolean show or hide tooltips

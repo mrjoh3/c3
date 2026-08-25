@@ -40,7 +40,7 @@ xAxis <- function(c3,
 #' }
 #' @param height integer pixels to set height of axis
 #' @param extent vector or character function (wrapped in JS()) that returns a vector of values
-#' @param label can be character or list with options (see \href{http://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
+#' @param label can be character or list with options (see \href{https://c3js.org/reference.html#axis-x-label}{c3 axis-x-label}):
 #' \describe{
 #'  \item{text}{character}
 #'  \item{position}{character}
@@ -420,6 +420,7 @@ c3_color <- function(c3, colors) {
 #' @param ... additional options passed to data selection object
 #'
 #' @importFrom htmlwidgets JS
+#' @importFrom methods is
 #'
 #' @return c3
 #' @export
@@ -449,7 +450,7 @@ c3_selection <- function(c3,
     list(...)
   )
 
-  if (class(selection$isselectable) != "JS_EVAL") {
+  if (!is(selection$isselectable, "JS_EVAL")) {
     selection$isselectable <- JS(selection$isselectable)
   }
 

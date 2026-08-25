@@ -1,5 +1,5 @@
 #' @title C3
-#' @description An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{http://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
+#' @description An `R` wrapper, or \href{http://www.htmlwidgets.org/}{htmlwidget}, for the \href{https://c3js.org/}{c3} javascript charting library by \href{https://github.com/masayuki0812}{Masayuki Tanaka}.
 #'
 #' @param data data.frame or tibble
 #' @param x character column name
@@ -9,7 +9,7 @@
 #' @param height integer htmlwidget height (separate from plot height)
 #' @param labels character or list with options:
 #'  \describe{
-#'  \item{format}{list format functions for each parameter label (see \href{http://c3js.org/reference.html#data-labels}{c3 data-labels})}
+#'  \item{format}{list format functions for each parameter label (see \href{https://c3js.org/reference.html#data-labels}{c3 data-labels})}
 #' }
 #' @param hide boolean or character vector of parameters to hide
 #' @param onclick character js function, wrap character or character vector in JS()

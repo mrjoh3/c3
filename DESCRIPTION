@@ -1,7 +1,7 @@
 Package: c3
 Type: Package
 Title: 'C3.js' Chart Library
-Description: Create interactive charts with the 'C3.js' <http://c3js.org/> charting library. All plot 
+Description: Create interactive charts with the 'C3.js' <https://c3js.org/> charting library. All plot 
     types in 'C3.js' are available and include line, bar, scatter, and mixed geometry plots. Plot 
     annotations, labels and axis are highly adjustable. Interactive web based charts can be embedded 
     in R Markdown documents or Shiny web applications. 
@@ -19,13 +19,14 @@ Imports:
     lazyeval,
     htmlwidgets,
     dplyr,
-    viridis
+    viridis,
+    methods
 URL: https://github.com/mrjoh3/c3
 BugReports: https://github.com/mrjoh3/c3/issues
 License: GPL (>= 3)
 LazyData: TRUE
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.3.3
 Suggests: 
     testthat,
     RColorBrewer,

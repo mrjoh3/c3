@@ -17,9 +17,9 @@ library(dplyr)
 
 ```
 
-The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](http://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting to create a chart using [R](https://www.r-project.org/) and embedding it in a Rmarkdown document or Shiny App.  
+The `c3` package is a wrapper, or [htmlwidget](http://www.htmlwidgets.org/), for the [C3](https://c3js.org/) javascript charting library by [Masayuki Tanaka](https://github.com/masayuki0812). You will find this package useful if you are wanting to create a chart using [R](https://www.r-project.org/) and embedding it in a Rmarkdown document or Shiny App.  
 
-The `C3` library is very versatile and includes a lot of options. Currently this package wraps most of the `C3` [options object](http://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
+The `C3` library is very versatile and includes a lot of options. Currently this package wraps most of the `C3` [options object](https://c3js.org/reference.html). Even with this current limitation a wide range of options are available. 
 
 
 
@@ -316,7 +316,7 @@ data %>%
 
 ## On Click
 
-Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [C3.js documentation](http://c3js.org/reference.html#data-onclick) and [examples](http://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
+Onclick, onmouseover and onmouseout are all available via the `c3` function. To use wrap a js function as a character string to `htmlwidgets::JS()`. Please see the [C3.js documentation](https://c3js.org/reference.html#data-onclick) and [examples](https://c3js.org/samples/chart_pie.html). The example below should be enough to get you started.
 
 ```{r onclick, eval=FALSE}
 
@@ -328,7 +328,7 @@ data %>%
 
 ## Tooltips
 
-`C3` tooltips are readily modified with the use of javascript functions. For further detail see the `C3.js` [documentation](http://c3js.org/reference.html#tooltip-format-title). Or for more advanced usage see the `C3.js` [examples](http://c3js.org/samples/tooltip_format.html) page.
+`C3` tooltips are readily modified with the use of javascript functions. For further detail see the `C3.js` [documentation](https://c3js.org/reference.html#tooltip-format-title). Or for more advanced usage see the `C3.js` [examples](https://c3js.org/samples/tooltip_format.html) page.
 
 ```{r tooltip, warning=FALSE, message=FALSE, fig.align='center', fig.width=8, fig.height=3}
 
