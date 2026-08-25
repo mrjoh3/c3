@@ -4,9 +4,19 @@
 \alias{tickAxis}
 \title{Axis Tick Options}
 \usage{
-tickAxis(c3, axis, centered = TRUE, format = NULL, culling = NULL,
-  count = NULL, fit = TRUE, values = NULL, rotate = 0,
-  outer = TRUE, ...)
+tickAxis(
+  c3,
+  axis,
+  centered = TRUE,
+  format = NULL,
+  culling = NULL,
+  count = NULL,
+  fit = TRUE,
+  values = NULL,
+  rotate = 0,
+  outer = TRUE,
+  ...
+)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}

@@ -13,11 +13,11 @@ region(c3, regions)
 \item{c3}{c3 htmlwidget object}
 
 \item{regions}{data.frame with columns listed below. Any columns can be missing but results may be unexpected.
-\itemize{
- \item{axis}{: character one of 'x', 'y', 'y2'}
- \item{start}{: numeric but must match defined axis type}
- \item{end}{: numeric but must match defined axis type}
- \item{class}{: character css class}
+\describe{
+ \item{axis}{character one of 'x', 'y', 'y2'}
+ \item{start}{numeric but must match defined axis type}
+ \item{end}{numeric but must match defined axis type}
+ \item{class}{character css class}
 }}
 }
 \value{
@@ -36,10 +36,15 @@ Regions are defined in multiple axis by passing a single `data.frame`
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{legend}},
-  \code{\link{subchart}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{region}

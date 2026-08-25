@@ -4,18 +4,26 @@
 \alias{c3_gauge}
 \title{Gauge Charts}
 \usage{
-c3_gauge(c3, label = NULL, min = 0, max = 100, units = NULL,
-  width = NULL, pattern = c("#FF0000", "#F97600", "#F6C600",
-  "#60B044"), threshold = list(unit = "value", max = 100, values = c(30,
-  60, 90, 100)), height = NULL, ...)
+c3_gauge(
+  c3,
+  label = NULL,
+  min = 0,
+  max = 100,
+  units = NULL,
+  width = NULL,
+  pattern = c("#FF0000", "#F97600", "#F6C600", "#60B044"),
+  threshold = list(unit = "value", max = 100, values = c(30, 60, 90, 100)),
+  height = NULL,
+  ...
+)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
 
 \item{label}{list with options:
-\itemize{
- \item{show}{: boolean}
- \item{format}{: function, wrap in JS() }
+\describe{
+ \item{show}{boolean}
+ \item{format}{function, wrap in JS() }
 }}
 
 \item{min}{numeric}
@@ -29,10 +37,10 @@ c3_gauge(c3, label = NULL, min = 0, max = 100, units = NULL,
 \item{pattern}{character vector or palette of colors}
 
 \item{threshold}{list with options:
-\itemize{
- \item{unit}{: character one of 'percent', 'value'}
- \item{max}{: numeric}
- \item{values}{: numeric vector of threshold values for color change}
+\describe{
+ \item{unit}{character one of 'percent', 'value'}
+ \item{max}{numeric}
+ \item{values}{numeric vector of threshold values for color change}
 }}
 
 \item{height}{integer pixel height of the chart. Proportion of gauge

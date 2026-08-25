@@ -5,11 +5,25 @@
 \alias{tooltip.c3}
 \title{C3 Tooltips}
 \usage{
-tooltip(c3, show = TRUE, grouped = TRUE, format = NULL,
-  position = NULL, contents = NULL, ...)
+tooltip(
+  c3,
+  show = TRUE,
+  grouped = TRUE,
+  format = NULL,
+  position = NULL,
+  contents = NULL,
+  ...
+)
 
-\method{tooltip}{c3}(c3, show = TRUE, grouped = TRUE, format = NULL,
-  position = NULL, contents = NULL, ...)
+\method{tooltip}{c3}(
+  c3,
+  show = TRUE,
+  grouped = TRUE,
+  format = NULL,
+  position = NULL,
+  contents = NULL,
+  ...
+)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -19,10 +33,10 @@ tooltip(c3, show = TRUE, grouped = TRUE, format = NULL,
 \item{grouped}{boolean}
 
 \item{format}{list with options:
-\itemize{
- \item{title}{: character js function, wrap character or character vector in JS()}
- \item{name}{: character js function, wrap character or character vector in JS()}
- \item{value}{: character js function, wrap character or character vector in JS()}
+\describe{
+ \item{title}{character js function, wrap character or character vector in JS()}
+ \item{name}{character js function, wrap character or character vector in JS()}
+ \item{value}{character js function, wrap character or character vector in JS()}
 }}
 
 \item{position}{character js function, wrap character or character vector in JS()}
@@ -52,10 +66,15 @@ data \%>\%
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{legend}},
-  \code{\link{region}}, \code{\link{subchart}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{tooltip}

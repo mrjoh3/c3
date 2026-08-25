@@ -21,7 +21,7 @@ c3
 }
 \description{
 Subcharts are defined in multiple axis by passing a single `data.frame`. Subcharts are listed as an
-experimental feature in the \href{http://c3js.org/reference.html#subchart-onbrush}{C3 documentation}).
+experimental feature in the \href{https://c3js.org/reference.html#subchart-onbrush}{C3 documentation}).
 }
 \examples{
 data.frame(a = abs(rnorm(20) * 10),
@@ -32,10 +32,15 @@ data.frame(a = abs(rnorm(20) * 10),
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{legend}},
-  \code{\link{region}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{subchart}

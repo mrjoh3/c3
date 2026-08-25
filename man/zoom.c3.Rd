@@ -5,11 +5,27 @@
 \alias{zoom.c3}
 \title{Add C3 Zoom}
 \usage{
-zoom(c3, enabled = TRUE, rescale = NULL, extent = NULL,
-  onzoom = NULL, onzoomstart = NULL, onzoomend = NULL, ...)
+zoom(
+  c3,
+  enabled = TRUE,
+  rescale = NULL,
+  extent = NULL,
+  onzoom = NULL,
+  onzoomstart = NULL,
+  onzoomend = NULL,
+  ...
+)
 
-\method{zoom}{c3}(c3, enabled = TRUE, rescale = NULL, extent = NULL,
-  onzoom = NULL, onzoomstart = NULL, onzoomend = NULL, ...)
+\method{zoom}{c3}(
+  c3,
+  enabled = TRUE,
+  rescale = NULL,
+  extent = NULL,
+  onzoom = NULL,
+  onzoomstart = NULL,
+  onzoomend = NULL,
+  ...
+)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -42,10 +58,15 @@ data.frame(a = abs(rnorm(20) * 10),
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{grid}}, \code{\link{legend}},
-  \code{\link{region}}, \code{\link{subchart}},
-  \code{\link{tooltip}}, \code{\link{xAxis}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{grid}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()}
 }
 \concept{c3}
 \concept{zoom}

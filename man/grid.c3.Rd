@@ -7,8 +7,7 @@
 \usage{
 grid(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
 
-\method{grid}{c3}(c3, axis, show = TRUE, lines = NULL, ticks = NULL,
-  ...)
+\method{grid}{c3}(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
 }
 \arguments{
 \item{c3}{c3 htmlwidget object}
@@ -18,14 +17,14 @@ grid(c3, axis, show = TRUE, lines = NULL, ticks = NULL, ...)
 \item{show}{boolean}
 
 \item{lines}{dataframe with options:
-\itemize{
- \item{value}{: numeric, character or date depending on axis}
- \item{text}{: character (optional)}
- \item{class}{: character css class (optional)}
- \item{position}{: character one of 'start', 'middle', 'end' (optional)}
+\describe{
+ \item{value}{numeric, character or date depending on axis}
+ \item{text}{character (optional)}
+ \item{class}{character css class (optional)}
+ \item{position}{character one of 'start', 'middle', 'end' (optional)}
 }}
 
-\item{ticks}{boolean placeholder. Not yet implemented in \href{http://c3js.org/reference.html#grid-y-ticks}{C3.js}}
+\item{ticks}{boolean placeholder. Not yet implemented in \href{https://c3js.org/reference.html#grid-y-ticks}{C3.js}}
 
 \item{...}{additional options passed to the grid object}
 }
@@ -45,10 +44,15 @@ Modify grid and line elements on both x and y axis
 
 }
 \seealso{
-Other c3: \code{\link{RColorBrewer}}, \code{\link{c3}},
-  \code{\link{legend}}, \code{\link{region}},
-  \code{\link{subchart}}, \code{\link{tooltip}},
-  \code{\link{xAxis}}, \code{\link{zoom}}
+Other c3: 
+\code{\link{RColorBrewer}()},
+\code{\link{c3}()},
+\code{\link{legend}()},
+\code{\link{region}()},
+\code{\link{subchart}()},
+\code{\link{tooltip}()},
+\code{\link{xAxis}()},
+\code{\link{zoom}()}
 }
 \concept{c3}
 \concept{grid}
